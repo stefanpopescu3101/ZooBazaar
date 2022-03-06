@@ -24,14 +24,20 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnView_Click(object sender, EventArgs e) {
             //button View is clicked
+            Animal_Details animal_Details = new Animal_Details();
+            animal_Details.Show();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e) {
             //button Update is clicked
+            Update_Animal update_Animal = new Update_Animal();
+            update_Animal.Show();
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
             //button Remove is clicked
+            Remove_Animal remove_Animal = new Remove_Animal();
+            remove_Animal.Show();
         }
 
         private void btnHabitat_Click(object sender, EventArgs e) {

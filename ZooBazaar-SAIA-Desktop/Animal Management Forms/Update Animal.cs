@@ -7,13 +7,13 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace ZooBazaar_SAIA_Desktop {
-    public partial class Add_Animal : Form {
-        public Add_Animal() {
+    public partial class Update_Animal : Form {
+        public Update_Animal() {
             InitializeComponent();
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            //button Save is clicked
+            //Save button clicked
 
         }
     }
