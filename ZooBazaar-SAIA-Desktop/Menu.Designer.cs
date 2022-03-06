@@ -78,6 +78,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnSchedule.TabIndex = 4;
             this.btnSchedule.Text = "Employee Scheduling";
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // Menu
             // 

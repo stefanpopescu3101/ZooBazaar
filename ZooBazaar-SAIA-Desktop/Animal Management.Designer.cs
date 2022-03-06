@@ -26,9 +26,9 @@ namespace ZooBazaar_SAIA_Desktop {
         private void InitializeComponent() {
             this.lbAnimals = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbID = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -58,12 +58,15 @@ namespace ZooBazaar_SAIA_Desktop {
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search for animals";
             // 
-            // tbID
+            // btnSearch
             // 
-            this.tbID.Location = new System.Drawing.Point(7, 53);
-            this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(254, 27);
-            this.tbID.TabIndex = 0;
+            this.btnSearch.Location = new System.Drawing.Point(79, 86);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label1
             // 
@@ -74,14 +77,12 @@ namespace ZooBazaar_SAIA_Desktop {
             this.label1.TabIndex = 1;
             this.label1.Text = "Animal ID:";
             // 
-            // btnSearch
+            // tbID
             // 
-            this.btnSearch.Location = new System.Drawing.Point(79, 86);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.tbID.Location = new System.Drawing.Point(7, 53);
+            this.tbID.Name = "tbID";
+            this.tbID.Size = new System.Drawing.Size(254, 27);
+            this.tbID.TabIndex = 0;
             // 
             // btnAdd
             // 
@@ -91,6 +92,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add Animal";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnView
             // 
@@ -100,6 +102,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnView.TabIndex = 3;
             this.btnView.Text = "View Animal Details";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnUpdate
             // 
@@ -109,6 +112,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update Animal Details";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnRemove
             // 
@@ -118,6 +122,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "Remove Animal";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnHabitat
             // 
@@ -127,6 +132,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnHabitat.TabIndex = 6;
             this.btnHabitat.Text = "Assign to Habitat";
             this.btnHabitat.UseVisualStyleBackColor = true;
+            this.btnHabitat.Click += new System.EventHandler(this.btnHabitat_Click);
             // 
             // Animal_Management
             // 
