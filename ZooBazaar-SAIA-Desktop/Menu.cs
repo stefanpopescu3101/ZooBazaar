@@ -32,5 +32,12 @@ namespace ZooBazaar_SAIA_Desktop {
             Employee_Administration employee_Administration = new Employee_Administration();
             employee_Administration.Show();
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e) {
+            //Employee schedule button is clicked
+            this.Hide();
+            Employee_Scheduling employee_Scheduling = new Employee_Scheduling();
+            employee_Scheduling.Show();
+        }
     }
 }

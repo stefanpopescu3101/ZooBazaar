@@ -5,4 +5,8 @@
     <RootNamespace>Class_Library</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Database Access\" />
+  </ItemGroup>
+
 </Project>

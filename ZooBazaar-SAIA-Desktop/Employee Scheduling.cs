@@ -7,8 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace ZooBazaar_SAIA_Desktop {
-    public partial class Animal_Management : Form {
-        public Animal_Management() {
+    public partial class Employee_Scheduling : Form {
+        public Employee_Scheduling() {
             InitializeComponent();
         }
     }
