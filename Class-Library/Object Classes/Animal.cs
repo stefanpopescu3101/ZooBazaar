@@ -4,35 +4,41 @@ using System.Text;
 
 namespace Class_Library {
     public class Animal {
+        public enum Sex {
+            Female, Male, Unknown
+        }
+
         private int ID;
         private string name;
         private string species;
-        private string sex;
+        private Sex sex;
         private DateTime birthday;
         private string habitat;
-        private string status;
+        private bool isInZoo;
+        private string health;
         private DateTime arrivalDate;
         private DateTime departureDate;
 
         //constructor for adding new animal
         //TODO: initialise the status
-        public Animal(string name, string species, string sex, DateTime birthday, DateTime arrivalDate) {
+        public Animal(string name, string species, Sex sex, DateTime birthday, DateTime arrivalDate) {
             this.name = name;
             this.species = species;
             this.sex = sex;
             this.birthday = birthday;
             this.arrivalDate = arrivalDate;
+            //check current date, compare with arrival, determine if animal is in zoo
         }
 
         //constructor for getting animal from the database
-        public Animal(int id, string name, string species, string sex, DateTime birthday, string habitat, string status, DateTime arrivalDate, DateTime departureDate) {
+        public Animal(int id, string name, string species, Sex sex, DateTime birthday, string habitat, bool isInZoo, DateTime arrivalDate, DateTime departureDate) {
             this.ID = id;
             this.name = name;
             this.species = species;
             this.sex = sex;
             this.birthday = birthday;
             this.habitat = habitat;
-            this.status = status;
+            this.isInZoo = isInZoo;
             this.arrivalDate = arrivalDate;
             this.departureDate = departureDate;
         }
@@ -40,12 +46,12 @@ namespace Class_Library {
         //get the details of the animal, after selecting an ID
         public Animal GetAnimal(int id) {
             //TODO: get the selected animal from the list
-            Animal a = new Animal("a","a","a",new DateTime(),new DateTime()); //just temporary
+            Animal a = new Animal("a","a",Sex.Female,new DateTime(),new DateTime()); //just temporary
             return a;
         }
 
         //update animal information, not all information can be changed
-        public void UpdateAnimal(string name, string species, string sex) {
+        public void UpdateAnimal(string name, string species, Sex sex) {
             this.name = name;
             this.species = species;
             this.sex = sex;
@@ -55,6 +61,7 @@ namespace Class_Library {
         //TODO: change the status
         public void RemoveAnimal(DateTime departureDate) {
             this.departureDate = departureDate;
+            //check current date, compare with departure, determine if animal is in zoo
         }
 
         //assigning the animal to a habitat
