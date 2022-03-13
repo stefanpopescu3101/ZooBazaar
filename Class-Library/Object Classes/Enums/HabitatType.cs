@@ -8,6 +8,7 @@
         Swamp,
         Forest,
         Arctic,
-        Savannah
+        Savannah,
+        Default
     }
 }

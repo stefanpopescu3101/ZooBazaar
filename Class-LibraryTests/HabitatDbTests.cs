@@ -55,8 +55,15 @@ namespace Class_LibraryTests
             }
 
             var dbEntries = habitatDb.LoadHabitats();
-            var expected = 3;
-            var actual = dbEntries.Count;
+            var expected = true;
+            var actual = true;
+            foreach (var habitat in habitats)
+            {
+                if (!habitats.Contains(habitat))
+                {
+                    actual = false;
+                }
+            }
 
             
             // remove test entries
@@ -68,5 +75,45 @@ namespace Class_LibraryTests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void UpdateResponsibleEmployee_UpdateResponsibleEmployeeWithAValidEmployee_ShouldReturnTrue()
+        {
+            var oldEmployee = new Employee {Id = 1, FirstName = "John", LastName = "Smith"};
+            var newEmployee = new Employee { Id = 1, FirstName = "John", LastName = "Smith" };
+            var habitat = new Habitat("Arctic#2", HabitatType.Arctic, 10, null, oldEmployee.Id, 7);
+            var habitatDb = new HabitatDb();
+            var entryId = habitatDb.AddNewHabitat(habitat);
+            habitat.ID = entryId;
+            var isEntryUpdated = habitatDb.UpdateResponsibleEmployee(habitat, newEmployee);
+
+            // remove test entry
+            habitatDb.DeleteEntry(entryId);
+
+            Assert.IsTrue(isEntryUpdated);
+        }
+
+        [TestMethod]
+        public void UpdateHabitat_UpdateHabitatWithValidData_ShouldReturnTrue()
+        {
+            
+            var oldHabitat = new Habitat(888,"Arctic#2", HabitatType.Arctic, 10, null, 911, 7);
+            var newHabitat = new Habitat(888, "Savannah#8", HabitatType.Savannah, 18, null, 900, 4);
+            var habitatDb = new HabitatDb();
+            var entryId = habitatDb.AddFullHabitat(oldHabitat);
+            oldHabitat.ID = entryId;
+            var isEntryUpdated = habitatDb.UpdateHabitat(oldHabitat, newHabitat);
+
+            var actualEntry = habitatDb.LoadEntry(entryId);
+            // remove test entry
+            habitatDb.DeleteEntry(entryId);
+
+            Assert.AreEqual(888, actualEntry.ID);
+            Assert.AreEqual("Savannah#8", actualEntry.Title);
+            Assert.AreEqual(HabitatType.Savannah, actualEntry.Type);
+            Assert.AreEqual(18, actualEntry.Capacity);
+            Assert.AreEqual(900, actualEntry.ResponsibleEmployeeId);
+            Assert.AreEqual(4, actualEntry.RequiredEmployeesCount);
+            Assert.IsTrue(isEntryUpdated);
+        }
     }
 }
