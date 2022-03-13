@@ -12,7 +12,7 @@ namespace Class_Library.Data_Access
         {
             habitatDb = new HabitatDb();
             Habitats = new List<Habitat>();
-            // LoadHabitats();
+            LoadHabitats();
         }
 
         public void LoadHabitats()
@@ -32,13 +32,13 @@ namespace Class_Library.Data_Access
             }
 
             Habitats.Add(habitat);
-            // habitat.ID = habitatDb.AddNewHabitat(habitat);
+            habitat.ID = habitatDb.AddNewHabitat(habitat);
         }
 
         public void RemoveHabitat(Habitat habitat)
         {
             Habitats.Remove(habitat);
-            // habitatDb.RemoveHabitat(habitat);
+            habitatDb.RemoveHabitat(habitat);
         }
 
         public void UpdateHabitat(Habitat oldHabitat, Habitat newHabitat)
@@ -56,7 +56,7 @@ namespace Class_Library.Data_Access
             {
                 oldHabitat.ResponsibleEmployeeId = newHabitat.ResponsibleEmployeeId;
             }
-            // habitatDb.UpdateHabitat(oldHabitat, newHabitat);
+            habitatDb.UpdateHabitat(oldHabitat, newHabitat);
         }
 
         public void AddAnimal(Habitat habitat, Animal animal)
@@ -97,7 +97,7 @@ namespace Class_Library.Data_Access
                 throw new ArgumentNullException("Missing responsible employee!");
             }
             habitat.ResponsibleEmployeeId = responsibleEmployee.Id;
-            // habitatDb.UpdateResponsibleEmployee(habitat, responsibleEmployee);
+            habitatDb.UpdateResponsibleEmployee(habitat, responsibleEmployee);
         }
 
     }
