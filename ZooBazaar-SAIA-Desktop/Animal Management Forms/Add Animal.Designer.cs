@@ -36,6 +36,8 @@ namespace ZooBazaar_SAIA_Desktop {
             this.dtArrival = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tbHealth = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -136,7 +138,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(163, 455);
+            this.btnSave.Location = new System.Drawing.Point(162, 534);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(183, 29);
             this.btnSave.TabIndex = 13;
@@ -144,11 +146,29 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tbHealth
+            // 
+            this.tbHealth.Location = new System.Drawing.Point(25, 471);
+            this.tbHealth.Name = "tbHealth";
+            this.tbHealth.Size = new System.Drawing.Size(468, 27);
+            this.tbHealth.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 447);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(304, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Health (leave empty if the animal is healthy):";
+            // 
             // Add_Animal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 514);
+            this.ClientSize = new System.Drawing.Size(525, 591);
+            this.Controls.Add(this.tbHealth);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dtArrival);
             this.Controls.Add(this.label6);
@@ -182,5 +202,7 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.DateTimePicker dtArrival;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox tbHealth;
+        private System.Windows.Forms.Label label7;
     }
 }

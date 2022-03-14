@@ -34,6 +34,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnHabitat = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.lbAnimals.ItemHeight = 20;
             this.lbAnimals.Location = new System.Drawing.Point(38, 41);
             this.lbAnimals.Name = "lbAnimals";
-            this.lbAnimals.Size = new System.Drawing.Size(675, 584);
+            this.lbAnimals.Size = new System.Drawing.Size(675, 604);
             this.lbAnimals.TabIndex = 0;
             // 
             // groupBox1
@@ -51,7 +52,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbID);
-            this.groupBox1.Location = new System.Drawing.Point(739, 41);
+            this.groupBox1.Location = new System.Drawing.Point(736, 111);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(267, 125);
             this.groupBox1.TabIndex = 1;
@@ -86,7 +87,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(739, 212);
+            this.btnAdd.Location = new System.Drawing.Point(736, 282);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(267, 49);
             this.btnAdd.TabIndex = 2;
@@ -96,7 +97,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(739, 277);
+            this.btnView.Location = new System.Drawing.Point(736, 347);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(267, 49);
             this.btnView.TabIndex = 3;
@@ -106,7 +107,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(739, 343);
+            this.btnUpdate.Location = new System.Drawing.Point(736, 413);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(267, 49);
             this.btnUpdate.TabIndex = 4;
@@ -116,7 +117,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(739, 410);
+            this.btnRemove.Location = new System.Drawing.Point(736, 480);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(267, 49);
             this.btnRemove.TabIndex = 5;
@@ -126,7 +127,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnHabitat
             // 
-            this.btnHabitat.Location = new System.Drawing.Point(739, 525);
+            this.btnHabitat.Location = new System.Drawing.Point(736, 595);
             this.btnHabitat.Name = "btnHabitat";
             this.btnHabitat.Size = new System.Drawing.Size(267, 49);
             this.btnHabitat.TabIndex = 6;
@@ -134,11 +135,22 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnHabitat.UseVisualStyleBackColor = true;
             this.btnHabitat.Click += new System.EventHandler(this.btnHabitat_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(736, 41);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(267, 49);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Text = "Refresh List";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // Animal_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 665);
+            this.ClientSize = new System.Drawing.Size(1035, 681);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnHabitat);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUpdate);
@@ -166,5 +178,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnHabitat;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

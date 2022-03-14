@@ -8,30 +8,37 @@ namespace Class_Library {
             Female, Male, Unknown
         }
 
-        private int ID;
-        private string name;
-        private string species;
-        private Sex sex;
-        private DateTime birthday;
-        private string habitat;
-        private bool isInZoo;
-        private string health;
-        private DateTime arrivalDate;
-        private DateTime departureDate;
+        public int ID { get; set; }
+        public string name { get; set; }
+        public string species { get; set; }
+        public Sex sex { get; set; }
+        public DateTime birthday { get; set; }
+        public string habitat { get; set; }
+        public bool isInZoo { get; set; }
+        public string health { get; set; }
+        public DateTime arrivalDate { get; set; }
+        public DateTime departureDate { get; set; }
 
         //constructor for adding new animal
         //TODO: initialise the status
-        public Animal(string name, string species, Sex sex, DateTime birthday, DateTime arrivalDate) {
+        public Animal(string name, string species, Sex sex, DateTime birthday, DateTime arrivalDate, string health) {
             this.name = name;
             this.species = species;
             this.sex = sex;
             this.birthday = birthday;
             this.arrivalDate = arrivalDate;
+            this.health = health;
             //check current date, compare with arrival, determine if animal is in zoo
+            if (arrivalDate < DateTime.Today) {
+                this.isInZoo = true;
+            } else {
+                this.isInZoo = false;
+            }
+            this.departureDate = DateTime.MinValue; //unassigned
         }
 
         //constructor for getting animal from the database
-        public Animal(int id, string name, string species, Sex sex, DateTime birthday, string habitat, bool isInZoo, DateTime arrivalDate, DateTime departureDate) {
+        public Animal(int id, string name, string species, Sex sex, DateTime birthday, string habitat, bool isInZoo, string health, DateTime arrivalDate, DateTime departureDate) {
             this.ID = id;
             this.name = name;
             this.species = species;
@@ -39,6 +46,7 @@ namespace Class_Library {
             this.birthday = birthday;
             this.habitat = habitat;
             this.isInZoo = isInZoo;
+            this.health = health;
             this.arrivalDate = arrivalDate;
             this.departureDate = departureDate;
         }
@@ -46,7 +54,7 @@ namespace Class_Library {
         //get the details of the animal, after selecting an ID
         public Animal GetAnimal(int id) {
             //TODO: get the selected animal from the list
-            Animal a = new Animal("a","a",Sex.Female,new DateTime(),new DateTime()); //just temporary
+            Animal a = new Animal("a","a",Sex.Female,new DateTime(),new DateTime(), "a"); //just temporary
             return a;
         }
 
@@ -67,6 +75,11 @@ namespace Class_Library {
         //assigning the animal to a habitat
         public void AssignHabitat(string habitat) {
             this.habitat = habitat;
+        }
+
+        public override string ToString() {
+            string output = name + " the " + species + " (" + sex.ToString() + ", ID #" + ID.ToString() + ")";
+            return output;
         }
     }
 }
