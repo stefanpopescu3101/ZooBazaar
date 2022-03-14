@@ -24,7 +24,9 @@ namespace ZooBazaar_SAIA_Desktop {
             }
             Animal newAnimal = new Animal(tbName.Text, tbSpecies.Text, Enum.Parse<Animal.Sex>(cbSex.Text), dtBirthday.Value, dtArrival.Value, newHealth);
             AnimalManager animalManager = new AnimalManager();
-            animalManager.AddAnimal(newAnimal);
+            int newID = animalManager.AddAnimal(newAnimal);
+            MessageBox.Show("The animal was added to the list, with ID number " + newID.ToString());
+            this.Close();
         }
     }
 }

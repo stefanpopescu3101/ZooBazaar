@@ -11,16 +11,15 @@ namespace Class_Library.Managers {
         public AnimalManager() {
             animalDb = new AnimalDb();
             Animals = new List<Animal>();
-            GetAllAnimals();
         }
 
         public void GetAllAnimals() {
-            
+            Animals = animalDb.GetAllAnimals();
         }
 
-        public void AddAnimal(Animal a) {
-
+        public int AddAnimal(Animal a) {
             int newID = animalDb.AddNewAnimal(a);
+            return newID;
         }
     }
 }

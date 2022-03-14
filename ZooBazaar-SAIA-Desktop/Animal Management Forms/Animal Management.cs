@@ -5,11 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Class_Library.Managers;
+using Class_Library;
 
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Animal_Management : Form {
+        private AnimalManager animalManager = new AnimalManager();
+
         public Animal_Management() {
             InitializeComponent();
+            animalManager.GetAllAnimals();
+            RefreshList(animalManager.Animals);
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
@@ -42,6 +48,19 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnHabitat_Click(object sender, EventArgs e) {
             //button Assign to habitat is clicked
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            //Button refresh list is clicked
+            animalManager.GetAllAnimals();
+            RefreshList(animalManager.Animals);
+        }
+
+        private void RefreshList(List<Animal> animals) {
+            lbAnimals.Items.Clear();
+            foreach (Animal a in animals) {
+                lbAnimals.Items.Add(a);
+            }
         }
     }
 }

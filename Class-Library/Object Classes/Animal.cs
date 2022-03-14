@@ -76,5 +76,10 @@ namespace Class_Library {
         public void AssignHabitat(string habitat) {
             this.habitat = habitat;
         }
+
+        public override string ToString() {
+            string output = name + " the " + species + " (" + sex.ToString() + ", ID #" + ID.ToString() + ")";
+            return output;
+        }
     }
 }
