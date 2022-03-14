@@ -15,9 +15,16 @@ namespace Class_Library.Data_Access
             LoadHabitats();
         }
 
+        // test version, that disables loading from db
+        public HabitatManager(bool test)
+        {
+            habitatDb = new HabitatDb();
+            Habitats = new List<Habitat>();
+        }
+
         public void LoadHabitats()
         {
-            habitatDb.LoadHabitats();
+            Habitats= habitatDb.LoadHabitats();
         }
 
         public void AddHabitat(Habitat habitat)

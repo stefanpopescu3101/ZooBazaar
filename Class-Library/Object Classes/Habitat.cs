@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Principal;
 
@@ -48,30 +49,41 @@ namespace Class_Library.Data_Access
 
         public override string ToString()
         {
-            string animals = string.Empty;
-            string responsibleEmployee = string.Empty;
-            if (ResponsibleEmployeeId == null)
+            //    string animals = string.Empty;
+            //    string responsibleEmployee = string.Empty;
+            //    if (ResponsibleEmployeeId == null)
+            //    {
+            //        responsibleEmployee = "None";
+            //    }
+            //    else
+            //    {
+            //        // replace after employee class is implemented properly
+            //        responsibleEmployee = $"\n\tEmployee with id: {ResponsibleEmployeeId}";
+            //    }
+
+            //    foreach (var animal in Animals)
+            //    {
+            //        animals += "\n" + "\t" + animal.ToString();
+            //    }
+
+            //    if (string.IsNullOrWhiteSpace(animals))
+            //    {
+            //        animals = "None";
+            //    }
+            //    return
+            //        $"Id: {ID}\nTitle: {Title}\nType: {Type.ToString()}\nCapacity: {Capacity}\nAnimals: {animals}\nResponsible Employee: {responsibleEmployee}\n" +
+            //        $"Required employees: {RequiredEmployeesCount}";
+            int numOfCharacters = ID.ToString().Length;
+            var str = $"{ID,-5}";
+            for (var i = 0; i < (5 - numOfCharacters); i++)
             {
-                responsibleEmployee = "None";
-            }
-            else
-            {
-                // replace after employee class is implemented properly
-                responsibleEmployee = $"\n\tEmployee with id: {ResponsibleEmployeeId}";
+                str += " ";
             }
 
-            foreach (var animal in Animals)
-            {
-                animals += "\n" + "\t" + animal.ToString();
-            }
+            str += $"\t{Title,-16}";
 
-            if (string.IsNullOrWhiteSpace(animals))
-            {
-                animals = "None";
-            }
-            return
-                $"Id: {ID}\nTitle: {Title}\nType: {Type.ToString()}\nCapacity: {Capacity}\nAnimals: {animals}\nResponsible Employee: {responsibleEmployee}\n" +
-                $"Required employees: {RequiredEmployeesCount}";
+            return str;
+
         }
     }
-}
+    }
