@@ -30,8 +30,13 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnView_Click(object sender, EventArgs e) {
             //button View is clicked
-            Animal_Details animal_Details = new Animal_Details();
-            animal_Details.Show();
+            if (lbAnimals.SelectedIndex != -1) {
+                Animal selectedAnimal = (Animal)lbAnimals.SelectedItem;
+                Animal_Details animal_Details = new Animal_Details(selectedAnimal);
+                animal_Details.Show();
+            } else {
+                MessageBox.Show("Please select an animal from the list");
+            }            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e) {

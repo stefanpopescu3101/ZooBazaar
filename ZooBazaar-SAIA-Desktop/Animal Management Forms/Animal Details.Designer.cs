@@ -42,6 +42,8 @@ namespace ZooBazaar_SAIA_Desktop {
             this.label15 = new System.Windows.Forms.Label();
             this.lblDeparture = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblHealth = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -173,7 +175,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // lblArrival
             // 
             this.lblArrival.AutoSize = true;
-            this.lblArrival.Location = new System.Drawing.Point(168, 305);
+            this.lblArrival.Location = new System.Drawing.Point(168, 338);
             this.lblArrival.Name = "lblArrival";
             this.lblArrival.Size = new System.Drawing.Size(50, 20);
             this.lblArrival.TabIndex = 15;
@@ -182,7 +184,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(27, 305);
+            this.label15.Location = new System.Drawing.Point(27, 338);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 20);
             this.label15.TabIndex = 14;
@@ -191,7 +193,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // lblDeparture
             // 
             this.lblDeparture.AutoSize = true;
-            this.lblDeparture.Location = new System.Drawing.Point(168, 342);
+            this.lblDeparture.Location = new System.Drawing.Point(168, 375);
             this.lblDeparture.Name = "lblDeparture";
             this.lblDeparture.Size = new System.Drawing.Size(74, 20);
             this.lblDeparture.TabIndex = 17;
@@ -200,17 +202,37 @@ namespace ZooBazaar_SAIA_Desktop {
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 342);
+            this.label4.Location = new System.Drawing.Point(27, 375);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 20);
             this.label4.TabIndex = 16;
             this.label4.Text = "Date of departure:";
             // 
+            // lblHealth
+            // 
+            this.lblHealth.AutoSize = true;
+            this.lblHealth.Location = new System.Drawing.Point(168, 303);
+            this.lblHealth.Name = "lblHealth";
+            this.lblHealth.Size = new System.Drawing.Size(50, 20);
+            this.lblHealth.TabIndex = 19;
+            this.lblHealth.Text = "health";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(27, 303);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 20);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Health:";
+            // 
             // Animal_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 388);
+            this.ClientSize = new System.Drawing.Size(444, 416);
+            this.Controls.Add(this.lblHealth);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblDeparture);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblArrival);
@@ -256,5 +278,7 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblDeparture;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblHealth;
+        private System.Windows.Forms.Label label6;
     }
 }
