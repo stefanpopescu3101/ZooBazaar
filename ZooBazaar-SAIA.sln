@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32014.148
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooBazaar-SAIA-Desktop", "ZooBazaar-SAIA-Desktop\ZooBazaar-SAIA-Desktop.csproj", "{BA4BF6E0-418A-410A-BBAE-A97791668F49}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class-Library", "Class-Libr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooBazaar-SAIA-Web", "ZooBazaar-SAIA-Web\ZooBazaar-SAIA-Web.csproj", "{7769C79E-8BF9-4BE5-B923-9D820DC4DDBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class-LibraryTests", "Class-LibraryTests\Class-LibraryTests.csproj", "{FE556E05-2076-4612-B0ED-5AFDE080FB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class-LibraryTests", "Class-LibraryTests\Class-LibraryTests.csproj", "{FE556E05-2076-4612-B0ED-5AFDE080FB9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
