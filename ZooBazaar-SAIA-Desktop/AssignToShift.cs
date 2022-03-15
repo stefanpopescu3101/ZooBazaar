@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using Class_Library;
 using System.Windows.Forms;
 
 namespace ZooBazaar_SAIA_Desktop
