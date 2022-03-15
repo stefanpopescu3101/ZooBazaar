@@ -6,7 +6,7 @@ using MySqlConnector;
 
 
 
-namespace ZooBazaar
+namespace Class_Library
 {
     public class ShiftDb : DBMediator
     {

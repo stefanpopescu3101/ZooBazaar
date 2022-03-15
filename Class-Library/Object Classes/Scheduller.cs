@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazaar
+namespace Class_Library
 {
     public class Scheduler
     {
@@ -13,6 +13,7 @@ namespace ZooBazaar
         private ShiftManager shiftManager;
         private EmployeeManager employeeManager;
         private EmployeesMediator employeeMediator;
+       
 
         public EmployeeManager EmployeeManager { get { return employeeManager; } }
         public Scheduler()

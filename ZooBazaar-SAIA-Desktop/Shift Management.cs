@@ -111,7 +111,7 @@ namespace ZooBazaar_SAIA_Desktop
         }
         private void ShowInLabel()
         {
-            lDate.Text = indexMonth.ToString() + ", " + indexYear.ToString();
+            lbDate.Text = indexMonth.ToString() + ", " + indexYear.ToString();
         }
 
 

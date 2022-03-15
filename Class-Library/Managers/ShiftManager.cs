@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazaar
+namespace Class_Library
 {
     public class ShiftManager
     {
