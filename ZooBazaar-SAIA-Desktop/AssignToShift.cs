@@ -46,14 +46,14 @@ namespace ZooBazaar_SAIA_Desktop
 
             foreach (Employee employee in availableEmployees)
             {
-                this.lbAvailablePeople.Items.Add("ID: " + employee.ID + " - " + employee.FirstName + " " + employee.LastName);
+                this.lbAvailablePeople.Items.Add("ID: " + employee.Id + " - " + employee.FirstName + " " + employee.LastName);
             }
 
             List<Employee> peopleInShift = this.scheduler.GetAssignedEmployeesToShift(this.date, this.shiftType);
 
             foreach (Employee employee in peopleInShift)
             {
-                this.lbPeopleInShift.Items.Add("ID: " + employee.ID + " - " + employee.FirstName + " " + employee.LastName);
+                this.lbPeopleInShift.Items.Add("ID: " + employee.Id + " - " + employee.FirstName + " " + employee.LastName);
             }
         }
 

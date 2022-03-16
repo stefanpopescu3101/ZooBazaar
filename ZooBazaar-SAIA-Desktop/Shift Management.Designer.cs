@@ -47,20 +47,18 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             // btnAutoSchedul
             // 
-            this.btnAutoSchedul.Location = new System.Drawing.Point(181, -103);
-            this.btnAutoSchedul.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAutoSchedul.Location = new System.Drawing.Point(207, -137);
             this.btnAutoSchedul.Name = "btnAutoSchedul";
-            this.btnAutoSchedul.Size = new System.Drawing.Size(9, 8);
+            this.btnAutoSchedul.Size = new System.Drawing.Size(10, 11);
             this.btnAutoSchedul.TabIndex = 14;
             this.btnAutoSchedul.Text = "Auto Schedule";
             this.btnAutoSchedul.UseVisualStyleBackColor = true;
             // 
             // btnScheduleRese
             // 
-            this.btnScheduleRese.Location = new System.Drawing.Point(548, -103);
-            this.btnScheduleRese.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScheduleRese.Location = new System.Drawing.Point(626, -137);
             this.btnScheduleRese.Name = "btnScheduleRese";
-            this.btnScheduleRese.Size = new System.Drawing.Size(9, 8);
+            this.btnScheduleRese.Size = new System.Drawing.Size(10, 11);
             this.btnScheduleRese.TabIndex = 13;
             this.btnScheduleRese.Text = "Reset";
             this.btnScheduleRese.UseVisualStyleBackColor = true;
@@ -69,55 +67,50 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             this.lDate.AutoSize = true;
             this.lDate.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lDate.Location = new System.Drawing.Point(250, -117);
+            this.lDate.Location = new System.Drawing.Point(286, -156);
             this.lDate.Name = "lDate";
-            this.lDate.Size = new System.Drawing.Size(0, 30);
+            this.lDate.Size = new System.Drawing.Size(0, 38);
             this.lDate.TabIndex = 12;
             // 
             // btnNextMont
             // 
-            this.btnNextMont.Location = new System.Drawing.Point(843, -103);
-            this.btnNextMont.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNextMont.Location = new System.Drawing.Point(963, -137);
             this.btnNextMont.Name = "btnNextMont";
-            this.btnNextMont.Size = new System.Drawing.Size(9, 8);
+            this.btnNextMont.Size = new System.Drawing.Size(10, 11);
             this.btnNextMont.TabIndex = 11;
             this.btnNextMont.Text = "Next Month";
             this.btnNextMont.UseVisualStyleBackColor = true;
             // 
             // btnPreviousMont
             // 
-            this.btnPreviousMont.Location = new System.Drawing.Point(710, -103);
-            this.btnPreviousMont.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPreviousMont.Location = new System.Drawing.Point(811, -137);
             this.btnPreviousMont.Name = "btnPreviousMont";
-            this.btnPreviousMont.Size = new System.Drawing.Size(9, 8);
+            this.btnPreviousMont.Size = new System.Drawing.Size(10, 11);
             this.btnPreviousMont.TabIndex = 10;
             this.btnPreviousMont.Text = "Previous Month";
             this.btnPreviousMont.UseVisualStyleBackColor = true;
             // 
             // btnShowCalender
             // 
-            this.btnShowCalender.Location = new System.Drawing.Point(24, -103);
-            this.btnShowCalender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowCalender.Location = new System.Drawing.Point(27, -137);
             this.btnShowCalender.Name = "btnShowCalender";
-            this.btnShowCalender.Size = new System.Drawing.Size(9, 8);
+            this.btnShowCalender.Size = new System.Drawing.Size(10, 11);
             this.btnShowCalender.TabIndex = 9;
             this.btnShowCalender.Text = "Show Calender";
             this.btnShowCalender.UseVisualStyleBackColor = true;
             // 
             // pCalender
             // 
-            this.pCalender.Location = new System.Drawing.Point(29, 52);
-            this.pCalender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pCalender.Location = new System.Drawing.Point(33, 69);
             this.pCalender.Name = "pCalender";
-            this.pCalender.Size = new System.Drawing.Size(879, 336);
+            this.pCalender.Size = new System.Drawing.Size(1005, 448);
             this.pCalender.TabIndex = 8;
             // 
             // btnAutoSchedule
             // 
-            this.btnAutoSchedule.Location = new System.Drawing.Point(179, 20);
-            this.btnAutoSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAutoSchedule.Location = new System.Drawing.Point(205, 27);
             this.btnAutoSchedule.Name = "btnAutoSchedule";
-            this.btnAutoSchedule.Size = new System.Drawing.Size(134, 22);
+            this.btnAutoSchedule.Size = new System.Drawing.Size(153, 29);
             this.btnAutoSchedule.TabIndex = 20;
             this.btnAutoSchedule.Text = "Auto Schedule";
             this.btnAutoSchedule.UseVisualStyleBackColor = true;
@@ -125,10 +118,9 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(500, 20);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReset.Location = new System.Drawing.Point(571, 27);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(134, 22);
+            this.btnReset.Size = new System.Drawing.Size(153, 29);
             this.btnReset.TabIndex = 19;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -138,17 +130,16 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(313, 179);
+            this.label1.Location = new System.Drawing.Point(358, 239);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 30);
+            this.label1.Size = new System.Drawing.Size(0, 38);
             this.label1.TabIndex = 18;
             // 
             // btnNextMonth
             // 
-            this.btnNextMonth.Location = new System.Drawing.Point(781, 20);
-            this.btnNextMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNextMonth.Location = new System.Drawing.Point(893, 27);
             this.btnNextMonth.Name = "btnNextMonth";
-            this.btnNextMonth.Size = new System.Drawing.Size(127, 22);
+            this.btnNextMonth.Size = new System.Drawing.Size(145, 29);
             this.btnNextMonth.TabIndex = 17;
             this.btnNextMonth.Text = "Next Month";
             this.btnNextMonth.UseVisualStyleBackColor = true;
@@ -156,10 +147,9 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             // btnPreviousMonth
             // 
-            this.btnPreviousMonth.Location = new System.Drawing.Point(639, 20);
-            this.btnPreviousMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPreviousMonth.Location = new System.Drawing.Point(730, 27);
             this.btnPreviousMonth.Name = "btnPreviousMonth";
-            this.btnPreviousMonth.Size = new System.Drawing.Size(137, 22);
+            this.btnPreviousMonth.Size = new System.Drawing.Size(157, 29);
             this.btnPreviousMonth.TabIndex = 16;
             this.btnPreviousMonth.Text = "Previous Month";
             this.btnPreviousMonth.UseVisualStyleBackColor = true;
@@ -167,10 +157,9 @@ namespace ZooBazaar_SAIA_Desktop
             // 
             // btnShowCalendar
             // 
-            this.btnShowCalendar.Location = new System.Drawing.Point(29, 20);
-            this.btnShowCalendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowCalendar.Location = new System.Drawing.Point(34, 27);
             this.btnShowCalendar.Name = "btnShowCalendar";
-            this.btnShowCalendar.Size = new System.Drawing.Size(134, 22);
+            this.btnShowCalendar.Size = new System.Drawing.Size(153, 29);
             this.btnShowCalendar.TabIndex = 15;
             this.btnShowCalendar.Text = "Show Calender";
             this.btnShowCalendar.UseVisualStyleBackColor = true;
@@ -179,17 +168,17 @@ namespace ZooBazaar_SAIA_Desktop
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Location = new System.Drawing.Point(375, 20);
+            this.lbDate.Location = new System.Drawing.Point(429, 27);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(38, 15);
+            this.lbDate.Size = new System.Drawing.Size(50, 20);
             this.lbDate.TabIndex = 21;
             this.lbDate.Text = "label2";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 387);
+            this.ClientSize = new System.Drawing.Size(1082, 516);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btnAutoSchedule);
             this.Controls.Add(this.btnReset);
@@ -204,7 +193,6 @@ namespace ZooBazaar_SAIA_Desktop
             this.Controls.Add(this.btnPreviousMont);
             this.Controls.Add(this.btnShowCalender);
             this.Controls.Add(this.pCalender);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

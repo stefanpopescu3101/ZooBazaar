@@ -93,11 +93,11 @@ namespace Class_Library
         public void RemoveEmployeesFutureShifts(Employee employee)
         {
             this.Load();
-            DateTime lastWorkDay = DateTime.ParseExact(employee.LastWorkingDate, "MM/dd/yyyy", null);
+            DateTime lastWorkDay = DateTime.ParseExact(employee.EndDate, "MM/dd/yyyy", null);
 
             for (int i = 0; i < this.WorkShifts.Count; i++)
             {
-                if (this.WorkShifts[i].EmployeeId == employee.ID)
+                if (this.WorkShifts[i].EmployeeId == employee.Id)
                 {
                     if (DateTime.Compare(DateTime.ParseExact(this.WorkShifts[i].Date, "MM/dd/yyyy", null), lastWorkDay) > 0)
                     {
@@ -130,7 +130,7 @@ namespace Class_Library
 
             for (int i = 0; i < workShifts.Count; i++)
             {
-                if (workShifts[i].EmployeeId == employee.ID)
+                if (workShifts[i].EmployeeId == employee.Id)
                 {
                     if (DateTime.Compare(DateTime.ParseExact(workShifts[i].Date, "MM/dd/yyyy", null), lastWorkDay) > 0)
                     {
@@ -151,7 +151,7 @@ namespace Class_Library
 
             for (int i = 0; i < this.WorkShifts.Count; i++)
             {
-                if (this.WorkShifts[i].EmployeeId == employee.ID && this.WorkShifts[i].Date == date)
+                if (this.WorkShifts[i].EmployeeId == employee.Id && this.WorkShifts[i].Date == date)
                 {
                     this.WorkShifts[i].CancelShift();
                     this.shiftMediator.UpdateShift(WorkShifts[i]);

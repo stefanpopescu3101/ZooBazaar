@@ -19,7 +19,7 @@ namespace Class_Library.Data_Access
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@first_name", emp.FirstName);
                 cmd.Parameters.AddWithValue("@last_name", emp.LastName);
-                cmd.Parameters.AddWithValue("@BSN", emp.BSN);
+                cmd.Parameters.AddWithValue("@BSN", emp.bsn);
                 cmd.Parameters.AddWithValue("@email", emp.Email);
                 cmd.Parameters.AddWithValue("@first_working_date", emp.StartDate);
                 cmd.Parameters.AddWithValue("@last_working_date", emp.EndDate);
@@ -30,8 +30,8 @@ namespace Class_Library.Data_Access
                 cmd.Parameters.AddWithValue("@departure_reason", emp.DepartureReason);
                 cmd.Parameters.AddWithValue("@shifts_per_week", emp.ShiftsPerWeek);
                 cmd.Parameters.AddWithValue("@role", emp.Role);
-                cmd.Parameters.AddWithValue("@username", emp.Username);
-                cmd.Parameters.AddWithValue("@password", emp.Password);
+                cmd.Parameters.AddWithValue("@username", emp.username);
+                cmd.Parameters.AddWithValue("@password", emp.password);
 
                 connection.Open();
                 cmd.ExecuteNonQuery();
@@ -63,11 +63,11 @@ namespace Class_Library.Data_Access
                             data.GetString(2),
                             data.GetString(3),
                             data.GetString(4),
-                            data.GetString(5),
+                            data.GetInt32(5),
                             data.GetString(6),
-                            data.GetDateTime(7),
-                            data.GetDateTime(8),
-                            data.GetDateTime(9),
+                            data.GetString(7),
+                            data.GetString(8),
+                            data.GetString(9),
                             data.GetString(10),
                             data.GetInt32(11),
                             data.GetString(12),

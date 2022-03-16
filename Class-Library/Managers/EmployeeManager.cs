@@ -6,7 +6,7 @@ using Class_Library.Data_Access;
 
 namespace Class_Library.Managers
 {
-    class EmployeeManager
+    public class EmployeeManager
     {
         private readonly EmployeeDb employeeDb;
         private static int id = 0;
@@ -22,8 +22,8 @@ namespace Class_Library.Managers
         public void GenerateUsernameAndPassword(Employee emp)
         {
             string userName = emp.FirstName.Substring(0, 1) + emp.LastName.Substring(0, 1) + emp.Id;
-            emp.Username = userName;
-            emp.Password = emp.Id + id++.ToString();
+            emp.username = userName;
+            emp.password = emp.Id + id++.ToString();
             //employeesMediator.UpdateUsernameAndPassword(emp);
 
         }
@@ -31,7 +31,7 @@ namespace Class_Library.Managers
         {
             foreach (Employee emp in employees)
             {
-                if (emp.Username == username && emp.Password == password)
+                if (emp.username == username && emp.password == password)
                 {
                     return emp;
                 }
@@ -47,7 +47,7 @@ namespace Class_Library.Managers
 
         public void RemoveEmployee(Employee emp)
         {
-            //employeesMediator.RemoveEmployee(emp);
+            //employeesDb.RemoveEmployee(emp);
             employees.Remove(emp);
         }
 
@@ -65,11 +65,12 @@ namespace Class_Library.Managers
         }
         public List<Employee> GetAllEmployees()
         {
+            employees = employeeDb.GetAllEmployees();
             return employees;
         }
         public List<Employee> GetEmployees()
         {
-            //employees = employeesMediator.GetEmployees();
+            employees = employeeDb.GetAllEmployees();
             return employees;
         }
         public void Load()

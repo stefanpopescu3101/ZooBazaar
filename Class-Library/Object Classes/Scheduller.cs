@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Class_Library.Managers;
+using Class_Library.Data_Access;
 
 namespace Class_Library
 {
@@ -12,7 +14,7 @@ namespace Class_Library
 
         private ShiftManager shiftManager;
         private EmployeeManager employeeManager;
-        private EmployeesMediator employeeMediator;
+        private EmployeeDb employeeMediator;
        
 
         public EmployeeManager EmployeeManager { get { return employeeManager; } }
@@ -20,7 +22,7 @@ namespace Class_Library
         {
             this.shiftManager = new ShiftManager();
             this.employeeManager = new EmployeeManager();
-            this.employeeMediator = new EmployeesMediator();
+            this.employeeMediator = new EmployeeDb();
         }
 
         public int CheckNumberOfAssignedEmployees(string date, string type)
@@ -43,7 +45,7 @@ namespace Class_Library
             {
                 foreach (Employee emp in employeeManager.GetEmployees())
                 {
-                    if (ws.Date == date && ws.Type == type && ws.EmployeeId == emp.ID)
+                    if (ws.Date == date && ws.Type == type && ws.EmployeeId == emp.Id)
                     {
                         employees.Add(emp);
                     }
@@ -58,7 +60,7 @@ namespace Class_Library
             {
                 foreach (Employee emp in employeeManager.GetEmployees())
                 {
-                    if (ws.Date != date && ws.Type != shiftType && ws.EmployeeId == emp.ID)
+                    if (ws.Date != date && ws.Type != shiftType && ws.EmployeeId == emp.Id)
                     {
                         employees.Add(emp);
                     }
@@ -95,13 +97,13 @@ namespace Class_Library
                 {
                     foreach (Employee employee in availableEmployees)
                     {
-                        if (shiftManager.CheckAvailability(employee.ID, monday.ToString("d")) == true)
+                        if (shiftManager.CheckAvailability(employee.Id, monday.ToString("d")) == true)
                         {
                             if (employeesMorning < 8)
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.Id, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8);
                                     sm.Add(shift);
                                     employeesMorning++;
                                 }
@@ -174,7 +176,7 @@ namespace Class_Library
 
             foreach (WorkShift shift in this.AllShifts)
             {
-                if (shift.EmployeeId == employee.ID)
+                if (shift.EmployeeId == employee.Id)
                 {
                     if (DateTime.Compare(monday, DateTime.ParseExact(shift.Date, "M/d/yyyy", null)) <= 0 &&
                     DateTime.Compare(sunday, DateTime.ParseExact(shift.Date, "M/d/yyyy", null)) >= 0)
@@ -217,7 +219,7 @@ namespace Class_Library
                 if (!this.MaximumShifts(employee, monday, sunday))
                 {
 
-                    if (this.CheckEmployeesShiftsForToday(employee.ID, date))
+                    if (this.CheckEmployeesShiftsForToday(employee.Id, date))
                     {
                         availableEmployees.Add(employee);
                     }
@@ -232,7 +234,7 @@ namespace Class_Library
             List<Employee> foundemployees = new List<Employee>();
             foreach (Employee emp in employees)
             {
-                if (item == emp.FirstName || item == emp.LastName || item == emp.ID.ToString())
+                if (item == emp.FirstName || item == emp.LastName || item == emp.Id.ToString())
                 {
                     foundemployees.Add(emp);
                 }
