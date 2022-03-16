@@ -77,7 +77,7 @@ namespace Class_Library
                 var query = "SELECT * FROM workshifts_zoo";
                 var cmd = new MySqlCommand(query, this.connection);
 
-
+                this.connection.Open();
 
                 List<WorkShift> workshifts = new List<WorkShift>();
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -118,6 +118,8 @@ namespace Class_Library
         {
             try
             {
+                this.connection.Open();
+
                 var query = "UPDATE workshifts_zoo SET Cancelled = @Cancelled WHERE id = @id";
                 var cmd = new MySqlCommand(query, this.connection);
 
@@ -144,6 +146,8 @@ namespace Class_Library
         {
             try
             {
+                this.connection.Open();
+
                 var query = "DELETE FROM workshifts_zoo ";
                 var cmd = new MySqlCommand(query, this.connection);
 
@@ -159,6 +163,8 @@ namespace Class_Library
         {
             try
             {
+                this.connection.Open();
+
                 var query = "SELECT * from unavailability_zoo WHERE unavailableDay=@date and employee_id=@ID";
                 var cmd = new MySqlCommand(query, this.connection);
 

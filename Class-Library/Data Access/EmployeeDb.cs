@@ -56,26 +56,15 @@ namespace Class_Library.Data_Access
                 List<Employee> employees = new List<Employee>();
                 while (data.Read())
                 {
-                    employees.Add(
-                        new Employee(
-                            data.GetInt32(0),
-                            data.GetString(1),
-                            data.GetString(2),
-                            data.GetString(3),
-                            data.GetString(4),
-                            data.GetInt32(5),
-                            data.GetString(6),
-                            data.GetString(7),
-                            data.GetString(8),
-                            data.GetString(9),
-                            data.GetString(10),
-                            data.GetInt32(11),
-                            data.GetString(12),
-                            data.GetString(13),
-                            data.GetString(14),
-                            0
-                            )
-                        );
+
+                    Employee employee = employee = new Employee(Convert.ToInt32(data["id"]), data["first_name"].ToString(), data["last_name"].ToString(),
+                        Convert.ToInt32(data["BSN"]), data["email"].ToString(), data["first_working_date"].ToString(), data["last_working_date"].ToString(),
+                        data["birthdate"].ToString(), data["contract_type"].ToString(), Convert.ToInt32(data["hourly_wage"]), data["address"].ToString(), data["departure_reason"].ToString(),
+                        Convert.ToInt32(data["shifts_per_week"]),data["role"].ToString(), data["username"].ToString(), data["password"].ToString());
+
+                    employees.Add(employee);
+
+                    
                 }
                 return employees;
             }

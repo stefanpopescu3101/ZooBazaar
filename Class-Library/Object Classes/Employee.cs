@@ -9,20 +9,21 @@ namespace Class_Library
         public int Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string birthdate { get; set; }
         public int bsn { get; set; }
         public string email { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
+        public string birthdate { get; set; }
         public string contractType { get; set; }
         public int hourlyWage { get; set; }
         public string address { get; set; }
-        public string role { get; set; }
         public string departureReason { get; set; }
         public int shiftsPerWeek { get; set; }
-
+        public string role { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        
+      
         public string DepartureReason
         {
             get { return departureReason; }
@@ -94,7 +95,7 @@ namespace Class_Library
             get { return firstName + " " + lastName; }
         }
 
-        public Employee(int id, string firstName, string lastName,string username, string password, int bsn, string email, string startDate, string endDate, string birthdate, string contractType, int hourlyWage, string address, string role, string departureReason, int shiftsPerWeek)
+        public Employee(int id, string firstName, string lastName,int bsn, string email, string startDate, string endDate, string birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password )
         {
             this.Id = id;
             this.firstName = firstName;
@@ -112,6 +113,7 @@ namespace Class_Library
             this.Role = role;
             this.DepartureReason = departureReason;
             this.shiftsPerWeek = shiftsPerWeek;
+            
         }
 
     }

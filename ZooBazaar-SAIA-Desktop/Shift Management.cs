@@ -21,6 +21,8 @@ namespace ZooBazaar_SAIA_Desktop
         Label label;
         public Form1()
         {
+            scheduler = new Scheduler();
+            shiftManager = new ShiftManager();
             InitializeComponent();
         }
 
