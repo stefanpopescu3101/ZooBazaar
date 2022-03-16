@@ -133,17 +133,21 @@ namespace ZooBazaar_SAIA_Desktop
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
-            hm.AssignResponsibleEmployee(selectedHabitat,
-                new Employee {Id = 911, FirstName = "Test", LastName = "User"});
-            // update habitats
-            habitats.ElementAt(GetIndexOf(selectedHabitat, habitats)).ResponsibleEmployeeId = 911;
-            if (isFiltered)
+            var assigningResponsibleEmployee = new Habitat_Employee_Assignment(hm, selectedHabitat);
+            assigningResponsibleEmployee.ShowDialog();
+            if (assigningResponsibleEmployee.DialogResult == DialogResult.Cancel)
             {
-                filteredHabitats.ElementAt(GetIndexOf(selectedHabitat, filteredHabitats)).ResponsibleEmployeeId = 911;
-                filteredHabitats.ResetBindings();
+                return;
             }
 
+            habitats.ElementAt(GetIndexOf(selectedHabitat, habitats)).ResponsibleEmployeeId = selectedHabitat.ResponsibleEmployeeId;
+            if (isFiltered)
+            {
+                filteredHabitats.ElementAt(GetIndexOf(selectedHabitat, filteredHabitats)).ResponsibleEmployeeId = selectedHabitat.ResponsibleEmployeeId;
+                filteredHabitats.ResetBindings();
+            }
             habitats.ResetBindings();
+            filteredHabitats.ResetBindings();
         }
     }
 }
