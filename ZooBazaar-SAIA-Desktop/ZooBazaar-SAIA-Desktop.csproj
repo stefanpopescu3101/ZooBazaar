@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Habitat Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Habitat Employee Assignment.cs">
       <SubType>Form</SubType>
     </Compile>

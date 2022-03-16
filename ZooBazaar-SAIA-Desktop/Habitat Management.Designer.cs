@@ -68,6 +68,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "Update Habitat Details";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnView
             // 
@@ -89,6 +90,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add Habitat";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 

@@ -149,5 +149,33 @@ namespace ZooBazaar_SAIA_Desktop
             habitats.ResetBindings();
             filteredHabitats.ResetBindings();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var habitatEditor = new Habitat_Editor(hm);
+            habitatEditor.ShowDialog();
+            if (habitatEditor.DialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            isFiltered = false;
+            habitats.Add(hm.Habitats.Last());
+            lbHabitats.DataSource = habitats;
+            filteredHabitats.Clear();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var habitatEditor = new Habitat_Editor(hm, selectedHabitat);
+            habitatEditor.ShowDialog();
+            if (habitatEditor.DialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            habitats.ResetBindings();
+            filteredHabitats.ResetBindings();
+        }
     }
 }

@@ -111,7 +111,7 @@ namespace ZooBazaar_SAIA_Desktop
             this.Controls.Add(this.btnOk);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Habitat_Employee_Assignment";
-            this.Text = "Habitat_Details";
+            this.Text = "Habitat Employee Assignment";
             this.ResumeLayout(false);
             this.PerformLayout();
 
