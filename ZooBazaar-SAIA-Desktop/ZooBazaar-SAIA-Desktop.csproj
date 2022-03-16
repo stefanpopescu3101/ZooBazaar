@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Employee Management\" />
+    <Compile Update="Shift Management.cs" />
   </ItemGroup>
 
 </Project>
