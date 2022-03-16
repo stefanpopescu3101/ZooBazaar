@@ -342,5 +342,40 @@ namespace Class_LibraryTests
             Assert.AreEqual(oldEmployee.Id, responsibleEmployeeId);
         }
 
+        [TestMethod]
+        public void GetHabitatById_GetExistingHabitat_ShouldReturnExactlyOneHabitat()
+        {
+            var hm = new HabitatManager(true);
+            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5);
+            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1);
+            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2);
+
+            hm.Habitats.Add(habitat1);
+            hm.Habitats.Add(habitat2);
+            hm.Habitats.Add(habitat3);
+
+            var actual= hm.GetHabitatById(2);
+            var expected = habitat2;
+
+            Assert.IsTrue(expected.Equals(actual));
+        }
+
+        [TestMethod]
+        public void GetHabitatById_GetNotExistingHabitat_ShouldReturnNull()
+        {
+            var hm = new HabitatManager(true);
+            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5);
+            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1);
+            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2);
+
+            hm.Habitats.Add(habitat1);
+            hm.Habitats.Add(habitat2);
+            hm.Habitats.Add(habitat3);
+
+            var actual = hm.GetHabitatById(4);
+
+            Assert.AreEqual(null, actual);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Class_Library.Data_Access
 {
@@ -105,6 +106,12 @@ namespace Class_Library.Data_Access
             }
             habitat.ResponsibleEmployeeId = responsibleEmployee.Id;
             habitatDb.UpdateResponsibleEmployee(habitat, responsibleEmployee);
+        }
+
+        public Habitat GetHabitatById(int id)
+        {
+            var output = Habitats.Find(x => x.ID == id);
+            return output;
         }
 
     }

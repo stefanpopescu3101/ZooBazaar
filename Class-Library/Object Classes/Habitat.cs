@@ -48,6 +48,7 @@ namespace Class_Library.Data_Access
         }
 
         public override string ToString()
+        
         {
             //    string animals = string.Empty;
             //    string responsibleEmployee = string.Empty;
@@ -74,8 +75,11 @@ namespace Class_Library.Data_Access
             //        $"Id: {ID}\nTitle: {Title}\nType: {Type.ToString()}\nCapacity: {Capacity}\nAnimals: {animals}\nResponsible Employee: {responsibleEmployee}\n" +
             //        $"Required employees: {RequiredEmployeesCount}";
             int numOfCharacters = ID.ToString().Length;
+            
             var str = $"{ID,-5}";
-            for (var i = 0; i < (5 - numOfCharacters); i++)
+            for (
+                var i = 0; 
+                i < (5 - numOfCharacters); i++)
             {
                 str += " ";
             }
