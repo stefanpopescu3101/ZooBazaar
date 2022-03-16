@@ -16,19 +16,25 @@ namespace Class_LibraryTests
         {
             var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
             var hm = new HabitatManager(true);
+            var habitatDb = new HabitatDb();
             hm.AddHabitat(habitat);
 
             var actual = hm.Habitats.Count;
             var expected = 1;
 
+            habitatDb.DeleteEntry(habitat.ID);
+
             Assert.AreEqual(expected, actual);
+
+
         }
 
         [TestMethod]
         public void AddHabitat_StoreDuplicateOfHabitat_HabitatAddedToTheListAndDb()
         {
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
+            var habitat = new Habitat("Arctic#1", HabitatType.Arctic, 2, 5);
             var hm = new HabitatManager(true);
+            var habitatDb = new HabitatDb();
             var argumentExceptionCaught = false;
 
             try
@@ -42,6 +48,8 @@ namespace Class_LibraryTests
             }
             var actual = hm.Habitats.Count;
             var expected = 1;
+
+            habitatDb.DeleteEntry(habitat.ID);
 
             Assert.AreEqual(expected, actual);
             Assert.IsTrue(argumentExceptionCaught);
