@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Class_Library.Data_Access;
 
-namespace ZooBazaar_SAIA_Desktop {
+namespace ZooBazaar_SAIA_Desktop
+{
     public partial class Habitat_Management : Form
     {
         private int selectedIndex = 0;
@@ -17,7 +19,9 @@ namespace ZooBazaar_SAIA_Desktop {
         private BindingList<Habitat> habitats;
         private BindingList<Habitat> filteredHabitats;
         private bool isFiltered = false;
-        public Habitat_Management() {
+
+        public Habitat_Management()
+        {
             InitializeComponent();
             hm = new HabitatManager();
             habitats = new BindingList<Habitat>();
@@ -26,6 +30,7 @@ namespace ZooBazaar_SAIA_Desktop {
             {
                 habitats.Add(habitat);
             }
+
             lbHabitats.DataSource = habitats;
         }
 
@@ -34,52 +39,55 @@ namespace ZooBazaar_SAIA_Desktop {
             selectedIndex = lbHabitats.SelectedIndex;
             if (isFiltered)
             {
-                if (filteredHabitats.Count > 0)
-                {
-                    selectedHabitat = filteredHabitats[selectedIndex];
-                }
-                else
-                {
-                    selectedHabitat = null;
-                }
+                selectedHabitat = filteredHabitats.Count > 0 ? filteredHabitats[selectedIndex] : null;
             }
             else
             {
-                if (habitats.Count > 0)
-                {
-                    selectedHabitat = habitats[selectedIndex];
-                }
-                else
-                {
-                    selectedHabitat = null;
-                }
+                selectedHabitat = habitats.Count > 0 ? habitats[selectedIndex] : null;
             }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (selectedHabitat != null)
-            {
-                MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                hm.RemoveHabitat(selectedHabitat);
-                var temp = GetIndexOf(selectedHabitat, habitats);
-                var temp2 = GetIndexOf(selectedHabitat, filteredHabitats);
+            if (selectedHabitat == null) return;
+            MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            hm.RemoveHabitat(selectedHabitat);
+            var temp = GetIndexOf(selectedHabitat, habitats);
+            var temp2 = GetIndexOf(selectedHabitat, filteredHabitats);
 
-                habitats.RemoveAt(temp);
-                if (temp2 != -1)
+            // trigger event or update selected item
+            if (selectedIndex == 0)
+            {
+                if (!isFiltered)
                 {
-                    if (isFiltered && filteredHabitats.Count == 1)
+                    if (habitats.Count > 1)
                     {
-                        isFiltered = false;
-                        lbHabitats.DataSource = habitats;
-                        selectedIndex = 0;
+                        selectedHabitat = habitats[1];
                     }
-                    filteredHabitats.RemoveAt(temp2);
+                }
+                else
+                {
+                    selectedHabitat = null;
                 }
             }
+            habitats.RemoveAt(temp);
+            if (temp2 == -1) return;
+            if (isFiltered && filteredHabitats.Count == 1)
+            {
+                isFiltered = false;
+                selectedIndex = 0;
+                lbHabitats.DataSource = habitats;
+            }
+            else if (isFiltered && filteredHabitats.Count > 1)
+            {
+                selectedHabitat = filteredHabitats[1];
+            }
+
+            filteredHabitats.RemoveAt(temp2);
         }
 
-        private int GetIndexOf(Habitat h, BindingList<Habitat> bHabitats)
+        private static int GetIndexOf(Habitat h, BindingList<Habitat> bHabitats)
         {
             var output = bHabitats.IndexOf(h);
 
@@ -117,5 +125,25 @@ namespace ZooBazaar_SAIA_Desktop {
             }
         }
 
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            var habitatDetails = new Habitat_Details(selectedHabitat);
+            habitatDetails.ShowDialog();
+        }
+
+        private void btnAssign_Click(object sender, EventArgs e)
+        {
+            hm.AssignResponsibleEmployee(selectedHabitat,
+                new Employee {Id = 911, FirstName = "Test", LastName = "User"});
+            // update habitats
+            habitats.ElementAt(GetIndexOf(selectedHabitat, habitats)).ResponsibleEmployeeId = 911;
+            if (isFiltered)
+            {
+                filteredHabitats.ElementAt(GetIndexOf(selectedHabitat, filteredHabitats)).ResponsibleEmployeeId = 911;
+                filteredHabitats.ResetBindings();
+            }
+
+            habitats.ResetBindings();
+        }
     }
 }

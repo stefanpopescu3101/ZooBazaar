@@ -75,6 +75,15 @@ namespace Class_Library.Data_Access
             //        $"Id: {ID}\nTitle: {Title}\nType: {Type.ToString()}\nCapacity: {Capacity}\nAnimals: {animals}\nResponsible Employee: {responsibleEmployee}\n" +
             //        $"Required employees: {RequiredEmployeesCount}";
             int numOfCharacters = ID.ToString().Length;
+            var manager = string.Empty;
+            if (ResponsibleEmployeeId == null)
+            {
+                manager = "None";
+            }
+            else
+            {
+                manager = ResponsibleEmployeeId.ToString();
+            }
             
             var str = $"{ID,-5}";
             for (
@@ -85,6 +94,7 @@ namespace Class_Library.Data_Access
             }
 
             str += $"\t{Title,-16}";
+            str += $"\t{manager}";
 
             return str;
 

@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Class-Library\Class-Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Habitat Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

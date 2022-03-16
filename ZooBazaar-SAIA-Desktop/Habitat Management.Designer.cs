@@ -46,6 +46,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnAssign.TabIndex = 13;
             this.btnAssign.Text = "Assign Manager to Habitat";
             this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // btnRemove
             // 
@@ -77,6 +78,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnView.TabIndex = 10;
             this.btnView.Text = "View Habitat Details";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnAdd
             // 
