@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Class-Library\Class-Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Employee Management\" />
+  </ItemGroup>
+
 </Project>
