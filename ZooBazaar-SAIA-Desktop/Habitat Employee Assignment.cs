@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Class_Library;
 using Class_Library.Data_Access;
 
 namespace ZooBazaar_SAIA_Desktop {
@@ -21,14 +22,7 @@ namespace ZooBazaar_SAIA_Desktop {
             InitializeComponent();
             habitatManager = hm;
             habitat = h;
-            testEmployeeList = new List<Employee>
-            {
-                new Employee {Id = 1, FirstName = "John", LastName = "Smith"},
-                new Employee {Id = 2, FirstName = "Sue", LastName = "Storm"},
-                new Employee {Id = 3, FirstName = "Mary", LastName = "Jane"},
-                new Employee {Id = 4, FirstName = "Bob", LastName = "Tornton"},
-                new Employee {Id = 5, FirstName = "Adam", LastName = "Colt"}
-            };
+            testEmployeeList = new List<Employee>();
             cbEmployees.DataSource = testEmployeeList;
             if (habitat.ResponsibleEmployeeId == null)
             {

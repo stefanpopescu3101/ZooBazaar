@@ -278,7 +278,8 @@ namespace Class_LibraryTests
         [TestMethod]
         public void UpdateHabitat_UpdateTitleTypeCapacityRequiredEmployeesAndResponsibleEmployee_ShouldUpdateHabitat()
         {
-            var employee = new Employee {Id = 2, FirstName = "John", LastName = "Smith"};
+            var employee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+                DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
             var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
             var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, null, employee.Id, 3);
             var hm = new HabitatManager(true);
@@ -302,7 +303,8 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AssignResponsibleEmployee_SetAValidEmployeeToAHabitatWithoutAssignedResponsibleEmployee_ShouldSetProperly()
         {
-            var employee = new Employee {Id = 2, FirstName = "John", LastName = "Smith" };
+            var employee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+                DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
             var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
@@ -316,8 +318,10 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AssignResponsibleEmployee_ReplaceAlreadyAssignedEmployeeWithAValidEmployee_ShouldSetProperly()
         {
-            var oldEmployee = new Employee {Id = 2, FirstName = "Sue", LastName = "Storm" };
-            var newEmployee = new Employee {Id = 9, FirstName = "John", LastName = "Smith" };
+            var oldEmployee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+                DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
+            var newEmployee = new Employee(1002, "Sue", "TestUser2", "22345678", "sue@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+                DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
             var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, oldEmployee.Id, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
@@ -331,8 +335,9 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AssignResponsibleEmployee_ReplaceAlreadyAssignedEmployeeWithANull_ShouldThrowArgumentNullException()
         {
-            var oldEmployee = new Employee { Id = 2, FirstName = "Sue", LastName = "Storm" };
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, oldEmployee.Id, 5);
+            var employee = new Employee (1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+                DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, employee.Id, 5);
             var hm = new HabitatManager(true);
             var argumentNullExceptionCaught = false;
             hm.Habitats.Add(habitat);
@@ -347,7 +352,7 @@ namespace Class_LibraryTests
             var responsibleEmployeeId = hm.Habitats.First().ResponsibleEmployeeId;
 
             Assert.IsTrue(argumentNullExceptionCaught);
-            Assert.AreEqual(oldEmployee.Id, responsibleEmployeeId);
+            Assert.AreEqual(employee.Id, responsibleEmployeeId);
         }
 
         [TestMethod]

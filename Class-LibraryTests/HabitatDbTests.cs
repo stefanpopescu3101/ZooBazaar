@@ -75,22 +75,22 @@ namespace Class_LibraryTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void UpdateResponsibleEmployee_UpdateResponsibleEmployeeWithAValidEmployee_ShouldReturnTrue()
-        {
-            var oldEmployee = new Employee {Id = 1, FirstName = "John", LastName = "Smith"};
-            var newEmployee = new Employee { Id = 1, FirstName = "John", LastName = "Smith" };
-            var habitat = new Habitat("Arctic#2", HabitatType.Arctic, 10, null, oldEmployee.Id, 7);
-            var habitatDb = new HabitatDb();
-            var entryId = habitatDb.AddNewHabitat(habitat);
-            habitat.ID = entryId;
-            var isEntryUpdated = habitatDb.UpdateResponsibleEmployee(habitat, newEmployee);
+        //[TestMethod]
+        //public void UpdateResponsibleEmployee_UpdateResponsibleEmployeeWithAValidEmployee_ShouldReturnTrue()
+        //{
+        //    var oldEmployee = new Employee {Id = 1, FirstName = "John", LastName = "Smith"};
+        //    var newEmployee = new Employee { Id = 1, FirstName = "John", LastName = "Smith" };
+        //    var habitat = new Habitat("Arctic#2", HabitatType.Arctic, 10, null, oldEmployee.Id, 7);
+        //    var habitatDb = new HabitatDb();
+        //    var entryId = habitatDb.AddNewHabitat(habitat);
+        //    habitat.ID = entryId;
+        //    var isEntryUpdated = habitatDb.UpdateResponsibleEmployee(habitat, newEmployee);
 
-            // remove test entry
-            habitatDb.DeleteEntry(entryId);
+        //    // remove test entry
+        //    habitatDb.DeleteEntry(entryId);
 
-            Assert.IsTrue(isEntryUpdated);
-        }
+        //    Assert.IsTrue(isEntryUpdated);
+        //}
 
         [TestMethod]
         public void UpdateHabitat_UpdateHabitatWithValidData_ShouldReturnTrue()

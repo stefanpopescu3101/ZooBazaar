@@ -34,10 +34,9 @@ namespace ZooBazaar_SAIA_Desktop {
         }
 
         private void btnSchedule_Click(object sender, EventArgs e) {
-            //Employee schedule button is clicked
             this.Hide();
-            Employee_Scheduling employee_Scheduling = new Employee_Scheduling();
-            employee_Scheduling.Show();
+            Form1 shift_Management = new Form1();
+            shift_Management.Show();
         }
     }
 }
