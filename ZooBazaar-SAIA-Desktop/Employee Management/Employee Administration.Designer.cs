@@ -33,15 +33,26 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbID = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.lvEmployees = new System.Windows.Forms.ListView();
+            this.chFirstName = new System.Windows.Forms.ColumnHeader();
+            this.chLastName = new System.Windows.Forms.ColumnHeader();
+            this.chBSN = new System.Windows.Forms.ColumnHeader();
+            this.chEmail = new System.Windows.Forms.ColumnHeader();
+            this.chStartDate = new System.Windows.Forms.ColumnHeader();
+            this.chEndDate = new System.Windows.Forms.ColumnHeader();
+            this.chBirthdate = new System.Windows.Forms.ColumnHeader();
+            this.chContractType = new System.Windows.Forms.ColumnHeader();
+            this.chHourlyWage = new System.Windows.Forms.ColumnHeader();
+            this.chAddress = new System.Windows.Forms.ColumnHeader();
+            this.chDepartureReason = new System.Windows.Forms.ColumnHeader();
+            this.chShiftsPerWeek = new System.Windows.Forms.ColumnHeader();
+            this.chRole = new System.Windows.Forms.ColumnHeader();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnShifts
             // 
-            this.btnShifts.Location = new System.Drawing.Point(722, 510);
+            this.btnShifts.Location = new System.Drawing.Point(931, 515);
             this.btnShifts.Name = "btnShifts";
             this.btnShifts.Size = new System.Drawing.Size(267, 49);
             this.btnShifts.TabIndex = 20;
@@ -50,7 +61,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(722, 395);
+            this.btnRemove.Location = new System.Drawing.Point(931, 400);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(267, 49);
             this.btnRemove.TabIndex = 19;
@@ -59,7 +70,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(722, 328);
+            this.btnUpdate.Location = new System.Drawing.Point(931, 333);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(267, 49);
             this.btnUpdate.TabIndex = 18;
@@ -68,7 +79,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(722, 262);
+            this.btnView.Location = new System.Drawing.Point(931, 267);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(267, 49);
             this.btnView.TabIndex = 17;
@@ -77,19 +88,20 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(722, 197);
+            this.btnAdd.Location = new System.Drawing.Point(931, 202);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(267, 49);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Employee";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbID);
-            this.groupBox1.Location = new System.Drawing.Point(722, 26);
+            this.groupBox1.Location = new System.Drawing.Point(931, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(267, 125);
             this.groupBox1.TabIndex = 15;
@@ -121,25 +133,101 @@ namespace ZooBazaar_SAIA_Desktop {
             this.tbID.Size = new System.Drawing.Size(254, 27);
             this.tbID.TabIndex = 0;
             // 
-            // listView1
+            // lvEmployees
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 53);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(655, 506);
-            this.listView1.TabIndex = 21;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvEmployees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chFirstName,
+            this.chLastName,
+            this.chBSN,
+            this.chEmail,
+            this.chStartDate,
+            this.chEndDate,
+            this.chBirthdate,
+            this.chContractType,
+            this.chHourlyWage,
+            this.chAddress,
+            this.chDepartureReason,
+            this.chShiftsPerWeek,
+            this.chRole});
+            this.lvEmployees.HideSelection = false;
+            this.lvEmployees.Location = new System.Drawing.Point(12, 53);
+            this.lvEmployees.Name = "lvEmployees";
+            this.lvEmployees.Size = new System.Drawing.Size(913, 551);
+            this.lvEmployees.TabIndex = 21;
+            this.lvEmployees.UseCompatibleStateImageBehavior = false;
+            this.lvEmployees.View = System.Windows.Forms.View.Details;
+            // 
+            // chFirstName
+            // 
+            this.chFirstName.Text = "First name";
+            this.chFirstName.Width = 80;
+            // 
+            // chLastName
+            // 
+            this.chLastName.Text = "Last name";
+            this.chLastName.Width = 80;
+            // 
+            // chBSN
+            // 
+            this.chBSN.Text = "BSN";
+            this.chBSN.Width = 40;
+            // 
+            // chEmail
+            // 
+            this.chEmail.Text = "Email";
+            this.chEmail.Width = 70;
+            // 
+            // chStartDate
+            // 
+            this.chStartDate.Text = "Start date";
+            this.chStartDate.Width = 70;
+            // 
+            // chEndDate
+            // 
+            this.chEndDate.Text = "End date";
+            this.chEndDate.Width = 70;
+            // 
+            // chBirthdate
+            // 
+            this.chBirthdate.Text = "Birthdate";
+            this.chBirthdate.Width = 70;
+            // 
+            // chContractType
+            // 
+            this.chContractType.Text = "Contract type";
+            this.chContractType.Width = 70;
+            // 
+            // chHourlyWage
+            // 
+            this.chHourlyWage.Text = "Hourly wage";
+            this.chHourlyWage.Width = 70;
+            // 
+            // chAddress
+            // 
+            this.chAddress.Text = "Address";
+            this.chAddress.Width = 70;
+            // 
+            // chDepartureReason
+            // 
+            this.chDepartureReason.Text = "Departure reason";
+            this.chDepartureReason.Width = 70;
+            // 
+            // chShiftsPerWeek
+            // 
+            this.chShiftsPerWeek.Text = "Shifts per week";
+            this.chShiftsPerWeek.Width = 70;
+            // 
+            // chRole
+            // 
+            this.chRole.Text = "Role";
+            this.chRole.Width = 70;
             // 
             // Employee_Administration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 633);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(1256, 631);
+            this.Controls.Add(this.lvEmployees);
             this.Controls.Add(this.btnShifts);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUpdate);
@@ -165,8 +253,19 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbID;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ListView lvEmployees;
+        private System.Windows.Forms.ColumnHeader chFirstName;
+        private System.Windows.Forms.ColumnHeader chLastName;
+        private System.Windows.Forms.ColumnHeader chBSN;
+        private System.Windows.Forms.ColumnHeader chEmail;
+        private System.Windows.Forms.ColumnHeader chStartDate;
+        private System.Windows.Forms.ColumnHeader chEndDate;
+        private System.Windows.Forms.ColumnHeader chBirthdate;
+        private System.Windows.Forms.ColumnHeader chContractType;
+        private System.Windows.Forms.ColumnHeader chHourlyWage;
+        private System.Windows.Forms.ColumnHeader chAddress;
+        private System.Windows.Forms.ColumnHeader chDepartureReason;
+        private System.Windows.Forms.ColumnHeader chShiftsPerWeek;
+        private System.Windows.Forms.ColumnHeader chRole;
     }
 }

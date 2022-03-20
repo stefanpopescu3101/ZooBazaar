@@ -31,7 +31,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,21 +41,24 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbLastName = new System.Windows.Forms.TextBox();
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.cbContractType = new System.Windows.Forms.ComboBox();
+            this.tbHourlyWage = new System.Windows.Forms.TextBox();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAddEmp = new System.Windows.Forms.Button();
+            this.tbAddress = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbBsn = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -79,16 +81,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label2.TabIndex = 1;
             this.label2.Text = "Birthdate";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(41, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 28);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Gender";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -103,7 +95,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(237, 288);
+            this.label5.Location = new System.Drawing.Point(235, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 28);
             this.label5.TabIndex = 4;
@@ -113,7 +105,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(237, 202);
+            this.label6.Location = new System.Drawing.Point(235, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 28);
             this.label6.TabIndex = 5;
@@ -123,7 +115,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(237, 125);
+            this.label7.Location = new System.Drawing.Point(632, 112);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 28);
             this.label7.TabIndex = 6;
@@ -133,7 +125,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(237, 36);
+            this.label8.Location = new System.Drawing.Point(632, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 28);
             this.label8.TabIndex = 7;
@@ -143,7 +135,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(440, 288);
+            this.label9.Location = new System.Drawing.Point(235, 287);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 28);
             this.label9.TabIndex = 8;
@@ -153,7 +145,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(440, 202);
+            this.label10.Location = new System.Drawing.Point(440, 199);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 28);
             this.label10.TabIndex = 9;
@@ -183,145 +175,185 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(658, 36);
+            this.label13.Location = new System.Drawing.Point(259, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 28);
             this.label13.TabIndex = 12;
             this.label13.Text = "Status";
             // 
-            // textBox1
+            // tbFirstName
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 27);
-            this.textBox1.TabIndex = 13;
+            this.tbFirstName.Location = new System.Drawing.Point(41, 79);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(170, 27);
+            this.tbFirstName.TabIndex = 13;
             // 
-            // textBox2
+            // tbEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(237, 233);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 27);
-            this.textBox2.TabIndex = 14;
+            this.tbEmail.Location = new System.Drawing.Point(235, 153);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(170, 27);
+            this.tbEmail.TabIndex = 14;
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(237, 79);
+            this.tbUsername.Location = new System.Drawing.Point(632, 76);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(154, 27);
+            this.tbUsername.Size = new System.Drawing.Size(170, 27);
             this.tbUsername.TabIndex = 15;
             // 
-            // textBox4
+            // tbPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(237, 156);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(154, 27);
-            this.textBox4.TabIndex = 16;
+            this.tbPassword.Location = new System.Drawing.Point(632, 153);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(154, 27);
+            this.tbPassword.TabIndex = 16;
             // 
-            // textBox5
+            // tbLastName
             // 
-            this.textBox5.Location = new System.Drawing.Point(41, 156);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(170, 27);
-            this.textBox5.TabIndex = 17;
+            this.tbLastName.Location = new System.Drawing.Point(41, 156);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.Size = new System.Drawing.Size(170, 27);
+            this.tbLastName.TabIndex = 17;
             // 
-            // comboBox1
+            // dtpBirthdate
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(41, 233);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(170, 28);
-            this.comboBox1.TabIndex = 18;
+            this.dtpBirthdate.Location = new System.Drawing.Point(41, 319);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(170, 27);
+            this.dtpBirthdate.TabIndex = 19;
             // 
-            // dateTimePicker1
+            // dtpStartDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(41, 319);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(170, 27);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dtpStartDate.Location = new System.Drawing.Point(440, 77);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(170, 27);
+            this.dtpStartDate.TabIndex = 20;
             // 
-            // dateTimePicker2
+            // dtpEndDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(440, 77);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(170, 27);
-            this.dateTimePicker2.TabIndex = 20;
+            this.dtpEndDate.Location = new System.Drawing.Point(440, 154);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(170, 27);
+            this.dtpEndDate.TabIndex = 21;
             // 
-            // dateTimePicker3
+            // cbContractType
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(440, 154);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(170, 27);
-            this.dateTimePicker3.TabIndex = 21;
+            this.cbContractType.FormattingEnabled = true;
+            this.cbContractType.Items.AddRange(new object[] {
+            "Part time",
+            "Full time"});
+            this.cbContractType.Location = new System.Drawing.Point(235, 231);
+            this.cbContractType.Name = "cbContractType";
+            this.cbContractType.Size = new System.Drawing.Size(170, 28);
+            this.cbContractType.TabIndex = 22;
             // 
-            // comboBox2
+            // tbHourlyWage
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(237, 321);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(154, 28);
-            this.comboBox2.TabIndex = 22;
+            this.tbHourlyWage.Location = new System.Drawing.Point(440, 234);
+            this.tbHourlyWage.Name = "tbHourlyWage";
+            this.tbHourlyWage.Size = new System.Drawing.Size(170, 27);
+            this.tbHourlyWage.TabIndex = 23;
             // 
-            // textBox6
+            // cbRole
             // 
-            this.textBox6.Location = new System.Drawing.Point(440, 234);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(170, 27);
-            this.textBox6.TabIndex = 23;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(440, 321);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(170, 28);
-            this.comboBox3.TabIndex = 24;
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
+            "Administrator",
+            "ResourcePlanner",
+            "Caretaker"});
+            this.cbRole.Location = new System.Drawing.Point(235, 317);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(170, 28);
+            this.cbRole.TabIndex = 24;
             // 
             // cbStatus
             // 
             this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(634, 76);
+            this.cbStatus.Items.AddRange(new object[] {
+            "Working",
+            "Fired"});
+            this.cbStatus.Location = new System.Drawing.Point(235, 76);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(144, 28);
+            this.cbStatus.Size = new System.Drawing.Size(170, 28);
             this.cbStatus.TabIndex = 25;
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Location = new System.Drawing.Point(183, 384);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 63);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(235, 396);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(153, 63);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAddEmp
             // 
-            this.button2.Location = new System.Drawing.Point(384, 384);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 63);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddEmp.Location = new System.Drawing.Point(440, 396);
+            this.btnAddEmp.Name = "btnAddEmp";
+            this.btnAddEmp.Size = new System.Drawing.Size(153, 63);
+            this.btnAddEmp.TabIndex = 27;
+            this.btnAddEmp.Text = "Add";
+            this.btnAddEmp.UseVisualStyleBackColor = true;
+            this.btnAddEmp.Click += new System.EventHandler(this.btnAddEmp_Click);
+            // 
+            // tbAddress
+            // 
+            this.tbAddress.Location = new System.Drawing.Point(41, 233);
+            this.tbAddress.Name = "tbAddress";
+            this.tbAddress.Size = new System.Drawing.Size(170, 27);
+            this.tbAddress.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(41, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 28);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Address";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(440, 287);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 28);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "BSN";
+            // 
+            // tbBsn
+            // 
+            this.tbBsn.Location = new System.Drawing.Point(440, 317);
+            this.tbBsn.Name = "tbBsn";
+            this.tbBsn.Size = new System.Drawing.Size(170, 27);
+            this.tbBsn.TabIndex = 31;
             // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 475);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(814, 501);
+            this.Controls.Add(this.tbBsn);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.tbAddress);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnAddEmp);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.cbRole);
+            this.Controls.Add(this.tbHourlyWage);
+            this.Controls.Add(this.cbContractType);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.dtpStartDate);
+            this.Controls.Add(this.dtpBirthdate);
+            this.Controls.Add(this.tbLastName);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUsername);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -332,7 +364,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEmployeeForm";
@@ -346,7 +377,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -357,20 +387,23 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbFirstName;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbUsername;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbLastName;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.ComboBox cbContractType;
+        private System.Windows.Forms.TextBox tbHourlyWage;
+        private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbStatus;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAddEmp;
+        private System.Windows.Forms.TextBox tbAddress;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbBsn;
     }
 }

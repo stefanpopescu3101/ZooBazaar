@@ -6,14 +6,15 @@ namespace Class_Library
 {
     public class Employee
     {
+
         public int Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int bsn { get; set; }
+        public string bsn { get; set; }
         public string email { get; set; }
-        public string startDate { get; set; }
-        public string endDate { get; set; }
-        public string birthdate { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
+        public DateTime birthdate { get; set; }
         public string contractType { get; set; }
         public int hourlyWage { get; set; }
         public string address { get; set; }
@@ -47,7 +48,7 @@ namespace Class_Library
         {
             get { return lastName; }
         }
-        public int Bsn
+        public string Bsn
         {
             get { return bsn; }
         }
@@ -55,15 +56,15 @@ namespace Class_Library
         {
             get { return email; }
         }
-        public string StartDate
+        public DateTime StartDate
         {
             get { return startDate; }
         }
-        public string EndDate
+        public DateTime EndDate
         {
             get { return endDate; }
         }
-        public string Birthdate
+        public DateTime Birthdate
         {
             get { return birthdate; }
         }
@@ -95,7 +96,7 @@ namespace Class_Library
             get { return firstName + " " + lastName; }
         }
 
-        public Employee(int id, string firstName, string lastName,int bsn, string email, string startDate, string endDate, string birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password )
+        public Employee(int id, string firstName, string lastName,string bsn, string email, DateTime startDate, DateTime endDate, DateTime birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password )
         {
             this.Id = id;
             this.firstName = firstName;
