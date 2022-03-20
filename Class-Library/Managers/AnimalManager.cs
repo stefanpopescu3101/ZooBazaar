@@ -21,5 +21,13 @@ namespace Class_Library.Managers {
             int newID = animalDb.AddNewAnimal(a);
             return newID;
         }
+
+        public void UpdateAnimal(Animal a) {
+            animalDb.UpdateAnimal(a);
+        }
+
+        public void RemoveAnimal(Animal a) {
+            animalDb.UpdateStatus(a);
+        }
     }
 }

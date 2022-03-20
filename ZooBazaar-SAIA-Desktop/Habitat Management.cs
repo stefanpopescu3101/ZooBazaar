@@ -177,5 +177,11 @@ namespace ZooBazaar_SAIA_Desktop
             habitats.ResetBindings();
             filteredHabitats.ResetBindings();
         }
+
+        private void btnBack_Click(object sender, EventArgs e) {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

@@ -214,5 +214,11 @@ namespace ZooBazaar_SAIA_Desktop
         {
             NextMonth();
         }
+
+        private void btnBack_Click(object sender, EventArgs e) {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

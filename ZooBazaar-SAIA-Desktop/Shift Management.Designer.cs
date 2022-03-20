@@ -43,6 +43,7 @@ namespace ZooBazaar_SAIA_Desktop
             this.btnPreviousMonth = new System.Windows.Forms.Button();
             this.btnShowCalendar = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAutoSchedul
@@ -174,11 +175,22 @@ namespace ZooBazaar_SAIA_Desktop
             this.lbDate.TabIndex = 21;
             this.lbDate.Text = "label2";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(893, 538);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(133, 29);
+            this.btnBack.TabIndex = 22;
+            this.btnBack.Text = "Back to menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 516);
+            this.ClientSize = new System.Drawing.Size(1082, 579);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btnAutoSchedule);
             this.Controls.Add(this.btnReset);
@@ -216,6 +228,7 @@ namespace ZooBazaar_SAIA_Desktop
         private System.Windows.Forms.Button btnPreviousMonth;
         private System.Windows.Forms.Button btnShowCalendar;
         private System.Windows.Forms.Label lbDate;
+        private System.Windows.Forms.Button btnBack;
     }
 }
 
