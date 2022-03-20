@@ -39,100 +39,117 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnAssign
             // 
-            this.btnAssign.Location = new System.Drawing.Point(713, 496);
+            this.btnAssign.Location = new System.Drawing.Point(624, 372);
+            this.btnAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(267, 49);
+            this.btnAssign.Size = new System.Drawing.Size(234, 37);
             this.btnAssign.TabIndex = 13;
             this.btnAssign.Text = "Assign Manager to Habitat";
             this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(713, 381);
+            this.btnRemove.Location = new System.Drawing.Point(624, 286);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(267, 49);
+            this.btnRemove.Size = new System.Drawing.Size(234, 37);
             this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "Remove Habitat";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(713, 314);
+            this.btnUpdate.Location = new System.Drawing.Point(624, 236);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(267, 49);
+            this.btnUpdate.Size = new System.Drawing.Size(234, 37);
             this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "Update Habitat Details";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(713, 248);
+            this.btnView.Location = new System.Drawing.Point(624, 186);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(267, 49);
+            this.btnView.Size = new System.Drawing.Size(234, 37);
             this.btnView.TabIndex = 10;
             this.btnView.Text = "View Habitat Details";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(713, 183);
+            this.btnAdd.Location = new System.Drawing.Point(624, 137);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(267, 49);
+            this.btnAdd.Size = new System.Drawing.Size(234, 37);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add Habitat";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbID);
-            this.groupBox1.Location = new System.Drawing.Point(713, 12);
+            this.groupBox1.Location = new System.Drawing.Point(624, 9);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(267, 125);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(234, 94);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search for habitats";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(79, 86);
+            this.btnSearch.Location = new System.Drawing.Point(69, 64);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.Size = new System.Drawing.Size(82, 22);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 20);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Habitat ID:";
             // 
             // tbID
             // 
-            this.tbID.Location = new System.Drawing.Point(7, 53);
+            this.tbID.Location = new System.Drawing.Point(6, 40);
+            this.tbID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(254, 27);
+            this.tbID.Size = new System.Drawing.Size(223, 23);
             this.tbID.TabIndex = 0;
             // 
             // lbHabitats
             // 
             this.lbHabitats.FormattingEnabled = true;
-            this.lbHabitats.ItemHeight = 20;
-            this.lbHabitats.Location = new System.Drawing.Point(12, 12);
+            this.lbHabitats.ItemHeight = 15;
+            this.lbHabitats.Location = new System.Drawing.Point(10, 9);
+            this.lbHabitats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbHabitats.Name = "lbHabitats";
-            this.lbHabitats.Size = new System.Drawing.Size(675, 584);
+            this.lbHabitats.Size = new System.Drawing.Size(591, 439);
             this.lbHabitats.TabIndex = 7;
+            this.lbHabitats.SelectedIndexChanged += new System.EventHandler(this.lbHabitats_SelectedIndexChanged);
             // 
             // Habitat_Management
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 615);
+            this.ClientSize = new System.Drawing.Size(876, 461);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUpdate);
@@ -140,6 +157,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbHabitats);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Habitat_Management";
             this.Text = "Habitat Management";
             this.groupBox1.ResumeLayout(false);

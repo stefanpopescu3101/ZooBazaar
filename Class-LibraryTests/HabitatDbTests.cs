@@ -29,7 +29,7 @@ namespace Class_LibraryTests
         [TestMethod]
         public void RemoveHabitat_StoreNewlyCreatedHabitatWithoutId_HabitatAddedToTheDB()
         {
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Arctic, 2, 5);
             var habitatDb = new HabitatDb();
 
             var id = habitatDb.AddNewHabitat(habitat);

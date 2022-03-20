@@ -117,5 +117,9 @@ namespace Class_Library
             
         }
 
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }
