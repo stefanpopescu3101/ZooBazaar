@@ -27,9 +27,9 @@ namespace ZooBazaar_SAIA_Desktop {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtDeparture = new System.Windows.Forms.DateTimePicker();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbReason = new System.Windows.Forms.ComboBox();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +58,16 @@ namespace ZooBazaar_SAIA_Desktop {
             this.dtDeparture.TabIndex = 2;
             this.dtDeparture.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(90, 239);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(241, 29);
+            this.btnRemove.TabIndex = 5;
+            this.btnRemove.Text = "Remove animal from the zoo";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -70,20 +80,13 @@ namespace ZooBazaar_SAIA_Desktop {
             // cbReason
             // 
             this.cbReason.FormattingEnabled = true;
+            this.cbReason.Items.AddRange(new object[] {
+            "Leaving to another zoo",
+            "Passed away"});
             this.cbReason.Location = new System.Drawing.Point(30, 180);
             this.cbReason.Name = "cbReason";
             this.cbReason.Size = new System.Drawing.Size(363, 28);
             this.cbReason.TabIndex = 4;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(90, 239);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(241, 29);
-            this.btnRemove.TabIndex = 5;
-            this.btnRemove.Text = "Remove animal from the zoo";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // Remove_Animal
             // 
@@ -108,8 +111,8 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtDeparture;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbReason;
-        private System.Windows.Forms.Button btnRemove;
     }
 }

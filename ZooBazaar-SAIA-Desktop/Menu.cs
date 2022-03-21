@@ -13,30 +13,38 @@ namespace ZooBazaar_SAIA_Desktop {
         }
 
         private void btnAnimals_Click(object sender, EventArgs e) {
-            //Animal Management button is clicked
-            this.Hide();
+            //Animal Management button is clicked            
             Animal_Management animal_Management = new Animal_Management();
             animal_Management.Show();
+            this.Close();
         }
 
         private void btnHabitats_Click(object sender, EventArgs e) {
             //Habitat Management button is clicked
-            this.Hide();
             Habitat_Management habitat_Management = new Habitat_Management();
             habitat_Management.Show();
+            this.Close();
         }
 
         private void btnEmployees_Click(object sender, EventArgs e) {
             //Employee admin button is clicked
-            this.Hide();
             Employee_Administration employee_Administration = new Employee_Administration();
             employee_Administration.Show();
+            this.Close();
         }
 
         private void btnSchedule_Click(object sender, EventArgs e) {
-            this.Hide();
             Form1 shift_Management = new Form1();
             shift_Management.Show();
+            this.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e) {
+            //Logging out, allow a new user to log in
+            //TODO
+            Login login = new Login();
+            login.Show();
+            this.Close();
         }
     }
 }

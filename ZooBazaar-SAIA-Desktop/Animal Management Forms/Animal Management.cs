@@ -41,18 +41,36 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnUpdate_Click(object sender, EventArgs e) {
             //button Update is clicked
-            Update_Animal update_Animal = new Update_Animal();
-            update_Animal.Show();
+            if (lbAnimals.SelectedIndex != -1) {
+                Animal selectedAnimal = (Animal)lbAnimals.SelectedItem;
+                Update_Animal update_Animal = new Update_Animal(selectedAnimal);
+                update_Animal.Show();
+            } else {
+                MessageBox.Show("Please select an animal from the list");
+            }
+            
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
             //button Remove is clicked
-            Remove_Animal remove_Animal = new Remove_Animal();
-            remove_Animal.Show();
+            if (lbAnimals.SelectedIndex != -1) {
+                Animal selectedAnimal = (Animal)lbAnimals.SelectedItem;
+                Remove_Animal remove_Animal = new Remove_Animal(selectedAnimal);
+                remove_Animal.Show();
+            } else {
+                MessageBox.Show("Please select an animal from the list");
+            }           
         }
 
         private void btnHabitat_Click(object sender, EventArgs e) {
             //button Assign to habitat is clicked
+            if (lbAnimals.SelectedIndex != -1) {
+                Animal selectedAnimal = (Animal)lbAnimals.SelectedItem;
+                Assign_Habitat assign_Habitat = new Assign_Habitat(selectedAnimal);
+                assign_Habitat.Show();
+            } else {
+                MessageBox.Show("Please select an animal from the list");
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
@@ -66,6 +84,13 @@ namespace ZooBazaar_SAIA_Desktop {
             foreach (Animal a in animals) {
                 lbAnimals.Items.Add(a);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e) {
+            //Return to the main menu
+            Menu menu = new Menu();
+            menu.Show();
+            this.Close();
         }
     }
 }

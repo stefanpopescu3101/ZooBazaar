@@ -35,6 +35,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnHabitat = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.lbAnimals.ItemHeight = 20;
             this.lbAnimals.Location = new System.Drawing.Point(38, 41);
             this.lbAnimals.Name = "lbAnimals";
-            this.lbAnimals.Size = new System.Drawing.Size(675, 604);
+            this.lbAnimals.Size = new System.Drawing.Size(675, 664);
             this.lbAnimals.TabIndex = 0;
             // 
             // groupBox1
@@ -145,11 +146,22 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(802, 676);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(137, 29);
+            this.btnBack.TabIndex = 8;
+            this.btnBack.Text = "Back to menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Animal_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 681);
+            this.ClientSize = new System.Drawing.Size(1035, 733);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnHabitat);
             this.Controls.Add(this.btnRemove);
@@ -179,5 +191,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnHabitat;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnBack;
     }
 }

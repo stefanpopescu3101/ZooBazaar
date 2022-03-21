@@ -58,5 +58,39 @@ namespace Class_Library.Data_Access {
                 connection.Close();
             }     
         }
+
+        public void UpdateAnimal(Animal a) {
+            try {
+                var sql = "update animals_zoo set Name = @name, Species = @species, Sex = @sex, Birthday = @birthday, Health = @health where ID = @id";
+                var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@name", a.name);
+                cmd.Parameters.AddWithValue("@species", a.species);
+                cmd.Parameters.AddWithValue("@sex", a.sex.ToString());
+                cmd.Parameters.AddWithValue("@birthday", a.birthday);
+                cmd.Parameters.AddWithValue("@health", a.health);
+                cmd.Parameters.AddWithValue("@id", a.ID);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();             
+            } finally {
+                connection.Close();
+            }
+        }
+
+        public void UpdateStatus(Animal a) {
+            try {
+                var sql = "update animals_zoo set DepartureDate = @departuredate, IsInZoo = @isinzoo, Health = @health where ID = @id";
+                var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@departuredate", a.departureDate);
+                cmd.Parameters.AddWithValue("@isinzoo", a.isInZoo);
+                cmd.Parameters.AddWithValue("@health", a.health);
+                cmd.Parameters.AddWithValue("@id", a.ID);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            } finally {
+                connection.Close();
+            }
+        }
     }
 }

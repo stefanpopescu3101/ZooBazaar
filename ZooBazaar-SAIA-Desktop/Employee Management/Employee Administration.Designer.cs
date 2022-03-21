@@ -47,6 +47,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.chDepartureReason = new System.Windows.Forms.ColumnHeader();
             this.chShiftsPerWeek = new System.Windows.Forms.ColumnHeader();
             this.chRole = new System.Windows.Forms.ColumnHeader();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,11 +223,22 @@ namespace ZooBazaar_SAIA_Desktop {
             this.chRole.Text = "Role";
             this.chRole.Width = 70;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(994, 575);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(146, 29);
+            this.btnBack.TabIndex = 22;
+            this.btnBack.Text = "Back to menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Employee_Administration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 631);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lvEmployees);
             this.Controls.Add(this.btnShifts);
             this.Controls.Add(this.btnRemove);
@@ -267,5 +279,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.ColumnHeader chDepartureReason;
         private System.Windows.Forms.ColumnHeader chShiftsPerWeek;
         private System.Windows.Forms.ColumnHeader chRole;
+        private System.Windows.Forms.Button btnBack;
     }
 }
