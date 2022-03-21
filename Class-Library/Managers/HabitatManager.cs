@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using Class_Library.Managers;
 
 namespace Class_Library.Data_Access
 {
@@ -14,6 +15,7 @@ namespace Class_Library.Data_Access
             habitatDb = new HabitatDb();
             Habitats = new List<Habitat>();
             LoadHabitats();
+            LoadAnimals();
         }
 
         // test version, that disables loading from db
@@ -23,10 +25,32 @@ namespace Class_Library.Data_Access
             Habitats = new List<Habitat>();
         }
 
-        public void LoadHabitats()
+        private void LoadHabitats()
         {
             Habitats= habitatDb.LoadHabitats();
         }
+
+        private void LoadAnimals()
+        {
+            var animalManager = new AnimalManager();
+            animalManager.GetAllAnimals();
+            foreach (var habitat in Habitats)
+            {
+                var animals = animalManager.GetAnimalsOfSpecifiedHabitatId(habitat.ID);
+                foreach (var animal in animals)
+                {
+                    try
+                    {
+                        AddAnimal(habitat, animal.ID);
+                    }
+                    catch (Exception e)
+                    {
+                        //do nothing intentionally
+                    }
+                }
+            }
+        }
+
 
         public void AddHabitat(Habitat habitat)
         {
@@ -55,9 +79,9 @@ namespace Class_Library.Data_Access
             oldHabitat.Type = newHabitat.Type;
             oldHabitat.Capacity = newHabitat.Capacity;
             oldHabitat.RequiredEmployeesCount = newHabitat.RequiredEmployeesCount;
-            if (newHabitat.Animals.Count > 0)
+            if (newHabitat.AnimalIds.Count > 0)
             {
-                oldHabitat.Animals = newHabitat.Animals;
+                oldHabitat.AnimalIds = newHabitat.AnimalIds;
             }
 
             if (newHabitat.ResponsibleEmployeeId != null)
@@ -67,19 +91,20 @@ namespace Class_Library.Data_Access
             habitatDb.UpdateHabitat(oldHabitat, newHabitat);
         }
 
-        public void AddAnimal(Habitat habitat, Animal animal)
+        public void AddAnimal(Habitat habitat, int? animalId)
         {
-            if (habitat.Animals.Count < habitat.Capacity)
+            if (habitat.AnimalIds.Count < habitat.Capacity)
             {
-                if (animal == null)
+                if (animalId == null)
                 {
                     throw new ArgumentNullException("Missing animal");
                 }
-                else if (habitat.Animals.Contains(animal))
+                if (IsSpecifiedAnimalIsInHabitat(habitat, animalId))
                 {
                     throw new ArgumentException("This animal is already stored in this habitat.");
                 }
-                habitat.Animals.Add(animal);
+
+                habitat.AnimalIds.Add((int)animalId);
                 // habitatDb.AddAnimal(habitat, animal);
             }
             else
@@ -88,14 +113,28 @@ namespace Class_Library.Data_Access
             }
         }
 
-        public void RemoveAnimal(Habitat habitat, Animal animal)
+        public void RemoveAnimal(Habitat habitat, int? animalId)
         {
-            if (animal == null)
+            if (animalId == null)
             {
                 throw new ArgumentNullException("Missing animal!");
             }
-            habitat.Animals.Remove(animal);
-            // habitatDb.RemoveAnimal(habitat, animal);
+
+            if (IsSpecifiedAnimalIsInHabitat(habitat, animalId))
+            {
+                habitat.AnimalIds.Remove((int)animalId);
+                // habitatDb.RemoveAnimal(habitat, animal);
+            }
+        }
+
+        private bool IsSpecifiedAnimalIsInHabitat(Habitat habitat, int? animalId)
+        {
+            if (animalId == null)
+            {
+                return false;
+            }
+
+            return habitat.AnimalIds.Contains((int)animalId);
         }
 
         public void AssignResponsibleEmployee(Habitat habitat, Employee responsibleEmployee)

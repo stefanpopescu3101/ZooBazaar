@@ -11,37 +11,37 @@ namespace Class_Library.Data_Access
         public string Title { get; set; }
         public HabitatType Type { get; set; }
         public int Capacity { get; set; }
-        public List<Animal> Animals { get; set; }
+        public List<int> AnimalIds { get; set; }
         public int? ResponsibleEmployeeId { get; set; }
         public int RequiredEmployeesCount { get; set; }
 
         public Habitat(string title, HabitatType type, int capacity, int requiredEmployeesCount) : this(0, title, type,
-            capacity, new List<Animal>(),
+            capacity, new List<int>(),
             null, requiredEmployeesCount)
         {
         }
 
-        public Habitat(string title, HabitatType type, int capacity, List<Animal> animals,
+        public Habitat(string title, HabitatType type, int capacity, List<int> animalIds,
             int? responsibleEmployeeId, int requiredEmployeesCount) : this(0, title, type,
-            capacity, animals,
+            capacity, animalIds,
             responsibleEmployeeId, requiredEmployeesCount)
         {
         }
 
-        public Habitat(int id, string title, HabitatType type, int capacity, List<Animal> animals,
+        public Habitat(int id, string title, HabitatType type, int capacity, List<int> animalIds,
             int? responsibleEmployeeId, int requiredEmployeesCount)
         {
             this.ID = id;
             this.Title = title;
             this.Type = type;
             this.Capacity = capacity;
-            if (animals == null)
+            if (animalIds == null)
             {
-                this.Animals = new List<Animal>();
+                this.AnimalIds = new List<int>();
             }
             else
             {
-                this.Animals = animals;
+                this.AnimalIds = animalIds;
             }
             this.ResponsibleEmployeeId = responsibleEmployeeId;
             this.RequiredEmployeesCount = requiredEmployeesCount;
@@ -75,16 +75,8 @@ namespace Class_Library.Data_Access
             //        $"Id: {ID}\nTitle: {Title}\nType: {Type.ToString()}\nCapacity: {Capacity}\nAnimals: {animals}\nResponsible Employee: {responsibleEmployee}\n" +
             //        $"Required employees: {RequiredEmployeesCount}";
             int numOfCharacters = ID.ToString().Length;
-            var manager = string.Empty;
-            if (ResponsibleEmployeeId == null)
-            {
-                manager = "None";
-            }
-            else
-            {
-                manager = ResponsibleEmployeeId.ToString();
-            }
-            
+
+
             var str = $"{ID,-5}";
             for (
                 var i = 0; 
@@ -94,7 +86,6 @@ namespace Class_Library.Data_Access
             }
 
             str += $"\t{Title,-16}";
-            str += $"\t{manager}";
 
             return str;
 

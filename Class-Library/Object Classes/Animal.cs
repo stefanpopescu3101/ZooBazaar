@@ -13,7 +13,7 @@ namespace Class_Library {
         public string species { get; set; }
         public Sex sex { get; set; }
         public DateTime birthday { get; set; }
-        public string habitat { get; set; }
+        public int? habitat { get; set; }
         public bool isInZoo { get; set; }
         public string health { get; set; }
         public DateTime arrivalDate { get; set; }
@@ -38,7 +38,7 @@ namespace Class_Library {
         }
 
         //constructor for getting animal from the database
-        public Animal(int id, string name, string species, Sex sex, DateTime birthday, string habitat, bool isInZoo, string health, DateTime arrivalDate, DateTime departureDate) {
+        public Animal(int id, string name, string species, Sex sex, DateTime birthday, int? habitat, bool isInZoo, string health, DateTime arrivalDate, DateTime departureDate) {
             this.ID = id;
             this.name = name;
             this.species = species;
@@ -73,7 +73,7 @@ namespace Class_Library {
         }
 
         //assigning the animal to a habitat
-        public void AssignHabitat(string habitat) {
+        public void AssignHabitat(int? habitat) {
             this.habitat = habitat;
         }
 

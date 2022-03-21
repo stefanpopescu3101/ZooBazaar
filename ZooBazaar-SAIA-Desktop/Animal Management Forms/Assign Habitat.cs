@@ -18,9 +18,11 @@ namespace ZooBazaar_SAIA_Desktop {
             FillHabitatList();
         }
 
+        // I think, that it's better to store animal id as int not as string.
+        // If there is no assigned habitat store it as null.
         private void btnAssign_Click(object sender, EventArgs e) {
             //Confirmation button clicked
-            animal.habitat = cbHabitat.SelectedItem.ToString();
+            animal.habitat = int.Parse(cbHabitat.SelectedItem.ToString());
             //TODO: finish this, save/get habitat id
         }
 

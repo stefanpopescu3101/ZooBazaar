@@ -80,31 +80,31 @@ namespace Class_LibraryTests
         public void AddAnimal_StoreAnimalWhenHabitatIsntEmpty_ShouldStoreAnimal()
         {
             var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
+            var animalId = 5;
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
-            hm.AddAnimal(habitat, animal);
+            hm.AddAnimal(habitat, animalId);
 
             var expected = 1;
-            var actual = hm.Habitats.First().Animals.Count;
-            var actualAnimal = hm.Habitats.First().Animals.First();
+            var actual = hm.Habitats.First().AnimalIds.Count;
+            var actualAnimalId = hm.Habitats.First().AnimalIds.First();
 
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(animal, actualAnimal);
+            Assert.AreEqual(animalId, actualAnimalId);
         }
 
         [TestMethod]
         public void AddAnimal_StoreAnimalWhenHabitatIsFull_ShouldReturnArgumentOutOfRangeException()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 1, new List<Animal> {animal}, null, 5);
+            var animalId1 = 3;
+            var animalId2 = 5;
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 1, new List<int> {animalId1}, null, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentOfRangeCaught = false;
             try
             {
-                hm.AddAnimal(habitat, animal2);
+                hm.AddAnimal(habitat, animalId2);
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -113,7 +113,7 @@ namespace Class_LibraryTests
 
 
             var expected = 1;
-            var actual = hm.Habitats.First().Animals.Count;
+            var actual = hm.Habitats.First().AnimalIds.Count;
 
             Assert.AreEqual(expected, actual);
             Assert.IsTrue(argumentOfRangeCaught);
@@ -139,7 +139,7 @@ namespace Class_LibraryTests
 
 
             var expected = 0;
-            var actual = hm.Habitats.First().Animals.Count;
+            var actual = hm.Habitats.First().AnimalIds.Count;
 
             Assert.AreEqual(expected, actual);
             Assert.IsTrue(argumentOfRangeCaught);
@@ -148,14 +148,14 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AddAnimal_StoreSameAnimal_ShouldReturnArgumentException()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<Animal> { animal }, null, 5);
+            var animalId = 8;
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId }, null, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentExceptionCaught = false;
             try
             {
-                hm.AddAnimal(habitat, animal);
+                hm.AddAnimal(habitat, animalId);
             }
             catch (ArgumentException e)
             {
@@ -163,7 +163,7 @@ namespace Class_LibraryTests
             }
 
             var expected = 1;
-            var actual = hm.Habitats.First().Animals.Count;
+            var actual = hm.Habitats.First().AnimalIds.Count;
 
             Assert.IsTrue(argumentExceptionCaught);
             Assert.AreEqual(expected, actual);
@@ -172,45 +172,45 @@ namespace Class_LibraryTests
         [TestMethod]
         public void RemoveAnimal_RemoveExistingAnimalFromHabitat_ShouldRemoveExactlyOneAnimal()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<Animal> { animal, animal2 }, null, 5);
+            var animalId1 = 7;
+            var animalId2 = 9;
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
-            hm.RemoveAnimal(habitat, animal);
+            hm.RemoveAnimal(habitat, animalId1);
 
             var expected = 1;
-            var actual = hm.Habitats.First().Animals.Count;
-            var actualAnimal = hm.Habitats.First().Animals.First();
+            var actual = hm.Habitats.First().AnimalIds.Count;
+            var actualAnimal = hm.Habitats.First().AnimalIds.First();
 
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(animal2, actualAnimal);
+            Assert.AreEqual(animalId2, actualAnimal);
         }
 
         [TestMethod]
         public void RemoveAnimal_RemoveNotExistingAnimalFromHabitat_ShouldRemoveExactlyOneAnimal()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<Animal> { animal }, null, 5);
+            var animalId1 = 7;
+            var animalId2 = 2;
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1 }, null, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
-            hm.RemoveAnimal(habitat, animal2);
+            hm.RemoveAnimal(habitat, animalId2);
 
             var expected = 1;
-            var actual = hm.Habitats.First().Animals.Count;
-            var actualAnimal = hm.Habitats.First().Animals.First();
+            var actual = hm.Habitats.First().AnimalIds.Count;
+            var actualAnimal = hm.Habitats.First().AnimalIds.First();
 
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(animal, actualAnimal);
+            Assert.AreEqual(animalId1, actualAnimal);
         }
 
         [TestMethod]
         public void RemoveAnimal_RemoveNullFromHabitat_ShouldThrowArgumentNullException()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<Animal> { animal, animal2 }, null, 5);
+            var animalId1 = 4;
+            var animalId2 = 118;
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentNullExceptionCaught = false;
@@ -223,7 +223,7 @@ namespace Class_LibraryTests
                 argumentNullExceptionCaught = true;
             }
             var expected = 2;
-            var actual = hm.Habitats.First().Animals.Count;
+            var actual = hm.Habitats.First().AnimalIds.Count;
 
 
             Assert.AreEqual(expected, actual);
@@ -254,10 +254,10 @@ namespace Class_LibraryTests
         [TestMethod]
         public void UpdateHabitat_UpdateTitleTypeCapacityRequiredEmployeesAndAnimals_ShouldUpdateHabitat()
         {
-            var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
+            var animalId1 = 12;
+            var animalId2 = 21;
             var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
-            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, new List<Animal> { animal, animal2 }, null, 3);
+            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, new List<int> { animalId1, animalId2 }, null, 3);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(oldHabitat);
 
@@ -272,7 +272,7 @@ namespace Class_LibraryTests
             Assert.AreEqual(2, actualCapacity);
             Assert.AreEqual(3, actualRequiredEmployeesCount);
             Assert.IsTrue(hm.Habitats.Count == 1);
-            Assert.IsTrue(hm.Habitats.First().Animals.SequenceEqual(new List<Animal>{ animal, animal2 }));
+            Assert.IsTrue(hm.Habitats.First().AnimalIds.SequenceEqual(new List<int>{ animalId1, animalId2 }));
         }
 
         [TestMethod]

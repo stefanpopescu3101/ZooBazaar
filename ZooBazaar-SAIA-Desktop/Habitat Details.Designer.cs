@@ -205,6 +205,7 @@ namespace ZooBazaar_SAIA_Desktop
             this.animalsLb.Name = "animalsLb";
             this.animalsLb.Size = new System.Drawing.Size(231, 189);
             this.animalsLb.TabIndex = 17;
+            this.animalsLb.SelectedIndexChanged += new System.EventHandler(this.animalsLb_SelectedIndexChanged);
             // 
             // Habitat_Details
             // 

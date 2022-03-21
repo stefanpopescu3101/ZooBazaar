@@ -36,8 +36,17 @@ namespace Class_Library.Data_Access {
 
                 connection.Open();
                 var data = cmd.ExecuteReader();
+                int? habitatId = null;
                 List<Animal> animals = new List<Animal>();
                 while (data.Read()) {
+                    try
+                    {
+                        habitatId = Convert.ToInt32(data[9]);
+                    }
+                    catch (Exception e)
+                    {
+                        habitatId = null;
+                    }
                     animals.Add(
                         new Animal(
                             data.GetInt32(0),
@@ -45,7 +54,7 @@ namespace Class_Library.Data_Access {
                             data.GetString(2),
                             Enum.Parse<Animal.Sex>(data.GetString(3)),
                             data.GetDateTime(4),
-                            "",
+                            habitatId,
                             data.GetBoolean(5),
                             data.GetString(6),
                             data.GetDateTime(7),
@@ -58,6 +67,28 @@ namespace Class_Library.Data_Access {
                 connection.Close();
             }     
         }
+
+        internal bool UpdateAssignedHabitat(Animal a, int? newHabitatId)
+        {
+            try
+            {
+                var sql = "update animals_zoo set HabitatID = @habitatId where ID = @id";
+                var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@id", a.ID);
+                cmd.Parameters.AddWithValue("@habitatId", newHabitatId);
+
+                connection.Open();
+                var affectedRows = cmd.ExecuteNonQuery();
+
+                return (affectedRows == 1);
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
 
         public void UpdateAnimal(Animal a) {
             try {

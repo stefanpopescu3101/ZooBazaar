@@ -21,7 +21,14 @@ namespace ZooBazaar_SAIA_Desktop {
             lblSpecies.Text = a.species;
             lblSex.Text = a.sex.ToString();
             lblBirthday.Text = a.birthday.ToString();
-            lblHabitat.Text = a.habitat;
+            if (a.habitat == null)
+            {
+                lblHabitat.Text = "";
+            }
+            else
+            {
+                lblHabitat.Text = a.habitat.ToString();
+            }
             if (a.isInZoo) {
                 lblStatus.Text = "In the zoo";
             } else {

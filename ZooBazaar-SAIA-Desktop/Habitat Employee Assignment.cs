@@ -19,11 +19,12 @@ namespace ZooBazaar_SAIA_Desktop {
         private int newResponsibleEmpId;
         private List<Employee> employeeList;
         private EmployeeManager employeeManager;
-        public Habitat_Employee_Assignment(HabitatManager hm, Habitat h)
+        public Habitat_Employee_Assignment(HabitatManager hm, Habitat h, EmployeeManager em)
         {
             InitializeComponent();
             habitatManager = hm;
             habitat = h;
+            employeeManager = em;
             employeeList = new List<Employee>();
             employeeList = employeeManager.GetAllEmployees();
             cbEmployees.DataSource = employeeList;
