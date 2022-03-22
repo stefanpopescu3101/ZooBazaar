@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,20 +65,22 @@ namespace ZooBazaar_SAIA_Desktop
                     bindingHabitatAnimals.Add(selectedAvailableAnimal);
                     bindingAvailableAnimals.Remove(selectedAvailableAnimal);
                     animalManager.UpdateAssignedHabitat(selectedAvailableAnimal, habitat.ID);
-                    if (availableAnimals.Count > 0)
-                    {
-                        selectedAvailableAnimal = availableAnimals.First();
-                    }
+                    selectedAvailableAnimal = availableAnimals.First();
 
-                    if (habitatAnimals.Count > 0 && selectedHabitatAnimal is null)
+                        if (habitatAnimals.Count > 0 && selectedHabitatAnimal is null)
                     {
                         selectedHabitatAnimal = habitatAnimals.First();
                     }
                     // TODO write changes to db(animals and habitat)
                 }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    MessageBox.Show("Selected habitat is full.", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // TODO: show message box for each type of exceptions
+                }
                 catch (Exception exception)
                 {
-                    // TODO: show message box for each type of exceptions
+
                 }
             }
         }
@@ -95,16 +98,8 @@ namespace ZooBazaar_SAIA_Desktop
                     bindingHabitatAnimals.Remove(selectedHabitatAnimal);
                     animalManager.UpdateAssignedHabitat(selectedHabitatAnimal, null);
                     // TODO write changes to db(animals and habitat)
-
-                    if (availableAnimals.Count > 0)
-                    {
-                        selectedHabitatAnimal = habitatAnimals.First();
-                    }
-
-                    if (habitatAnimals.Count > 0 && selectedAvailableAnimal is null)
-                    {
-                        selectedHabitatAnimal = habitatAnimals.First();
-                    }
+                    selectedHabitatAnimal = habitatAnimals.First();
+                    selectedHabitatAnimal = habitatAnimals.First();
                 }
                 catch (Exception exception)
                 {
