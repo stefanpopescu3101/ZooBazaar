@@ -30,7 +30,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.userNameLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -97,21 +97,21 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // label2
+            // userNameLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
+            this.userNameLbl.AutoSize = true;
+            this.userNameLbl.Location = new System.Drawing.Point(104, 20);
+            this.userNameLbl.Name = "userNameLbl";
+            this.userNameLbl.Size = new System.Drawing.Size(38, 15);
+            this.userNameLbl.TabIndex = 6;
+            this.userNameLbl.Text = "label2";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 382);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.userNameLbl);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.btnEmployees);
@@ -134,6 +134,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label userNameLbl;
     }
 }

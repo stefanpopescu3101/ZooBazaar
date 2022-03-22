@@ -18,11 +18,13 @@ namespace ZooBazaar_SAIA_Desktop
         private int indexYear = DateTime.Now.Year;
         ShiftManager shiftManager;
         Scheduler scheduler;
+        private Employee loggedEmployee;
         Label label;
-        public Form1()
+        public Form1(Employee e)
         {
             scheduler = new Scheduler();
             shiftManager = new ShiftManager();
+            loggedEmployee = e;
             InitializeComponent();
         }
 
@@ -220,7 +222,7 @@ namespace ZooBazaar_SAIA_Desktop
         }
 
         private void btnBack_Click(object sender, EventArgs e) {
-            Menu menu = new Menu();
+            Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
         }

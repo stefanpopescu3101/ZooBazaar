@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Class_Library;
 using Class_Library.Data_Access;
 using Class_Library.Managers;
 
@@ -23,12 +24,14 @@ namespace ZooBazaar_SAIA_Desktop
         private BindingList<Habitat> filteredHabitats;
         private bool isFiltered ;
         private bool isInitialized;
+        private Employee loggedEmployee;
 
-        public Habitat_Management()
+        public Habitat_Management(Employee e)
         {
             InitializeComponent();
             if (!isInitialized)
             {
+                loggedEmployee = e;
                 habitatManager = new HabitatManager();
                 animalManager = new AnimalManager();
                 employeeManager = new EmployeeManager();
@@ -67,9 +70,20 @@ namespace ZooBazaar_SAIA_Desktop
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (selectedHabitat == null) return;
-            MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            habitatManager.RemoveHabitat(selectedHabitat);
+            if (selectedIndex == -1) selectedIndex = habitats.IndexOf(selectedHabitat);
+            var confirmationMessageBox = MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (confirmationMessageBox == DialogResult.Cancel) return;
+            try
+            {
+                animalManager.RemoveHabitat(selectedHabitat.ID);
+                habitatManager.RemoveHabitat(selectedHabitat);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Updating DB failed.", "DB error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var habitatIndex = GetIndexOf(selectedHabitat, habitats);
             var filteredHabitatIndex = GetIndexOf(selectedHabitat, filteredHabitats);
 
@@ -179,7 +193,13 @@ namespace ZooBazaar_SAIA_Desktop
             isFiltered = false;
             habitats.Add(habitatManager.Habitats.Last());
             lbHabitats.DataSource = habitats;
+            habitats.ResetBindings();
             filteredHabitats.Clear();
+            if (habitats.Count > 0)
+            {
+                lbHabitats.SelectedIndex = 0;
+                selectedHabitat = habitats[0];
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -196,7 +216,7 @@ namespace ZooBazaar_SAIA_Desktop
         }
 
         private void btnBack_Click(object sender, EventArgs e) {
-            Menu menu = new Menu();
+            Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
         }

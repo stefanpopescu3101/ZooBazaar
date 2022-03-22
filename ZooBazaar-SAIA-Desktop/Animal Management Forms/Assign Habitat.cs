@@ -12,9 +12,13 @@ using Class_Library.Data_Access;
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Assign_Habitat : Form {
         private Animal animal;
-        public Assign_Habitat(Animal a) {
+        private List<Habitat> habitats;
+        private HabitatDb habitatDb;
+        private AnimalManager animalManager;
+        public Assign_Habitat(Animal a, AnimalManager am) {
             InitializeComponent();
             animal = a;
+            animalManager = am;
             FillHabitatList();
         }
 
@@ -22,16 +26,23 @@ namespace ZooBazaar_SAIA_Desktop {
         // If there is no assigned habitat store it as null.
         private void btnAssign_Click(object sender, EventArgs e) {
             //Confirmation button clicked
-            animal.habitat = int.Parse(cbHabitat.SelectedItem.ToString());
+            var index = cbHabitat.SelectedIndex;
+            if (index != -1)
+            {
+                var selectedHabitatId = habitats[index].ID;
+                animal.habitat = selectedHabitatId;
+                animalManager.UpdateAssignedHabitat(animal, selectedHabitatId);
+            }
+            this.Close();
+
             //TODO: finish this, save/get habitat id
         }
 
         private void FillHabitatList() {
-            HabitatDb habitatDb = new HabitatDb();
-            List<Habitat> habitats = habitatDb.LoadHabitats();
-            foreach (Habitat h in habitats) {
-                cbHabitat.Items.Add(h.Title);
-            }
+            habitatDb = new HabitatDb();
+            habitats = new List<Habitat>();
+            habitats = habitatDb.LoadHabitats();
+            cbHabitat.DataSource = habitats;
         }
     }
 }

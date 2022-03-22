@@ -13,13 +13,13 @@
 
   <ItemGroup>
     <Compile Update="Shift Management.cs" />
-    <Compile Update="Habitat Editor.cs">
+    <Compile Update="Habitat Management Forms\Habitat Editor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Habitat Employee Assignment.cs">
+    <Compile Update="Habitat Management Forms\Habitat Employee Assignment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Habitat Details.cs">
+    <Compile Update="Habitat Management Forms\Habitat Details.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

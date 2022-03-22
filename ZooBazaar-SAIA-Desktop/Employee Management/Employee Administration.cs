@@ -12,9 +12,12 @@ using ZooBazaar_SAIA_Desktop.Employee_Management;
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Employee_Administration : Form {
         public EmployeeManager employeeManager = new EmployeeManager();
+        private Employee loggedEmployee;
+
         public Employee employee;
-        public Employee_Administration() {
+        public Employee_Administration(Employee e) {
             InitializeComponent();
+            loggedEmployee = e;
             employeeManager.GetAllEmployees();
             UpdateLVAllEmployees();
         }
@@ -45,7 +48,7 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnBack_Click(object sender, EventArgs e) {
             
-            Menu menu = new Menu();
+            Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
         }

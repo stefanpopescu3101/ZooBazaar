@@ -31,7 +31,7 @@ namespace ZooBazaar_SAIA_Desktop
 
                 
                 this.Hide();
-                Menu menu = new Menu();
+                Menu menu = new Menu(employee);
                 menu.Show();
             }
             else

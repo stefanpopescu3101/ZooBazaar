@@ -55,22 +55,19 @@ namespace ZooBazaar_SAIA_Desktop
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (availableAnimals.Count > 0)
+            if (bindingAvailableAnimals.Count > 0)
             {
                 try
                 {
                     habitatManager.AddAnimal(habitat, selectedAvailableAnimal.ID);
-                    availableAnimals.Remove(selectedAvailableAnimal);
-                    habitatAnimals.Add(selectedAvailableAnimal);
+                    animalManager.UpdateAssignedHabitat(selectedAvailableAnimal, habitat.ID);
+
                     bindingHabitatAnimals.Add(selectedAvailableAnimal);
                     bindingAvailableAnimals.Remove(selectedAvailableAnimal);
-                    animalManager.UpdateAssignedHabitat(selectedAvailableAnimal, habitat.ID);
-                    selectedAvailableAnimal = availableAnimals.First();
 
-                        if (habitatAnimals.Count > 0 && selectedHabitatAnimal is null)
-                    {
-                        selectedHabitatAnimal = habitatAnimals.First();
-                    }
+                    selectedHabitatAnimal = (Animal)habitatAnimalsLb.SelectedItem;
+                    selectedAvailableAnimal = (Animal)availableAnimalsLb.SelectedItem;
+
                     // TODO write changes to db(animals and habitat)
                 }
                 catch (ArgumentOutOfRangeException exception)
@@ -87,19 +84,18 @@ namespace ZooBazaar_SAIA_Desktop
 
         private void removeBtn_Click(object sender, EventArgs e)
         {
-            if (habitatAnimals.Count > 0)
+            if (bindingHabitatAnimals.Count > 0)
             {
                 try
                 {
                     habitatManager.RemoveAnimal(habitat, selectedHabitatAnimal.ID);
-                    habitatAnimals.Remove(selectedHabitatAnimal);
-                    availableAnimals.Add(selectedHabitatAnimal);
+                    animalManager.UpdateAssignedHabitat(selectedHabitatAnimal, null);
+
                     bindingAvailableAnimals.Add(selectedHabitatAnimal);
                     bindingHabitatAnimals.Remove(selectedHabitatAnimal);
-                    animalManager.UpdateAssignedHabitat(selectedHabitatAnimal, null);
-                    // TODO write changes to db(animals and habitat)
-                    selectedHabitatAnimal = habitatAnimals.First();
-                    selectedHabitatAnimal = habitatAnimals.First();
+
+                    selectedHabitatAnimal = (Animal)habitatAnimalsLb.SelectedItem;
+                    selectedAvailableAnimal= (Animal)availableAnimalsLb.SelectedItem;
                 }
                 catch (Exception exception)
                 {
@@ -112,7 +108,10 @@ namespace ZooBazaar_SAIA_Desktop
         {
             if (availableAnimals.Count > 0)
             {
-                selectedAvailableAnimal = availableAnimals[availableAnimalsLb.SelectedIndex];
+                if (selectedAvailableAnimal is null)
+                {
+                    selectedAvailableAnimal= availableAnimals.Last();
+                }
             }
         }
 
@@ -120,7 +119,11 @@ namespace ZooBazaar_SAIA_Desktop
         {
             if (habitatAnimals.Count > 0)
             {
-                selectedHabitatAnimal = habitatAnimals[habitatAnimalsLb.SelectedIndex];
+                selectedHabitatAnimal = (Animal)habitatAnimalsLb.SelectedItem;
+                if (selectedHabitatAnimal is null)
+                {
+                    selectedHabitatAnimal = habitatAnimals.Last();
+                }
             }
         }
     }

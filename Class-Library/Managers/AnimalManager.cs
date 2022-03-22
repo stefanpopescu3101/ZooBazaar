@@ -64,7 +64,28 @@ namespace Class_Library.Managers {
             }
 
             Animals.First(a => a.Equals(animal)).habitat = newHabitatId;
+        }
 
+        // this method will be invoked, when habitat gets deleted, to prevent animals to be assigned to habitat, that doesn't exist anymore
+        public void RemoveHabitat(int? habitatId)
+        {
+            if (habitatId is null)
+            {
+                throw new ArgumentNullException("Invalid habitat id.");
+            }
+            var animals = Animals.FindAll(a => a.habitat == habitatId);
+            foreach (var animal in animals)
+            {
+                animal.habitat = null;
+            }
+            if (animals.Count > 0)
+            {
+                var isHabitatRemoved = animalDb.RemoveHabitat(animals, (int)habitatId);
+                if (!isHabitatRemoved)
+                {
+                    throw new Exception("Error while updating db.");
+                }
+            }
         }
     }
 }
