@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Class_Library;
 using Class_Library.Data_Access;
 using Class_Library.Managers;
 
@@ -23,12 +24,14 @@ namespace ZooBazaar_SAIA_Desktop
         private BindingList<Habitat> filteredHabitats;
         private bool isFiltered ;
         private bool isInitialized;
+        private Employee loggedEmployee;
 
-        public Habitat_Management()
+        public Habitat_Management(Employee e)
         {
             InitializeComponent();
             if (!isInitialized)
             {
+                loggedEmployee = e;
                 habitatManager = new HabitatManager();
                 animalManager = new AnimalManager();
                 employeeManager = new EmployeeManager();
@@ -213,7 +216,7 @@ namespace ZooBazaar_SAIA_Desktop
         }
 
         private void btnBack_Click(object sender, EventArgs e) {
-            Menu menu = new Menu();
+            Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
         }

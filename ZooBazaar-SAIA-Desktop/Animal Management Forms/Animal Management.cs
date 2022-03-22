@@ -11,9 +11,11 @@ using Class_Library;
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Animal_Management : Form {
         private AnimalManager animalManager = new AnimalManager();
+        private Employee loggedEmployee;
 
-        public Animal_Management() {
+        public Animal_Management(Employee e) {
             InitializeComponent();
+            loggedEmployee = e;
             animalManager.GetAllAnimals();
             RefreshList(animalManager.Animals);
         }
@@ -88,7 +90,7 @@ namespace ZooBazaar_SAIA_Desktop {
 
         private void btnBack_Click(object sender, EventArgs e) {
             //Return to the main menu
-            Menu menu = new Menu();
+            Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
         }
