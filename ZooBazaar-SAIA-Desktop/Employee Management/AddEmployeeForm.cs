@@ -88,7 +88,8 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                     string username = tbUsername.Text;
                     string password = tbPassword.Text;
 
-                    
+
+                    employee1.shiftsPerWeek = 0;
 
                     employeeManager.UpdateEmployee(employee1);
 

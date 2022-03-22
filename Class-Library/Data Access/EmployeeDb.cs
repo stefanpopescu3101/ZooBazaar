@@ -120,7 +120,7 @@ namespace Class_Library.Data_Access
             cmdEmployee.Parameters.Add(new MySqlParameter("hourly_wage", emp.HourlyWage));
             cmdEmployee.Parameters.Add(new MySqlParameter("address", emp.Address));
             cmdEmployee.Parameters.Add(new MySqlParameter("departure_reason", emp.DepartureReason));
-            cmdEmployee.Parameters.Add(new MySqlParameter("shifts_per_week", 0));
+            cmdEmployee.Parameters.Add(new MySqlParameter("shifts_per_week", emp.ShiftsPerWeek));
             cmdEmployee.Parameters.Add(new MySqlParameter("role", emp.role));
             cmdEmployee.Parameters.Add(new MySqlParameter("username", emp.username));
             cmdEmployee.Parameters.Add(new MySqlParameter("password", emp.password));
