@@ -12,8 +12,8 @@ namespace Class_Library
         public string lastName { get; set; }
         public string bsn { get; set; }
         public string email { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string startDate { get; set; }
+        public string endDate { get; set; }
         public DateTime birthdate { get; set; }
         public string contractType { get; set; }
         public int hourlyWage { get; set; }
@@ -56,11 +56,11 @@ namespace Class_Library
         {
             get { return email; }
         }
-        public DateTime StartDate
+        public string StartDate
         {
             get { return startDate; }
         }
-        public DateTime EndDate
+        public string EndDate
         {
             get { return endDate; }
         }
@@ -96,7 +96,7 @@ namespace Class_Library
             get { return firstName + " " + lastName; }
         }
 
-        public Employee(int id, string firstName, string lastName,string bsn, string email, DateTime startDate, DateTime endDate, DateTime birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password )
+        public Employee(int id, string firstName, string lastName,string bsn, string email, string startDate, string endDate, DateTime birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password )
         {
             this.Id = id;
             this.firstName = firstName;
@@ -117,6 +117,26 @@ namespace Class_Library
             
         }
 
+        public Employee(string firstName, string lastName, string bsn, string email, string startDate, string endDate, DateTime birthdate, string contractType, int hourlyWage, string address, string departureReason, int shiftsPerWeek, string role, string username, string password)
+        {
+           
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.username = username;
+            this.password = password;
+            this.bsn = bsn;
+            this.email = email;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.birthdate = birthdate;
+            this.contractType = contractType;
+            this.hourlyWage = hourlyWage;
+            this.address = address;
+            this.Role = role;
+            this.DepartureReason = departureReason;
+            this.shiftsPerWeek = shiftsPerWeek;
+
+        }
         public override string ToString()
         {
             return $"{FirstName} {LastName}";

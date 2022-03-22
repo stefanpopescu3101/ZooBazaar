@@ -12,7 +12,7 @@ using ZooBazaar_SAIA_Desktop.Employee_Management;
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Employee_Administration : Form {
         public EmployeeManager employeeManager = new EmployeeManager();
-
+        public Employee employee;
         public Employee_Administration() {
             InitializeComponent();
             employeeManager.GetAllEmployees();
@@ -35,8 +35,9 @@ namespace ZooBazaar_SAIA_Desktop {
             foreach (Employee employee in employeeManager.employees)
             {
                 
-                    string[] row = {employee.FirstName, employee.LastName, employee.Bsn.ToString(), employee.Email, employee.StartDate.ToString(), employee.EndDate.ToString(), employee.birthdate.ToString(), employee.ContractType, employee.HourlyWage.ToString(),employee.Address,employee.DepartureReason,employee.ShiftsPerWeek.ToString(), employee.role };
+                    string[] row = {employee.FirstName, employee.LastName, employee.Bsn.ToString(), employee.Email, employee.StartDate.ToString(), employee.EndDate.ToString(), employee.birthdate.ToString(), employee.ContractType, employee.HourlyWage.ToString(),employee.Address,employee.DepartureReason,employee.ShiftsPerWeek.ToString(), employee.role, employee.ID.ToString()};
                     var listViewItem = new ListViewItem(row);
+                    listViewItem.Tag = employee;
                     lvEmployees.Items.Add(listViewItem);
                 
             }
@@ -46,6 +47,17 @@ namespace ZooBazaar_SAIA_Desktop {
             Menu menu = new Menu();
             menu.Show();
             this.Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+              employee =  (Employee)lvEmployees.SelectedItems[0].Tag;
+            
+               //employee = employeeManager.GetEmployee(emp.Id);
+            
+            AddEmployeeForm updateEmployee = new AddEmployeeForm(employee);
+            updateEmployee.Show();
         }
     }
 }

@@ -14,9 +14,10 @@ namespace Class_Library.Data_Access
         {
             try
             {       
-                var sql = "insert into employees_zoo (first_name, last_name, BSN, email, first_working_date, last_working_date, birthdate, contract_type, hourly_wage, address, departure_reason, shifts_per_week, role, username, password) " +
-                    "values (@first_name, @last_name, @BSN, @email, @first_working_date, @last_working_date, @birthdate, @contract_type, @hourly_wage, @address, @departure_reason, @shifts_per_week, @role, @username, @password)";
+                var sql = "insert into employees_zoo (id, first_name, last_name, BSN, email, first_working_date, last_working_date, birthdate, contract_type, hourly_wage, address, departure_reason, shifts_per_week, role, username, password) " +
+                    "values (@Id, @first_name, @last_name, @BSN, @email, @first_working_date, @last_working_date, @birthdate, @contract_type, @hourly_wage, @address, @departure_reason, @shifts_per_week, @role, @username, @password)";
                 var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@Id", emp.Id);
                 cmd.Parameters.AddWithValue("@first_name", emp.FirstName);
                 cmd.Parameters.AddWithValue("@last_name", emp.LastName);
                 cmd.Parameters.AddWithValue("@BSN", emp.bsn);
@@ -58,7 +59,7 @@ namespace Class_Library.Data_Access
                 {
 
                     Employee employee = new Employee(Convert.ToInt32(data["id"]), data["first_name"].ToString(), data["last_name"].ToString(),
-                        Convert.ToString(data["BSN"]), data["email"].ToString(), Convert.ToDateTime(data["first_working_date"]), Convert.ToDateTime(data["last_working_date"]),
+                        Convert.ToString(data["BSN"]), data["email"].ToString(), data["first_working_date"].ToString(), data["last_working_date"].ToString(),
                        Convert.ToDateTime(data["birthdate"]), data["contract_type"].ToString(), Convert.ToInt32(data["hourly_wage"]), data["address"].ToString(), data["departure_reason"].ToString(),
                         Convert.ToInt32(data["shifts_per_week"]), data["role"].ToString(), data["username"].ToString(), data["password"].ToString());
 
@@ -83,10 +84,10 @@ namespace Class_Library.Data_Access
 
             // Add new user
             string sqlInsertEmployee =
-                @"UPDATE employee
+                @"UPDATE employees_zoo
                  SET
                     first_name = @first_name , 
-                    last_name = @last_name
+                    last_name = @last_name,
                     BSN = @BSN,
                     email = @email,
                     first_working_date = @first_working_date,
@@ -99,9 +100,10 @@ namespace Class_Library.Data_Access
                     shifts_per_week = @shifts_per_week,
                     role = @role,
                     username = @username, 
-                    password = @password, 
+                    password = @password
                  WHERE
-                    employee_id = @id";
+                    id = @id
+                ";
 
 
             MySqlCommand cmdEmployee = new MySqlCommand(sqlInsertEmployee, connection);
@@ -118,7 +120,7 @@ namespace Class_Library.Data_Access
             cmdEmployee.Parameters.Add(new MySqlParameter("hourly_wage", emp.HourlyWage));
             cmdEmployee.Parameters.Add(new MySqlParameter("address", emp.Address));
             cmdEmployee.Parameters.Add(new MySqlParameter("departure_reason", emp.DepartureReason));
-            cmdEmployee.Parameters.Add(new MySqlParameter("shifts_per_week", emp.ShiftsPerWeek));
+            cmdEmployee.Parameters.Add(new MySqlParameter("shifts_per_week", 0));
             cmdEmployee.Parameters.Add(new MySqlParameter("role", emp.role));
             cmdEmployee.Parameters.Add(new MySqlParameter("username", emp.username));
             cmdEmployee.Parameters.Add(new MySqlParameter("password", emp.password));

@@ -93,7 +93,7 @@ namespace Class_Library
         public void RemoveEmployeesFutureShifts(Employee employee)
         {
             this.Load();
-            DateTime lastWorkDay = DateTime.ParseExact(employee.EndDate.ToString(), "MM/dd/yyyy", null);
+            DateTime lastWorkDay = DateTime.ParseExact(employee.EndDate, "MM/dd/yyyy", null);
 
             for (int i = 0; i < this.WorkShifts.Count; i++)
             {

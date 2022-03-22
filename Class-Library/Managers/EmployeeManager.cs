@@ -45,6 +45,11 @@ namespace Class_Library.Managers
             return newID;
         }
 
+        public void UpdateEmployee(Employee employee)
+        {
+            employeeDb.UpdateEmployeeDataInDatabase(employee);
+        }
+
         public void RemoveEmployee(Employee emp)
         {
             //employeesDb.RemoveEmployee(emp);
@@ -58,11 +63,23 @@ namespace Class_Library.Managers
                 if (e.Id == id)
                 {
                     return e;
-
                 }
             }
             return null;
         }
+
+        public int GetEmployeeId(int id)
+        {
+            foreach (Employee e in GetEmployees())
+            {
+                if (e.Id == id)
+                {
+                    return e.Id;
+                }
+            }
+            return 0;
+        }
+
         public List<Employee> GetAllEmployees()
         {
             employees = employeeDb.GetAllEmployees();
