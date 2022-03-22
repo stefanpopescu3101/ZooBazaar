@@ -67,8 +67,9 @@ namespace ZooBazaar_SAIA_Desktop
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (selectedHabitat == null) return;
-            MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
+            var confirmationMessageBox = MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (confirmationMessageBox == DialogResult.Cancel) return;
             habitatManager.RemoveHabitat(selectedHabitat);
             var habitatIndex = GetIndexOf(selectedHabitat, habitats);
             var filteredHabitatIndex = GetIndexOf(selectedHabitat, filteredHabitats);

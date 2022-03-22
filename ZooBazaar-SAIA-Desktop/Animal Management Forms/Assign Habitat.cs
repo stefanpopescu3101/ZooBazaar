@@ -25,7 +25,11 @@ namespace ZooBazaar_SAIA_Desktop {
         private void btnAssign_Click(object sender, EventArgs e) {
             //Confirmation button clicked
             var index = cbHabitat.SelectedIndex;
-            animal.habitat = habitats[index].ID;
+            if (index != -1)
+            {
+                animal.habitat = habitats[index].ID;
+            }
+            this.Close();
 
             //TODO: finish this, save/get habitat id
         }
