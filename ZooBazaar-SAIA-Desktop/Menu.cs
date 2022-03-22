@@ -6,17 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Class_Library;
 
 namespace ZooBazaar_SAIA_Desktop 
 {
     public partial class Menu : Form 
     {
-        
-
         public Menu() 
         {
             InitializeComponent();
 
+        }
+
+        public Menu(Employee e)
+        {
+            InitializeComponent();
+            userNameLbl.Text = e.FullName;
         }
 
         private void btnAnimals_Click(object sender, EventArgs e) {

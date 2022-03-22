@@ -66,7 +66,7 @@ namespace ZooBazaar_SAIA_Desktop {
             //button Assign to habitat is clicked
             if (lbAnimals.SelectedIndex != -1) {
                 Animal selectedAnimal = (Animal)lbAnimals.SelectedItem;
-                Assign_Habitat assign_Habitat = new Assign_Habitat(selectedAnimal);
+                Assign_Habitat assign_Habitat = new Assign_Habitat(selectedAnimal, animalManager);
                 assign_Habitat.Show();
             } else {
                 MessageBox.Show("Please select an animal from the list");

@@ -25,11 +25,11 @@ namespace ZooBazaar_SAIA_Desktop {
         /// </summary>
         private void InitializeComponent() {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbUsername = new System.Windows.Forms.TextBox();
-            this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,61 +40,68 @@ namespace ZooBazaar_SAIA_Desktop {
             this.groupBox1.Controls.Add(this.tbUsername);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(275, 77);
+            this.groupBox1.Location = new System.Drawing.Point(241, 58);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 303);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(219, 227);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Please enter your login details";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Username";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 115);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Password";
-            // 
-            // tbUsername
-            // 
-            this.tbUsername.Location = new System.Drawing.Point(11, 73);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(233, 27);
-            this.tbUsername.TabIndex = 2;
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(11, 155);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(233, 27);
-            this.tbPassword.TabIndex = 3;
-            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(72, 217);
+            this.btnLogin.Location = new System.Drawing.Point(63, 163);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(94, 29);
+            this.btnLogin.Size = new System.Drawing.Size(82, 22);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(10, 116);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(204, 23);
+            this.tbPassword.TabIndex = 3;
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Location = new System.Drawing.Point(10, 55);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(204, 23);
+            this.tbUsername.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Username";
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.Text = "Login";
             this.groupBox1.ResumeLayout(false);

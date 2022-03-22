@@ -71,7 +71,16 @@ namespace ZooBazaar_SAIA_Desktop
             var confirmationMessageBox = MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (confirmationMessageBox == DialogResult.Cancel) return;
-            habitatManager.RemoveHabitat(selectedHabitat);
+            try
+            {
+                animalManager.RemoveHabitat(selectedHabitat.ID);
+                habitatManager.RemoveHabitat(selectedHabitat);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Updating DB failed.", "DB error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var habitatIndex = GetIndexOf(selectedHabitat, habitats);
             var filteredHabitatIndex = GetIndexOf(selectedHabitat, filteredHabitats);
 

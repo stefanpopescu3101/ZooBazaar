@@ -68,6 +68,26 @@ namespace Class_Library.Data_Access {
             }     
         }
 
+        internal bool RemoveHabitat(List<Animal> animals, int habitatId)
+        {
+            try
+            {
+                var sql = "UPDATE `animals_zoo` SET `HabitatID`= @null WHERE `HabitatID`= @habitatId";
+                var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@habitatId", habitatId);
+                cmd.Parameters.AddWithValue("@null", DBNull.Value);
+
+                connection.Open();
+                var affectedRows = cmd.ExecuteNonQuery();
+
+                return affectedRows == animals.Count;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         internal bool UpdateAssignedHabitat(Animal a, int? newHabitatId)
         {
             try

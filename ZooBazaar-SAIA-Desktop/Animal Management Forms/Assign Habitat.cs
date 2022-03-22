@@ -14,9 +14,11 @@ namespace ZooBazaar_SAIA_Desktop {
         private Animal animal;
         private List<Habitat> habitats;
         private HabitatDb habitatDb;
-        public Assign_Habitat(Animal a) {
+        private AnimalManager animalManager;
+        public Assign_Habitat(Animal a, AnimalManager am) {
             InitializeComponent();
             animal = a;
+            animalManager = am;
             FillHabitatList();
         }
 
@@ -27,7 +29,9 @@ namespace ZooBazaar_SAIA_Desktop {
             var index = cbHabitat.SelectedIndex;
             if (index != -1)
             {
-                animal.habitat = habitats[index].ID;
+                var selectedHabitatId = habitats[index].ID;
+                animal.habitat = selectedHabitatId;
+                animalManager.UpdateAssignedHabitat(animal, selectedHabitatId);
             }
             this.Close();
 
