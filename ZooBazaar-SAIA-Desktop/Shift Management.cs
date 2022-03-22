@@ -169,6 +169,8 @@ namespace ZooBazaar_SAIA_Desktop
             nextSunday = nextSunday.AddDays(7);
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+
+            MessageBox.Show("Employees have been assigned successfully for one month!");
         }
 
         private void PreviousMonth()
@@ -203,6 +205,8 @@ namespace ZooBazaar_SAIA_Desktop
         {
             Scheduler scheduler = new Scheduler();
             scheduler.Reset();
+
+            MessageBox.Show("All the schedule entries have been deleted!");
         }
 
         private void btnPreviousMonth_Click(object sender, EventArgs e)

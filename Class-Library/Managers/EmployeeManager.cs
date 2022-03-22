@@ -29,7 +29,7 @@ namespace Class_Library.Managers
         }
         public Employee CheckCredentials(string username, string password)
         {
-            foreach (Employee emp in employees)
+            foreach (Employee emp in GetEmployees())
             {
                 if (emp.username == username && emp.password == password)
                 {
