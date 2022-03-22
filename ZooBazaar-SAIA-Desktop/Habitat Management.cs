@@ -67,8 +67,9 @@ namespace ZooBazaar_SAIA_Desktop
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (selectedHabitat == null) return;
+            if (selectedIndex == -1) selectedIndex = habitats.IndexOf(selectedHabitat);
             var confirmationMessageBox = MessageBox.Show("Are you sure you want to remove this habitat?", "Remove Item",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (confirmationMessageBox == DialogResult.Cancel) return;
             habitatManager.RemoveHabitat(selectedHabitat);
             var habitatIndex = GetIndexOf(selectedHabitat, habitats);
@@ -180,7 +181,13 @@ namespace ZooBazaar_SAIA_Desktop
             isFiltered = false;
             habitats.Add(habitatManager.Habitats.Last());
             lbHabitats.DataSource = habitats;
+            habitats.ResetBindings();
             filteredHabitats.Clear();
+            if (habitats.Count > 0)
+            {
+                lbHabitats.SelectedIndex = 0;
+                selectedHabitat = habitats[0];
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
