@@ -28,7 +28,7 @@ namespace ZooBazaar_SAIA_Desktop {
             addEmployeeForm.Show();
         }
 
-        private void UpdateLVAllEmployees()
+        public void UpdateLVAllEmployees()
         {
             //method to update the list view
             lvEmployees.Items.Clear();

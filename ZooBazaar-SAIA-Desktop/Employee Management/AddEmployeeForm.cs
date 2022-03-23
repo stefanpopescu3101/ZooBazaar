@@ -70,40 +70,39 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                     
                     int newId = employeeManager.AddEmployee(newEmployee);
                     MessageBox.Show("Employee was added");
+                    this.Close();
                 }
                 else
                 {
-                    string firstName = tbFirstName.Text;
-                    string lastName = tbLastName.Text;
-                    string address = tbAddress.Text;
-                    DateTime dob = Convert.ToDateTime(dtpBirthdate.Value);
-                    string status = cbStatus.Text;
-                    string email = tbEmail.Text;
-                    string contractType = cbContractType.Text;
-                    string role = cbRole.Text;
-                    string startDate = dtpStartDate.ToString();
-                    string endDate = dtpEndDate.ToString();
-                    string bsn = tbBsn.Text;
-                    int hourlyWage = Convert.ToInt32(tbHourlyWage.Text);
-                    string username = tbUsername.Text;
-                    string password = tbPassword.Text;
+                    employee1.firstName = tbFirstName.Text;
+                    employee1.lastName = tbLastName.Text;
+                    employee1.address = tbAddress.Text;
+                    employee1.birthdate = Convert.ToDateTime(dtpBirthdate.Value);
+                    employee1.departureReason = cbStatus.Text;
+                    employee1.email = tbEmail.Text;
+                    employee1.contractType = cbContractType.Text;
+                    employee1.role = cbRole.Text;
+                    employee1.startDate = dtpStartDate.ToString();
+                    employee1.endDate = dtpEndDate.ToString();
+                    employee1.bsn = tbBsn.Text;
+                    employee1.hourlyWage = Convert.ToInt32(tbHourlyWage.Text);
+                    employee1.username = tbUsername.Text;
+                    employee1.password = tbPassword.Text;
 
 
                     employee1.shiftsPerWeek = 0;
+           
 
                     employeeManager.UpdateEmployee(employee1);
 
                     MessageBox.Show("Employee was updated");
+                    this.Close();
                     
                 }
             }
             catch (MySqlException mse)
             {
                 MessageBox.Show(mse.Message);
-            }
-            catch (ArgumentNullException ane)
-            {
-                MessageBox.Show(ane.Message);
             }
             catch (FormatException)
             {

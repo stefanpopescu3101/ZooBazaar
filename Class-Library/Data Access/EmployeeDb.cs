@@ -125,13 +125,7 @@ namespace Class_Library.Data_Access
             cmdEmployee.Parameters.Add(new MySqlParameter("username", emp.username));
             cmdEmployee.Parameters.Add(new MySqlParameter("password", emp.password));
             
-            foreach (MySqlParameter param in cmdEmployee.Parameters)
-            {
-                if (param.Value == null || param.Value.ToString() == "" || param.Value is int && (int)param.Value == 0)
-                {
-                    param.Value = DBNull.Value;
-                }
-            }
+           
 
             int rowsAffectedEmployee = 0;
             try
