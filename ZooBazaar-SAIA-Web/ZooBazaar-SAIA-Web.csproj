@@ -5,4 +5,8 @@
     <RootNamespace>ZooBazaar_SAIA_Web</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Class-Library\Class-Library.csproj" />
+  </ItemGroup>
+
 </Project>
