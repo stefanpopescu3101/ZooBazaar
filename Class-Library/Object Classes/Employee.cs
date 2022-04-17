@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Class_Library
 {
@@ -135,6 +136,10 @@ namespace Class_Library
             this.Role = role;
             this.DepartureReason = departureReason;
             this.shiftsPerWeek = shiftsPerWeek;
+
+        }
+        public Employee()
+        {
 
         }
         public override string ToString()
