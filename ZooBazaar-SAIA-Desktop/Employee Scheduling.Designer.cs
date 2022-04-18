@@ -28,9 +28,10 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // Employee_Scheduling
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 620);
+            this.ClientSize = new System.Drawing.Size(909, 465);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Employee_Scheduling";
             this.Text = "Employee Scheduling";
             this.ResumeLayout(false);

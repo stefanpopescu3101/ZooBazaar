@@ -1,0 +1,103 @@
+﻿@page
+@model ZooBazaar_SAIA_Web.Pages.ScheduleModel
+@{
+}
+
+
+
+<div id="page_layout">
+    <div id="table_container">
+        <h3 style="margin-left:20px">Welcome  @Model.Name</h3>
+
+        <div class="row">
+            <table float="left">
+
+
+                <thead>
+                    <tr>
+                        <th class="col">Work shift ID</th>
+                        <th class="col">Period</th>
+                        <th class="col">Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model.workShifts)
+                    {
+
+        <tr>
+            <td class="col">@item.ID</td>
+            <td class="col">@item.Type</td>
+            <td class="col">@item.Date </td>
+        </tr>}
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="pagination">
+            <form method="post" asp-page-handler="Reset">
+                <button class="btn"> Show </button>
+            </form>
+            <form method="post" asp-page-handler="Previous">
+                <button class="btn"> Previous Month </button>
+            </form>
+            <form method="post" asp-page-handler="Next">
+                <button class="btn"> Next Month </button>
+            </form>
+
+        </div>
+
+
+
+    </div>
+    <div id="list_container">
+        <div float="left" class="wrapper">
+            <div class="checkbox_container">
+                <div class="title">Unavailable for work shifts</div>
+                <table float="left" class="col-xs-7 table-bordered table-striped table-condensed table-fixed">
+
+
+                    <thead>
+                        <tr>
+                            <th class="col">Employee ID</th>
+
+                            <th class="col">Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in Model.unavailableShifts)
+                        {
+
+                            <tr>
+                                <td class="col">@item.EmployeeId</td>
+                                <td class="col">@item.Date</td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+                <form method="post" asp-page-handler="Show">
+
+
+                    <input id="btnSave" type="submit" value="Show" />
+                </form>
+
+
+
+                <form method="post" asp-page-handler="Confirm">
+
+                    <pre> <input type="date" asp-for="UnavailableDate">   <button class="btn btnTest"> Confirm </button> </pre>
+
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>

@@ -17,6 +17,14 @@
             Employee web application
         </p>
         <a asp-page="Login" class="navbutton">Login</a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-page="Schedule" class="navbutton">Schedule</a>
+
+        }
+
+        <a asp-page="Schedule" class="navbutton">Schedule</a>
     </nav>
     <div class="content">
         @RenderBody()

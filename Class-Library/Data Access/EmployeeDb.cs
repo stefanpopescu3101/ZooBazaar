@@ -5,7 +5,7 @@ using MySqlConnector;
 
 namespace Class_Library.Data_Access
 {
-    class EmployeeDb : DBMediator
+    public class EmployeeDb : DBMediator
     {
         public EmployeeDb() : base() { }
 
