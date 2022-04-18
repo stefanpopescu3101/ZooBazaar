@@ -117,5 +117,10 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
