@@ -78,9 +78,9 @@ namespace Class_LibraryTests
         [TestMethod]
         public void UpdateResponsibleEmployee_UpdateResponsibleEmployeeWithAValidEmployee_ShouldReturnTrue()
         {
-            var oldEmployee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+            var oldEmployee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
-            var newEmployee = new Employee(1002, "Sue", "TestUser2", "22345678", "sue@test.test", DateTime.Parse("01-03-2022"), DateTime.Parse("01-03-2023"),
+            var newEmployee = new Employee(1002, "Sue", "TestUser2", "22345678", "sue@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
             var habitat = new Habitat("Arctic#2", HabitatType.Arctic, 10, null, oldEmployee.Id, 7);
             var habitatDb = new HabitatDb();
