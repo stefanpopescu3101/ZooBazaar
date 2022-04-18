@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Class_Library;
 using Class_Library.Data_Access;
 using Class_Library.Managers;
+using Class_Library.Object_Classes;
 
 namespace ZooBazaar_SAIA_Desktop 
 {
@@ -23,11 +24,12 @@ namespace ZooBazaar_SAIA_Desktop
 
  
 
-        private void btnLogin_Click(object sender, EventArgs e) 
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(employeeManager.CheckCredentials(tbUsername.Text, tbPassword.Text)!=null)
+            string password = Hasher.ComputeSha256Hash(tbPassword.Text);
+            if(employeeManager.CheckCredentials(tbUsername.Text, password)!=null)
             {
-                Employee employee = employeeManager.CheckCredentials(tbUsername.Text, tbPassword.Text);
+                Employee employee = employeeManager.CheckCredentials(tbUsername.Text, password);
 
                 
                 this.Hide();

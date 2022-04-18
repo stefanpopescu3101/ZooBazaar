@@ -47,34 +47,37 @@ namespace ZooBazaar_SAIA_Desktop {
             this.chDepartureReason = new System.Windows.Forms.ColumnHeader();
             this.chShiftsPerWeek = new System.Windows.Forms.ColumnHeader();
             this.chRole = new System.Windows.Forms.ColumnHeader();
-            this.btnBack = new System.Windows.Forms.Button();
             this.chId = new System.Windows.Forms.ColumnHeader();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnShifts
             // 
-            this.btnShifts.Location = new System.Drawing.Point(969, 510);
+            this.btnShifts.Location = new System.Drawing.Point(848, 382);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
-            this.btnShifts.Size = new System.Drawing.Size(267, 49);
+            this.btnShifts.Size = new System.Drawing.Size(234, 37);
             this.btnShifts.TabIndex = 20;
             this.btnShifts.Text = "View Upcoming Shifts of Employee";
             this.btnShifts.UseVisualStyleBackColor = true;
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(969, 395);
+            this.btnRemove.Location = new System.Drawing.Point(848, 296);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(267, 49);
+            this.btnRemove.Size = new System.Drawing.Size(234, 37);
             this.btnRemove.TabIndex = 19;
             this.btnRemove.Text = "Remove Employee";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(969, 328);
+            this.btnUpdate.Location = new System.Drawing.Point(848, 246);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(267, 49);
+            this.btnUpdate.Size = new System.Drawing.Size(234, 37);
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "Update Employee Details";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -82,18 +85,21 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(969, 262);
+            this.btnView.Location = new System.Drawing.Point(848, 196);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(267, 49);
+            this.btnView.Size = new System.Drawing.Size(234, 37);
             this.btnView.TabIndex = 17;
             this.btnView.Text = "View Employee Details";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(969, 197);
+            this.btnAdd.Location = new System.Drawing.Point(848, 148);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(267, 49);
+            this.btnAdd.Size = new System.Drawing.Size(234, 37);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Employee";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -104,18 +110,21 @@ namespace ZooBazaar_SAIA_Desktop {
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbID);
-            this.groupBox1.Location = new System.Drawing.Point(969, 26);
+            this.groupBox1.Location = new System.Drawing.Point(848, 20);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(267, 125);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(234, 94);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search for employees";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(79, 86);
+            this.btnSearch.Location = new System.Drawing.Point(69, 64);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.Size = new System.Drawing.Size(82, 22);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -123,17 +132,18 @@ namespace ZooBazaar_SAIA_Desktop {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 20);
+            this.label1.Size = new System.Drawing.Size(76, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Employee ID:";
             // 
             // tbID
             // 
-            this.tbID.Location = new System.Drawing.Point(7, 53);
+            this.tbID.Location = new System.Drawing.Point(6, 40);
+            this.tbID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(254, 27);
+            this.tbID.Size = new System.Drawing.Size(223, 23);
             this.tbID.TabIndex = 0;
             // 
             // lvEmployees
@@ -155,9 +165,10 @@ namespace ZooBazaar_SAIA_Desktop {
             this.chId});
             this.lvEmployees.FullRowSelect = true;
             this.lvEmployees.HideSelection = false;
-            this.lvEmployees.Location = new System.Drawing.Point(12, 22);
+            this.lvEmployees.Location = new System.Drawing.Point(10, 16);
+            this.lvEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvEmployees.Name = "lvEmployees";
-            this.lvEmployees.Size = new System.Drawing.Size(951, 551);
+            this.lvEmployees.Size = new System.Drawing.Size(833, 414);
             this.lvEmployees.TabIndex = 21;
             this.lvEmployees.UseCompatibleStateImageBehavior = false;
             this.lvEmployees.View = System.Windows.Forms.View.Details;
@@ -227,25 +238,26 @@ namespace ZooBazaar_SAIA_Desktop {
             this.chRole.Text = "Role";
             this.chRole.Width = 70;
             // 
+            // chId
+            // 
+            this.chId.Text = "Id";
+            // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(1032, 570);
+            this.btnBack.Location = new System.Drawing.Point(903, 428);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(146, 29);
+            this.btnBack.Size = new System.Drawing.Size(128, 22);
             this.btnBack.TabIndex = 22;
             this.btnBack.Text = "Back to menu";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // chId
-            // 
-            this.chId.Text = "Id";
-            // 
             // Employee_Administration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1256, 631);
+            this.ClientSize = new System.Drawing.Size(1099, 473);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lvEmployees);
             this.Controls.Add(this.btnShifts);
@@ -254,6 +266,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Employee_Administration";
             this.Text = "Employee Administration";
             this.groupBox1.ResumeLayout(false);

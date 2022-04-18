@@ -63,5 +63,10 @@ namespace ZooBazaar_SAIA_Desktop {
             AddEmployeeForm updateEmployee = new AddEmployeeForm(employee);
             updateEmployee.Show();
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
