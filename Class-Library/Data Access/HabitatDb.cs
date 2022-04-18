@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes.Enums;
 using MySqlConnector;
 
 namespace Class_Library.Data_Access
@@ -16,11 +17,12 @@ namespace Class_Library.Data_Access
         {
             try
             {
-                var sql = "INSERT INTO Habitat (title, habitat_type, capacity, responsible_employee_id, required_employees_count) VALUES (@title, @type, @capacity, @responsibleEmployeeId, @requiredEmployeesCount);";
+                var sql = "INSERT INTO Habitat (title, habitat_type, capacity, responsible_employee_id, required_employees_count, feeding_time) VALUES (@title, @type, @capacity, @responsibleEmployeeId, @requiredEmployeesCount, @feedingTime);";
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@title", h.Title);
                 cmd.Parameters.AddWithValue("@type", (int)h.Type);
                 cmd.Parameters.AddWithValue("@capacity", h.Capacity);
+                cmd.Parameters.AddWithValue("@feedingTime", (int)h.FeedingTime);
                 if (h.ResponsibleEmployeeId != null)
                 {
                     cmd.Parameters.AddWithValue("@responsibleEmployeeId", h.ResponsibleEmployeeId);
@@ -66,7 +68,7 @@ namespace Class_Library.Data_Access
         {
             try
             {
-                var sql = "UPDATE `habitat` SET `title` = @title, `habitat_type` = @habitatType, `capacity` = @capacity, `responsible_employee_id` = @responsibleEmployeeId, `required_employees_count` = @requiredEmployeesCount" +
+                var sql = "UPDATE `habitat` SET `title` = @title, `habitat_type` = @habitatType, `capacity` = @capacity, `responsible_employee_id` = @responsibleEmployeeId, `required_employees_count` = @requiredEmployeesCount, `feeding_time` = @feedingTime" +
                           "  WHERE `id` = @id;";
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@id", oldHabitat.ID);
@@ -75,6 +77,7 @@ namespace Class_Library.Data_Access
                 cmd.Parameters.AddWithValue("@capacity", newHabitat.Capacity);
                 cmd.Parameters.AddWithValue("@responsibleEmployeeId", newHabitat.ResponsibleEmployeeId);
                 cmd.Parameters.AddWithValue("@requiredEmployeesCount", newHabitat.RequiredEmployeesCount);
+                cmd.Parameters.AddWithValue("@feedingTime", newHabitat.FeedingTime);
                 this.connection.Open();
                 var affectedRows = cmd.ExecuteNonQuery();
 
@@ -123,7 +126,7 @@ namespace Class_Library.Data_Access
         {
             try
             {
-                var sql = "SELECT `id`, `title`, `habitat_type`, `capacity`, `responsible_employee_id`, `required_employees_count` FROM `habitat`;";
+                var sql = "SELECT `id`, `title`, `habitat_type`, `capacity`, `responsible_employee_id`, `required_employees_count`, `feeding_time` FROM `habitat`;";
                 var cmd = new MySqlCommand(sql, this.connection);
 
                 this.connection.Open();
@@ -136,6 +139,7 @@ namespace Class_Library.Data_Access
                     var type = (HabitatType)(Convert.ToInt32(dr[2]));
                     var capacity = Convert.ToInt32(dr[3]);
                     int? responsibleEmployeeId = null;
+                    var feedingTime = (FeedingTime)(Convert.ToInt32(dr[6]));
                     try
                     {
                         responsibleEmployeeId = Convert.ToInt32(dr[4]);
@@ -147,7 +151,7 @@ namespace Class_Library.Data_Access
                     }
 
                     var requiredEmployeesCount = Convert.ToInt32(dr[5]);
-                    habitats.Add(new Habitat(id, title, type, capacity, null, responsibleEmployeeId, requiredEmployeesCount));
+                    habitats.Add(new Habitat(id, title, type, capacity, null, responsibleEmployeeId, requiredEmployeesCount, feedingTime));
                 }
 
                 return habitats;
@@ -163,12 +167,13 @@ namespace Class_Library.Data_Access
         {
             try
             {
-                var sql = "INSERT INTO Habitat (id ,title, habitat_type, capacity, responsible_employee_id, required_employees_count) VALUES (@id, @title, @type, @capacity, @responsibleEmployeeId, @requiredEmployeesCount);";
+                var sql = "INSERT INTO Habitat (id ,title, habitat_type, capacity, responsible_employee_id, required_employees_count, feeding_time) VALUES (@id, @title, @type, @capacity, @responsibleEmployeeId, @requiredEmployeesCount, @feedingTime);";
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@id", h.ID);
                 cmd.Parameters.AddWithValue("@title", h.Title);
                 cmd.Parameters.AddWithValue("@type", (int)h.Type);
                 cmd.Parameters.AddWithValue("@capacity", h.Capacity);
+                cmd.Parameters.AddWithValue("@feedingTime", (int)h.FeedingTime);
                 if (h.ResponsibleEmployeeId != null)
                 {
                     cmd.Parameters.AddWithValue("@responsibleEmployeeId", h.ResponsibleEmployeeId);
@@ -200,6 +205,7 @@ namespace Class_Library.Data_Access
             int capacity = 0;
             int? responsibleEmployeeId = null;
             int requiredEmployeesCount = 0;
+            FeedingTime feedingTime = 0;
 
             try
             {
@@ -214,6 +220,7 @@ namespace Class_Library.Data_Access
                     title = Convert.ToString(dr[1]);
                     type = (HabitatType) (Convert.ToInt32(dr[2]));
                     capacity = Convert.ToInt32(dr[3]);
+                    feedingTime = (FeedingTime) (Convert.ToInt32(dr[6]));
                     try
                     {
                         responsibleEmployeeId = Convert.ToInt32(dr[4]);
@@ -233,7 +240,7 @@ namespace Class_Library.Data_Access
                 this.connection.Close();
             }
 
-            return new Habitat(id, title, type, capacity, null, responsibleEmployeeId, requiredEmployeesCount);
+            return new Habitat(id, title, type, capacity, null, responsibleEmployeeId, requiredEmployeesCount, feedingTime);
         }
 
         public void DeleteEntry(int id)

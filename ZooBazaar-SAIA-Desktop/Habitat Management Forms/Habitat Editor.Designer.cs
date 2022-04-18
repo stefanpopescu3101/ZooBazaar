@@ -39,6 +39,8 @@ namespace ZooBazaar_SAIA_Desktop
             this.titleTb = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.typeCb = new System.Windows.Forms.ComboBox();
+            this.feedingTimeLbl = new System.Windows.Forms.Label();
+            this.feedingValueCb = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -132,17 +134,37 @@ namespace ZooBazaar_SAIA_Desktop
             this.typeCb.Size = new System.Drawing.Size(226, 23);
             this.typeCb.TabIndex = 19;
             // 
+            // feedingTimeLbl
+            // 
+            this.feedingTimeLbl.AutoSize = true;
+            this.feedingTimeLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.feedingTimeLbl.Location = new System.Drawing.Point(39, 221);
+            this.feedingTimeLbl.Name = "feedingTimeLbl";
+            this.feedingTimeLbl.Size = new System.Drawing.Size(106, 21);
+            this.feedingTimeLbl.TabIndex = 14;
+            this.feedingTimeLbl.Text = "Feeding time";
+            // 
+            // feedingValueCb
+            // 
+            this.feedingValueCb.FormattingEnabled = true;
+            this.feedingValueCb.Location = new System.Drawing.Point(248, 219);
+            this.feedingValueCb.Name = "feedingValueCb";
+            this.feedingValueCb.Size = new System.Drawing.Size(226, 23);
+            this.feedingValueCb.TabIndex = 19;
+            // 
             // Habitat_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 348);
+            this.Controls.Add(this.feedingValueCb);
             this.Controls.Add(this.typeCb);
             this.Controls.Add(this.titleTb);
             this.Controls.Add(this.capacityTb);
             this.Controls.Add(this.reqEmployeesTb);
             this.Controls.Add(this.reqEmployeesLbl);
             this.Controls.Add(this.capacityLbl);
+            this.Controls.Add(this.feedingTimeLbl);
             this.Controls.Add(this.typeLbl);
             this.Controls.Add(this.titleLbl);
             this.Controls.Add(this.btnSave);
@@ -168,5 +190,7 @@ namespace ZooBazaar_SAIA_Desktop
         private System.Windows.Forms.TextBox titleTb;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox typeCb;
+        private System.Windows.Forms.Label feedingTimeLbl;
+        private System.Windows.Forms.ComboBox feedingValueCb;
     }
 }

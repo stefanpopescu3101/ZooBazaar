@@ -44,6 +44,8 @@ namespace ZooBazaar_SAIA_Desktop
             this.reqEmpValueLbl = new System.Windows.Forms.Label();
             this.animalsLbl = new System.Windows.Forms.Label();
             this.animalsLb = new System.Windows.Forms.ListBox();
+            this.feedingTimeLbl = new System.Windows.Forms.Label();
+            this.feedingTimeValueLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAssign
@@ -207,18 +209,41 @@ namespace ZooBazaar_SAIA_Desktop
             this.animalsLb.TabIndex = 17;
             this.animalsLb.SelectedIndexChanged += new System.EventHandler(this.animalsLb_SelectedIndexChanged);
             // 
+            // feedingTimeLbl
+            // 
+            this.feedingTimeLbl.AutoSize = true;
+            this.feedingTimeLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.feedingTimeLbl.Location = new System.Drawing.Point(13, 274);
+            this.feedingTimeLbl.Name = "feedingTimeLbl";
+            this.feedingTimeLbl.Size = new System.Drawing.Size(106, 21);
+            this.feedingTimeLbl.TabIndex = 14;
+            this.feedingTimeLbl.Text = "Feeding time";
+            // 
+            // feedingTimeValueLbl
+            // 
+            this.feedingTimeValueLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.feedingTimeValueLbl.Location = new System.Drawing.Point(222, 272);
+            this.feedingTimeValueLbl.MaximumSize = new System.Drawing.Size(226, 23);
+            this.feedingTimeValueLbl.MinimumSize = new System.Drawing.Size(226, 23);
+            this.feedingTimeValueLbl.Name = "feedingTimeValueLbl";
+            this.feedingTimeValueLbl.Size = new System.Drawing.Size(226, 23);
+            this.feedingTimeValueLbl.TabIndex = 16;
+            this.feedingTimeValueLbl.Text = "label7";
+            // 
             // Habitat_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 383);
             this.Controls.Add(this.animalsLb);
+            this.Controls.Add(this.feedingTimeValueLbl);
             this.Controls.Add(this.reqEmpValueLbl);
             this.Controls.Add(this.typeValueLbl);
             this.Controls.Add(this.responsibleValueLbl);
             this.Controls.Add(this.capacityValueLbl);
             this.Controls.Add(this.titleValueLbl);
             this.Controls.Add(this.idValueLbl);
+            this.Controls.Add(this.feedingTimeLbl);
             this.Controls.Add(this.reqEmployeesLbl);
             this.Controls.Add(this.responsibleLbl);
             this.Controls.Add(this.capacityLbl);
@@ -253,5 +278,7 @@ namespace ZooBazaar_SAIA_Desktop
         private System.Windows.Forms.Label reqEmpValueLbl;
         private System.Windows.Forms.Label animalsLbl;
         private System.Windows.Forms.ListBox animalsLb;
+        private System.Windows.Forms.Label feedingTimeLbl;
+        private System.Windows.Forms.Label feedingTimeValueLbl;
     }
 }

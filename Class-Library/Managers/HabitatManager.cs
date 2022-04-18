@@ -79,6 +79,7 @@ namespace Class_Library.Data_Access
             oldHabitat.Type = newHabitat.Type;
             oldHabitat.Capacity = newHabitat.Capacity;
             oldHabitat.RequiredEmployeesCount = newHabitat.RequiredEmployeesCount;
+            oldHabitat.FeedingTime = newHabitat.FeedingTime;
             if (newHabitat.AnimalIds.Count > 0)
             {
                 oldHabitat.AnimalIds = newHabitat.AnimalIds;

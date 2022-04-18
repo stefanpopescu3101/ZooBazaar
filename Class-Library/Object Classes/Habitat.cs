@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Principal;
+using Class_Library.Object_Classes.Enums;
 
 namespace Class_Library.Data_Access
 {
@@ -14,22 +15,23 @@ namespace Class_Library.Data_Access
         public List<int> AnimalIds { get; set; }
         public int? ResponsibleEmployeeId { get; set; }
         public int RequiredEmployeesCount { get; set; }
+        public FeedingTime FeedingTime { get; set; }
 
-        public Habitat(string title, HabitatType type, int capacity, int requiredEmployeesCount) : this(0, title, type,
+        public Habitat(string title, HabitatType type, int capacity, int requiredEmployeesCount, FeedingTime feedingTime) : this(0, title, type,
             capacity, new List<int>(),
-            null, requiredEmployeesCount)
+            null, requiredEmployeesCount, feedingTime)
         {
         }
 
         public Habitat(string title, HabitatType type, int capacity, List<int> animalIds,
-            int? responsibleEmployeeId, int requiredEmployeesCount) : this(0, title, type,
+            int? responsibleEmployeeId, int requiredEmployeesCount, FeedingTime feedingTime) : this(0, title, type,
             capacity, animalIds,
-            responsibleEmployeeId, requiredEmployeesCount)
+            responsibleEmployeeId, requiredEmployeesCount, feedingTime)
         {
         }
 
         public Habitat(int id, string title, HabitatType type, int capacity, List<int> animalIds,
-            int? responsibleEmployeeId, int requiredEmployeesCount)
+            int? responsibleEmployeeId, int requiredEmployeesCount, FeedingTime feedingTime)
         {
             this.ID = id;
             this.Title = title;
@@ -45,6 +47,7 @@ namespace Class_Library.Data_Access
             }
             this.ResponsibleEmployeeId = responsibleEmployeeId;
             this.RequiredEmployeesCount = requiredEmployeesCount;
+            this.FeedingTime = feedingTime;
         }
 
         public override string ToString()

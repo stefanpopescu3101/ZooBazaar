@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Class_Library;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Class_LibraryTests
@@ -14,7 +15,7 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AddHabitat_StoreValidHabitat_HabitatAddedToTheListAndDb()
         {
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             var habitatDb = new HabitatDb();
             hm.AddHabitat(habitat);
@@ -32,7 +33,7 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AddHabitat_StoreDuplicateOfHabitat_HabitatAddedToTheListAndDb()
         {
-            var habitat = new Habitat("Arctic#1", HabitatType.Arctic, 2, 5);
+            var habitat = new Habitat("Arctic#1", HabitatType.Arctic, 2, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             var habitatDb = new HabitatDb();
             var argumentExceptionCaught = false;
@@ -79,7 +80,7 @@ namespace Class_LibraryTests
         [TestMethod]
         public void AddAnimal_StoreAnimalWhenHabitatIsntEmpty_ShouldStoreAnimal()
         {
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 2, 5, FeedingTime.Morning);
             var animalId = 5;
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
@@ -98,7 +99,7 @@ namespace Class_LibraryTests
         {
             var animalId1 = 3;
             var animalId2 = 5;
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 1, new List<int> {animalId1}, null, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 1, new List<int> {animalId1}, null, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentOfRangeCaught = false;
@@ -124,7 +125,7 @@ namespace Class_LibraryTests
         {
             var animal = new Animal("Johny", "cat", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
             var animal2 = new Animal("Sam", "dog", Animal.Sex.Male, DateTime.Now, DateTime.Now, "healthy");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentOfRangeCaught = false;
@@ -149,7 +150,7 @@ namespace Class_LibraryTests
         public void AddAnimal_StoreSameAnimal_ShouldReturnArgumentException()
         {
             var animalId = 8;
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId }, null, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId }, null, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentExceptionCaught = false;
@@ -174,7 +175,7 @@ namespace Class_LibraryTests
         {
             var animalId1 = 7;
             var animalId2 = 9;
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             hm.RemoveAnimal(habitat, animalId1);
@@ -192,7 +193,7 @@ namespace Class_LibraryTests
         {
             var animalId1 = 7;
             var animalId2 = 2;
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1 }, null, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1 }, null, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             hm.RemoveAnimal(habitat, animalId2);
@@ -210,7 +211,7 @@ namespace Class_LibraryTests
         {
             var animalId1 = 4;
             var animalId2 = 118;
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, new List<int> { animalId1, animalId2 }, null, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
             var argumentNullExceptionCaught = false;
@@ -233,8 +234,8 @@ namespace Class_LibraryTests
         [TestMethod]
         public void UpdateHabitat_UpdateTitleTypeCapacityAndRequiredEmployees_ShouldUpdateHabitat()
         {
-            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
-            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, 3);
+            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5, FeedingTime.Morning);
+            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, 3, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(oldHabitat);
 
@@ -256,8 +257,8 @@ namespace Class_LibraryTests
         {
             var animalId1 = 12;
             var animalId2 = 21;
-            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
-            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, new List<int> { animalId1, animalId2 }, null, 3);
+            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5, FeedingTime.Morning);
+            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, new List<int> { animalId1, animalId2 }, null, 3, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(oldHabitat);
 
@@ -280,8 +281,8 @@ namespace Class_LibraryTests
         {
             var employee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
-            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
-            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, null, employee.Id, 3);
+            var oldHabitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5, FeedingTime.Morning);
+            var newHabitat = new Habitat("Forest#1", HabitatType.Forest, 2, null, employee.Id, 3, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(oldHabitat);
 
@@ -305,7 +306,7 @@ namespace Class_LibraryTests
         {
             var employee = new Employee(1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
 
@@ -322,7 +323,7 @@ namespace Class_LibraryTests
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
             var newEmployee = new Employee(1002, "Sue", "TestUser2", "22345678", "sue@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, oldEmployee.Id, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, oldEmployee.Id, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             hm.Habitats.Add(habitat);
 
@@ -337,7 +338,7 @@ namespace Class_LibraryTests
         {
             var employee = new Employee (1001, "Tim", "TestUser1", "12345678", "test@test.test", DateTime.Parse("01-03-2022").ToString(), DateTime.Parse("01-03-2023").ToString(),
                 DateTime.Now, "permanent", 20, "Streetname", "test", 2, "employee", "test1", "password1");
-            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, employee.Id, 5);
+            var habitat = new Habitat("Jungle#1", HabitatType.Jungle, 5, null, employee.Id, 5, FeedingTime.Morning);
             var hm = new HabitatManager(true);
             var argumentNullExceptionCaught = false;
             hm.Habitats.Add(habitat);
@@ -359,9 +360,9 @@ namespace Class_LibraryTests
         public void GetHabitatById_GetExistingHabitat_ShouldReturnExactlyOneHabitat()
         {
             var hm = new HabitatManager(true);
-            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5);
-            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1);
-            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2);
+            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5, FeedingTime.Morning);
+            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1, FeedingTime.Morning);
+            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2, FeedingTime.Morning);
 
             hm.Habitats.Add(habitat1);
             hm.Habitats.Add(habitat2);
@@ -377,9 +378,9 @@ namespace Class_LibraryTests
         public void GetHabitatById_GetNotExistingHabitat_ShouldReturnNull()
         {
             var hm = new HabitatManager(true);
-            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5);
-            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1);
-            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2);
+            var habitat1 = new Habitat(1, "Test1", HabitatType.Jungle, 3, null, null, 5, FeedingTime.Morning);
+            var habitat2 = new Habitat(2, "Test2", HabitatType.Arctic, 4, null, null, 1, FeedingTime.Morning);
+            var habitat3 = new Habitat(3, "Test3", HabitatType.Savannah, 5, null, null, 2, FeedingTime.Morning);
 
             hm.Habitats.Add(habitat1);
             hm.Habitats.Add(habitat2);

@@ -1,4 +1,4 @@
-﻿namespace Class_Library.Data_Access
+﻿namespace Class_Library.Object_Classes.Enums
 {
     public enum HabitatType
     {

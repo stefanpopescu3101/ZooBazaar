@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes.Enums;
 
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Habitat_Editor : Form
@@ -23,6 +24,8 @@ namespace ZooBazaar_SAIA_Desktop {
             this.habitatManager = hm;
             typeCb.DataSource = Enum.GetValues(typeof(HabitatType));
             typeCb.SelectedItem = typeCb.Items[^1];
+            feedingValueCb.DataSource = Enum.GetValues(typeof(FeedingTime));
+            feedingValueCb.SelectedItem = feedingValueCb.Items[0];
         }
 
         public Habitat_Editor(HabitatManager hm, Habitat h)
@@ -35,6 +38,8 @@ namespace ZooBazaar_SAIA_Desktop {
             titleTb.Text = h.Title;
             typeCb.DataSource = Enum.GetValues(typeof(HabitatType));
             typeCb.SelectedItem = typeCb.Items[(int)oldHabitat.Type];
+            feedingValueCb.DataSource = Enum.GetValues(typeof(FeedingTime));
+            feedingValueCb.SelectedItem = feedingValueCb.Items[(int)oldHabitat.FeedingTime];
             capacityTb.Text = h.Capacity.ToString();
             reqEmployeesTb.Text = h.RequiredEmployeesCount.ToString();
         }
@@ -77,7 +82,8 @@ namespace ZooBazaar_SAIA_Desktop {
             var capacity = int.Parse(capacityTb.Text);
             var requiredEmployees = int.Parse(reqEmployeesTb.Text);
             HabitatType type = (HabitatType)typeCb.SelectedItem;
-            newHabitat = new Habitat(title, type, capacity, null, null, requiredEmployees);
+            FeedingTime feedingTime = (FeedingTime)feedingValueCb.SelectedItem;
+            newHabitat = new Habitat(title, type, capacity, null, null, requiredEmployees, feedingTime);
             if (updateMode)
             {
                 habitatManager.UpdateHabitat(oldHabitat, newHabitat);

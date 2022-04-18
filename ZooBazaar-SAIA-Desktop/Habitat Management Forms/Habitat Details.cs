@@ -26,6 +26,7 @@ namespace ZooBazaar_SAIA_Desktop {
             titleValueLbl.Text = h.Title;
             typeValueLbl.Text = h.Type.ToString();
             capacityValueLbl.Text = h.Capacity.ToString();
+            feedingTimeValueLbl.Text = h.FeedingTime.ToString();
             animalManager = am;
             employeeManager = em;
             animals = new List<Animal>();
