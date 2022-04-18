@@ -16,6 +16,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private int ok;
         private EmployeeManager employeeManager;
         private Employee employee1;
+        
         public AddEmployeeForm()
         {
             ok = 0;
@@ -51,6 +52,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             {
                 if (ok == 0) //if making a new employee (not updating employee)
                 {
+                    btnAddEmp.Text = "Add employee";
                     string firstName = tbFirstName.Text;
                     string lastName = tbLastName.Text;
                     string address = tbAddress.Text;
@@ -74,6 +76,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                 }
                 else
                 {
+                    btnAddEmp.Text = "Update employee";
                     employee1.firstName = tbFirstName.Text;
                     employee1.lastName = tbLastName.Text;
                     employee1.address = tbAddress.Text;

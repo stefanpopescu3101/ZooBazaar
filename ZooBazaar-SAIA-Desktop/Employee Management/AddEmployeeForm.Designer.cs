@@ -367,7 +367,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEmployeeForm";
-            this.Text = "AddEmployeeForm";
+            this.Text = " ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
