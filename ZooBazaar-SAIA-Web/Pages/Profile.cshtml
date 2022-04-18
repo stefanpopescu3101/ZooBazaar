@@ -1,0 +1,106 @@
+﻿@page
+@model ZooBazaar_SAIA_Web.Pages.ProfileModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    
+    <form method="post" class="Profile">
+        <input hidden asp-for="Employee.ID" />
+        <input hidden asp-for="Employee.StartDate" />
+        <input hidden asp-for="Employee.EndDate" />
+        <div>
+            <div>
+                <h1>Profile</h1>
+
+                <div>
+                    <label asp-for="Employee.FirstName">First name:*</label>
+                    <span asp-validation-for="Employee.FirstName"></span>
+                    <input asp-for="Employee.FirstName" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.LastName">Last name:*</label>
+                    <span asp-validation-for="Employee.LastName"></span>
+                    <input asp-for="Employee.LastName" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.Bsn">BSN:*</label>
+                    <span asp-validation-for="Employee.Bsn"></span>
+                    <input asp-for="Employee.Bsn" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.Email">Email:*</label>
+                    <span asp-validation-for="Employee.Email"></span>
+                    <input asp-for="Employee.Email" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.Birthdate">Birthdate:*</label>
+                    <span asp-validation-for="Employee.Birthdate"></span>
+                    <input asp-for="Employee.Birthdate" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.ContractType">Contract type:*</label>
+                    <span asp-validation-for="Employee.ContractType"></span>
+                    <input asp-for="Employee.ContractType" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.HourlyWage">Hourly wage:*</label>
+                    <span asp-validation-for="Employee.HourlyWage"></span>
+                    <input asp-for="Employee.HourlyWage" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.Address">Address:*</label>
+                    <span asp-validation-for="Employee.Address"></span>
+                    <input asp-for="Employee.Address" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.DepartureReason">Departure reason:*</label>
+                    <span asp-validation-for="Employee.DepartureReason"></span>
+                    <input asp-for="Employee.DepartureReason" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.ShiftsPerWeek">Shifts per week:*</label>
+                    <span asp-validation-for="Employee.ShiftsPerWeek"></span>
+                    <input asp-for="Employee.ShiftsPerWeek" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.Role">Role:*</label>
+                    <span asp-validation-for="Employee.Role"></span>
+                    <input asp-for="Employee.Role" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.username">Username:*</label>
+                    <span asp-validation-for="Employee.username"></span>
+                    <input asp-for="Employee.username" />
+                </div>
+
+                <div>
+                    <label asp-for="Employee.password">Password:*</label>
+                    <span asp-validation-for="Employee.password"></span>
+                    <input asp-for="Employee.password" />
+                </div>
+
+                <div>
+                    <input type="submit" value="Save" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
