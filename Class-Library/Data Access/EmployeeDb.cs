@@ -138,5 +138,31 @@ namespace Class_Library.Data_Access
                 throw exc;
             }
         }
+
+        public bool LoginValidation(string username, string password)
+        {
+            MySqlCommand sql = new MySqlCommand("SELECT * FROM employees_zoo WHERE username=@username AND password=@password", this.connection);
+
+            sql.Parameters.AddWithValue("@username", username);
+            sql.Parameters.AddWithValue("@password", password);
+
+            try
+            {
+                this.connection.Open();
+
+                MySqlDataReader dr = sql.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
     }
 }

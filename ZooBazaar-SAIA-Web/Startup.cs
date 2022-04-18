@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ZooBazaar_SAIA_Web {
     public class Startup {
@@ -19,6 +20,12 @@ namespace ZooBazaar_SAIA_Web {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Login";
+                    options.Cookie.Name = "ZoobazaarCookie";
+                });
             services.AddRazorPages();
         }
 
@@ -38,6 +45,8 @@ namespace ZooBazaar_SAIA_Web {
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();

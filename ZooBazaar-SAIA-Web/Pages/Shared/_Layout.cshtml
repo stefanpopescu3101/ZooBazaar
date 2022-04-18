@@ -16,15 +16,19 @@
         <p class="subtitle">
             Employee web application
         </p>
-        <a asp-page="Login" class="navbutton">Login</a>
 
         @if (User.Identity.IsAuthenticated)
         {
             <a asp-page="Schedule" class="navbutton">Schedule</a>
-
+            <form class="log-out-form" method="post" asp-page="Login" asp-page-handler="Logout">
+                <button type="submit" class="navbutton log-out-button"><a>Sign out</a></button>
+            </form>
+        }
+        else
+        {
+            <a asp-area="" asp-page="Login" class="navbutton">Login</a>
         }
 
-        <a asp-page="Schedule" class="navbutton">Schedule</a>
     </nav>
     <div class="content">
         @RenderBody()
