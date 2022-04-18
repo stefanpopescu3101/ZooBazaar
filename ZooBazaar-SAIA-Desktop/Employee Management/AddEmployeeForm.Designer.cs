@@ -286,6 +286,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.btnCancel.TabIndex = 26;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAddEmp
             // 
