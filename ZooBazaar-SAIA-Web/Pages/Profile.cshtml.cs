@@ -22,7 +22,20 @@ namespace ZooBazaar_SAIA_Web.Pages
         }
         public void OnGet()
         {
-           //Employee= EmployeeManager.GetAllEmployees()[5];
+
+            if (Request.Cookies.ContainsKey("user"))
+            {
+                var username = Request.Cookies["user"];
+                foreach(Employee emp in EmployeeManager.GetAllEmployees())
+                {
+                    if(emp.username == username)
+                    {
+                        Employee = emp;
+                    }
+                }
+            }
+
+           
         }
 
         public IActionResult OnPost()
