@@ -20,6 +20,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <a asp-page="Schedule" class="navbutton">Schedule</a>
+            <a asp-page="Profile" class="navbutton">Profile</a>
             <form class="log-out-form" method="post" asp-page="Login" asp-page-handler="Logout">
                 <button type="submit" class="navbutton log-out-button"><a>Sign out</a></button>
             </form>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Class_Library;
 using Class_Library.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -21,7 +22,7 @@ namespace ZooBazaar_SAIA_Web.Pages
         }
         public void OnGet()
         {
-           Employee= EmployeeManager.GetAllEmployees()[5];
+           //Employee= EmployeeManager.GetAllEmployees()[5];
         }
 
         public IActionResult OnPost()
