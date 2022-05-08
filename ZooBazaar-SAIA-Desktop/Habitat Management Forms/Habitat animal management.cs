@@ -46,6 +46,8 @@ namespace ZooBazaar_SAIA_Desktop
             }
             habitatAnimalsLb.DataSource = bindingHabitatAnimals;
             availableAnimalsLb.DataSource = bindingAvailableAnimals;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void backBtn_Click(object sender, EventArgs e)

@@ -1,0 +1,33 @@
+﻿@page
+@model ZooBazaar_SAIA_Web.Pages.MessagesModel
+@{
+    ViewData["Title"] = "Messages";
+}
+<div class="flex">
+    @if (User.Identity.Name == "admin") {
+        <form method="post" class="message-form">
+            <div class="form-content">
+                <label asp-for="MessageText">Enter a message to send to all employees:</label>
+                <input asp-for="MessageText" type="text" />
+                <span asp-validation-for="MessageText" class="text-danger"></span>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    }
+    
+    <p class="message">
+        <u>Recent messages from manager</u>
+    </p>
+
+    @{var messages = Model.messages;}
+    @if (messages != null) {
+        foreach (var message in messages) {
+            <p class="message">
+                <b>@message.MessageDate.ToShortDateString()</b><br />
+                @message.MessageText
+            </p>
+        }
+    }
+</div>

@@ -15,6 +15,8 @@ namespace ZooBazaar_SAIA_Desktop {
             InitializeComponent();
             this.a = a;
             FillDetails();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void FillDetails() {

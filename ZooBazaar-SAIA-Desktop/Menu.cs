@@ -16,7 +16,8 @@ namespace ZooBazaar_SAIA_Desktop
         public Menu() 
         {
             InitializeComponent();
-
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         public Menu(Employee e)
@@ -24,6 +25,8 @@ namespace ZooBazaar_SAIA_Desktop
             InitializeComponent();
             loggedEmployee = e;
             userNameLbl.Text = loggedEmployee.FullName;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnAnimals_Click(object sender, EventArgs e) {

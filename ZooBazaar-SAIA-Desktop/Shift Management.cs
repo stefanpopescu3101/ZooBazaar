@@ -26,6 +26,8 @@ namespace ZooBazaar_SAIA_Desktop
             shiftManager = new ShiftManager();
             loggedEmployee = e;
             InitializeComponent();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnShowCalendar_Click(object sender, EventArgs e)

@@ -14,6 +14,8 @@ namespace ZooBazaar_SAIA_Desktop {
         public Remove_Animal(Animal a) {
             InitializeComponent();
             animal = a;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {

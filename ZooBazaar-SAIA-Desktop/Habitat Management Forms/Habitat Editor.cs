@@ -26,6 +26,8 @@ namespace ZooBazaar_SAIA_Desktop {
             typeCb.SelectedItem = typeCb.Items[^1];
             feedingValueCb.DataSource = Enum.GetValues(typeof(FeedingTime));
             feedingValueCb.SelectedItem = feedingValueCb.Items[0];
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         public Habitat_Editor(HabitatManager hm, Habitat h)
@@ -42,6 +44,8 @@ namespace ZooBazaar_SAIA_Desktop {
             feedingValueCb.SelectedItem = feedingValueCb.Items[(int)oldHabitat.FeedingTime];
             capacityTb.Text = h.Capacity.ToString();
             reqEmployeesTb.Text = h.RequiredEmployeesCount.ToString();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private bool IsValidEntry()

@@ -11,7 +11,9 @@ using Class_Library.Managers;
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Add_Animal : Form {
         public Add_Animal() {
-            InitializeComponent();            
+            InitializeComponent();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnSave_Click(object sender, EventArgs e) {

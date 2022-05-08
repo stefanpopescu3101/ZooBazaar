@@ -29,6 +29,8 @@ namespace ZooBazaar_SAIA_Desktop
             this.scheduler = scheduler;
             DisplayInfo();
             DisplayEmployees();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void DisplayInfo()

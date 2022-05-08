@@ -44,6 +44,8 @@ namespace ZooBazaar_SAIA_Desktop {
                     pResponsibleValueLbl.Text = "Unrecognized employee";
                 }
             }
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         // used to test and demo functionality of this form
