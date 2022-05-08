@@ -11,6 +11,7 @@
 <body>
     
     <form method="post" class="Profile">
+        <input hidden asp-for="Employee.password"  />
         <input hidden asp-for="Employee.ID" />
         <input hidden asp-for="Employee.StartDate" />
         <input hidden asp-for="Employee.EndDate" />
@@ -22,6 +23,8 @@
         <div>
             <div>
                 <h1>Profile</h1>
+
+
 
                 <div>
                     <label asp-for="Employee.FirstName">First name:*</label>
@@ -65,11 +68,9 @@
                     <input asp-for="Employee.username" />
                 </div>
 
-                <div>
-                    <label asp-for="Employee.password">Password:*</label>
-                    <span asp-validation-for="Employee.password"></span>
-                    <input asp-for="Employee.password" />
-                </div>
+
+
+
 
                 <div>
                     <input type="submit" value="Save" />

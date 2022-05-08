@@ -170,16 +170,16 @@ namespace Class_Library
 
         private bool MaximumShifts(Employee employee, string monday1, string sunday1)
         {
-            DateTime monday = DateTime.ParseExact(monday1, "M/d/yyyy", null);
-            DateTime sunday = DateTime.ParseExact(sunday1, "M/d/yyyy", null);
+            DateTime monday = DateTime.ParseExact(monday1, "dd/MM/yyyy", null);
+            DateTime sunday = DateTime.ParseExact(sunday1, "dd/MM/yyyy", null);
             int numberOfShifts = 0;
 
             foreach (WorkShift shift in this.AllShifts)
             {
                 if (shift.EmployeeId == employee.Id)
                 {
-                    if (DateTime.Compare(monday, DateTime.ParseExact(shift.Date, "M/d/yyyy", null)) <= 0 &&
-                    DateTime.Compare(sunday, DateTime.ParseExact(shift.Date, "M/d/yyyy", null)) >= 0)
+                    if (DateTime.Compare(monday, DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null)) <= 0 &&
+                    DateTime.Compare(sunday, DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null)) >= 0)
                     {
                         numberOfShifts++;
                     }

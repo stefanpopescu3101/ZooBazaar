@@ -93,13 +93,13 @@ namespace Class_Library
         public void RemoveEmployeesFutureShifts(Employee employee)
         {
             this.Load();
-            DateTime lastWorkDay = DateTime.ParseExact(employee.EndDate, "MM/dd/yyyy", null);
+            DateTime lastWorkDay = DateTime.ParseExact(employee.EndDate, "dd/MM/yyyy", null);
 
             for (int i = 0; i < this.WorkShifts.Count; i++)
             {
                 if (this.WorkShifts[i].EmployeeId == employee.Id)
                 {
-                    if (DateTime.Compare(DateTime.ParseExact(this.WorkShifts[i].Date, "MM/dd/yyyy", null), lastWorkDay) > 0)
+                    if (DateTime.Compare(DateTime.ParseExact(this.WorkShifts[i].Date, "dd/MM/yyyy", null), lastWorkDay) > 0)
                     {
                         this.WorkShifts[i].CancelShift();
                         this.shiftMediator.UpdateShift(this.WorkShifts[i]);
@@ -125,14 +125,14 @@ namespace Class_Library
         public bool CheckShiftsInTheFuture(Employee employee, string lastWorkingDate)
         {
             List<WorkShift> workShifts = this.GetActiveShifts();
-            DateTime lastWorkDay = DateTime.ParseExact(lastWorkingDate, "MM/dd/yyyy", null);
+            DateTime lastWorkDay = DateTime.ParseExact(lastWorkingDate, "dd/MM/yyyy", null);
             int counter = 0;
 
             for (int i = 0; i < workShifts.Count; i++)
             {
                 if (workShifts[i].EmployeeId == employee.Id)
                 {
-                    if (DateTime.Compare(DateTime.ParseExact(workShifts[i].Date, "MM/dd/yyyy", null), lastWorkDay) > 0)
+                    if (DateTime.Compare(DateTime.ParseExact(workShifts[i].Date, "dd/MM/yyyy", null), lastWorkDay) > 0)
                     {
                         counter++;
                     }
@@ -199,7 +199,7 @@ namespace Class_Library
             {
                 if (shift.EmployeeId == id)
                 {
-                    if (DateTime.ParseExact(shift.Date, "M/d/yyyy", null) >= DateTime.ParseExact(date, "M/d/yyyy", null) && DateTime.ParseExact(shift.Date, "M/d/yyyy", null) <= DateTime.ParseExact(lastDate, "M/d/yyyy", null))
+                    if (DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) >= DateTime.ParseExact(date, "dd/MM/yyyy", null) && DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) <= DateTime.ParseExact(lastDate, "dd/MM/yyyy", null))
                     {
                         workShiftsOfCurrentMonth.Add(shift);
                     }
@@ -219,7 +219,7 @@ namespace Class_Library
             {
                 if (shift.EmployeeId == id)
                 {
-                    if (DateTime.ParseExact(shift.Date, "M/d/yyyy", null) >= DateTime.ParseExact(date, "M/d/yyyy", null) && DateTime.ParseExact(shift.Date, "M/d/yyyy", null) <= DateTime.ParseExact(lastDate, "M/d/yyyy", null))
+                    if (DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) >= DateTime.ParseExact(date, "dd/MM/yyyy", null) && DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) <= DateTime.ParseExact(lastDate, "dd/MM/yyyy", null))
                     {
                         workShiftsOfCurrentMonth.Add(shift);
                     }
@@ -247,7 +247,7 @@ namespace Class_Library
             {
                 if (shift.EmployeeId == id)
                 {
-                    if (DateTime.ParseExact(shift.Date, "M/d/yyyy", null) >= DateTime.ParseExact(date, "M/d/yyyy", null) && DateTime.ParseExact(shift.Date, "M/d/yyyy", null) <= DateTime.ParseExact(lastDate, "M/d/yyyy", null))
+                    if (DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) >= DateTime.ParseExact(date, "dd/MM/yyyy", null) && DateTime.ParseExact(shift.Date, "dd/MM/yyyy", null) <= DateTime.ParseExact(lastDate, "dd/MM/yyyy", null))
                     {
                         workShiftsOfCurrentMonth.Add(shift);
                     }
