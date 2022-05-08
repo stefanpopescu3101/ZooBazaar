@@ -135,7 +135,7 @@ namespace ZooBazaar_SAIA_Desktop
             }
             int lasdate = DateTime.DaysInMonth(year, month);
             string currentDate = new DateTime(year, month, lasdate).ToString("d");
-            if (DateTime.Compare(date, DateTime.ParseExact(currentDate, "M/d/yyyy", null)) < 0)
+            if (DateTime.Compare(date, DateTime.ParseExact(currentDate, "dd/MM/yyyy", null)) < 0)
             {
                 MessageBox.Show("You can not schedule employees for a date in the past.");
                 return false;
