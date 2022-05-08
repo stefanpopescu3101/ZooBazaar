@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Class_Library.Object_Classes.Enums;
 
 namespace Class_Library {
     public class Animal {
@@ -18,9 +19,10 @@ namespace Class_Library {
         public string health { get; set; }
         public DateTime arrivalDate { get; set; }
         public DateTime departureDate { get; set; }
+        public HabitatType animalType { get; set; }
+        public bool isPredator { get; set; }
 
         //constructor for adding new animal
-        //TODO: initialise the status
         public Animal(string name, string species, Sex sex, DateTime birthday, DateTime arrivalDate, string health) {
             this.name = name;
             this.species = species;
@@ -38,7 +40,7 @@ namespace Class_Library {
         }
 
         //constructor for getting animal from the database
-        public Animal(int id, string name, string species, Sex sex, DateTime birthday, int? habitat, bool isInZoo, string health, DateTime arrivalDate, DateTime departureDate) {
+        public Animal(int id, string name, string species, Sex sex, DateTime birthday, int? habitat, bool isInZoo, string health, DateTime arrivalDate, DateTime departureDate, HabitatType animalType, bool isPredator) {
             this.ID = id;
             this.name = name;
             this.species = species;
@@ -49,6 +51,8 @@ namespace Class_Library {
             this.health = health;
             this.arrivalDate = arrivalDate;
             this.departureDate = departureDate;
+            this.animalType = animalType;
+            this.isPredator = isPredator;
         }
 
         //get the details of the animal, after selecting an ID
