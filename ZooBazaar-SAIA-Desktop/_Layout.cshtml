@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ZooBazaar</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <h1>
+            Zoo Bazaar
+        </h1>
+    </header>
+    <nav>
+        <p class="subtitle">
+            Employee web application
+        </p>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-page="Schedule" class="navbutton">Schedule</a>
+            <a asp-page="Profile" class="navbutton">Profile</a>
+            <form class="log-out-form" method="post" asp-page="Login" asp-page-handler="Logout">
+                <button type="submit" class="navbutton log-out-button"><a>Sign out</a></button>
+            </form>
+        }
+        else
+        {
+            <a asp-area="" asp-page="Login" class="navbutton">Login</a>
+        }
+
+    </nav>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer>
+        <p>Design and code by Team SAIA - &copy; 2022</p>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

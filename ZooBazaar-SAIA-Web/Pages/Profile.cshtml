@@ -11,9 +11,14 @@
 <body>
     
     <form method="post" class="Profile">
-        <input  hidden asp-for="Employee.ID" />
-        <input  hidden asp-for="Employee.StartDate" />
-        <input  hidden asp-for="Employee.EndDate" />
+        <input hidden asp-for="Employee.ID" />
+        <input hidden asp-for="Employee.StartDate" />
+        <input hidden asp-for="Employee.EndDate" />
+        <input hidden asp-for="Employee.ContractType" />
+        <input hidden asp-for="Employee.HourlyWage" />
+        <input hidden asp-for="Employee.DepartureReason" />
+        <input hidden asp-for="Employee.ShiftsPerWeek" />
+        <input hidden asp-for="Employee.Role" />
         <div>
             <div>
                 <h1>Profile</h1>
@@ -49,39 +54,9 @@
                 </div>
 
                 <div>
-                    <label asp-for="Employee.ContractType">Contract type:*</label>
-                    <span asp-validation-for="Employee.ContractType"></span>
-                    <input asp-for="Employee.ContractType" />
-                </div>
-
-                <div>
-                    <label asp-for="Employee.HourlyWage">Hourly wage:*</label>
-                    <span asp-validation-for="Employee.HourlyWage"></span>
-                    <input asp-for="Employee.HourlyWage" />
-                </div>
-
-                <div>
                     <label asp-for="Employee.Address">Address:*</label>
                     <span asp-validation-for="Employee.Address"></span>
                     <input asp-for="Employee.Address" />
-                </div>
-
-                <div>
-                    <label asp-for="Employee.DepartureReason">Departure reason:*</label>
-                    <span asp-validation-for="Employee.DepartureReason"></span>
-                    <input asp-for="Employee.DepartureReason" />
-                </div>
-
-                <div>
-                    <label asp-for="Employee.ShiftsPerWeek">Shifts per week:*</label>
-                    <span asp-validation-for="Employee.ShiftsPerWeek"></span>
-                    <input asp-for="Employee.ShiftsPerWeek" />
-                </div>
-
-                <div>
-                    <label asp-for="Employee.Role">Role:*</label>
-                    <span asp-validation-for="Employee.Role"></span>
-                    <input asp-for="Employee.Role" />
                 </div>
 
                 <div>

@@ -184,6 +184,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // tbFirstName
             // 
             this.tbFirstName.Location = new System.Drawing.Point(41, 79);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(170, 27);
             this.tbFirstName.TabIndex = 13;
@@ -336,6 +337,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(814, 501);
             this.Controls.Add(this.tbBsn);
             this.Controls.Add(this.label14);
