@@ -4,4 +4,11 @@
     ViewData["Title"] = "Home";
 }
 
+@if (!User.Identity.IsAuthenticated) {
+    <p>
+        Welcome to the web application of Zoo Bazaar.<br />
+        Log in with your employee credentials.<br />
+        If you are a customer looking for our website, <u>click here.</u>
+    </p>
+}
 
