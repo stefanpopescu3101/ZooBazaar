@@ -20,6 +20,8 @@ namespace ZooBazaar_SAIA_Desktop {
             animal = a;
             animalManager = am;
             FillHabitatList();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         // I think, that it's better to store animal id as int not as string.

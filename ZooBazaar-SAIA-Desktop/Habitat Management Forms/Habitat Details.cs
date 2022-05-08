@@ -56,6 +56,8 @@ namespace ZooBazaar_SAIA_Desktop {
             bindingAnimals.ResetBindings();
             reqEmpValueLbl.Text = h.RequiredEmployeesCount.ToString();
             animalsLb.SelectionMode = SelectionMode.None;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
 

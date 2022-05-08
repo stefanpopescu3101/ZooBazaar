@@ -10,6 +10,8 @@ namespace ZooBazaar_SAIA_Desktop {
     public partial class Employee_Scheduling : Form {
         public Employee_Scheduling() {
             InitializeComponent();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
     }
 }

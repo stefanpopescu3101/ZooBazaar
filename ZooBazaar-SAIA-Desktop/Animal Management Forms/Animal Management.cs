@@ -18,6 +18,8 @@ namespace ZooBazaar_SAIA_Desktop {
             loggedEmployee = e;
             animalManager.GetAllAnimals();
             RefreshList(animalManager.Animals);
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {

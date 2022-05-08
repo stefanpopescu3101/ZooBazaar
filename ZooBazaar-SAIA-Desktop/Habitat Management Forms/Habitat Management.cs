@@ -46,6 +46,8 @@ namespace ZooBazaar_SAIA_Desktop
             }
 
             lbHabitats.DataSource = habitats;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void lbHabitats_SelectedIndexChanged(object sender, EventArgs e)

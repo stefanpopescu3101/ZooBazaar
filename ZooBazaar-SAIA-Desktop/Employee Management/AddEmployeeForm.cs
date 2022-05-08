@@ -23,6 +23,8 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             ok = 0;
             this.employeeManager = new EmployeeManager();
             InitializeComponent();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         public AddEmployeeForm(Employee employee)
@@ -45,6 +47,8 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             dtpEndDate.Value = Convert.ToDateTime(employee.EndDate);
             tbUsername.Text = employee.username;
             tbPassword.Text = string.Empty;
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
         private void btnAddEmp_Click(object sender, EventArgs e)

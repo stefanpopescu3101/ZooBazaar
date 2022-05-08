@@ -20,6 +20,8 @@ namespace ZooBazaar_SAIA_Desktop
             InitializeComponent();
 
             employeeManager = new EmployeeManager();
+            FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
+            styleUpdater.UpdateStyle();
         }
 
  
