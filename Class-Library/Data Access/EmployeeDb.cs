@@ -9,7 +9,28 @@ namespace Class_Library.Data_Access
     {
         public EmployeeDb() : base() { }
 
+        public int GetEmployeeIdByUsername(string username)
+        {
+            int id = -1;
+            try
+            {
+                var sql = "SELECT id FROM `employees_zoo` WHERE username = @username";
+                var cmd = new MySqlCommand(sql, this.connection);
+                cmd.Parameters.AddWithValue("@username", username);
+                connection.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    id = Convert.ToInt32(dr[0]);
+                }
 
+                return id;
+            }
+            finally 
+            {
+                connection.Close();
+            }
+        }
         public int AddEmployee(Employee emp)
         {
             try

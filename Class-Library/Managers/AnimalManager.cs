@@ -87,5 +87,10 @@ namespace Class_Library.Managers {
                 }
             }
         }
+
+        public Animal GetAnimalById(int id)
+        {
+            return Animals.Find(x => x.ID == id);
+        }
     }
 }

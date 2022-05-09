@@ -54,7 +54,8 @@ namespace ZooBazaar_SAIA_Web.Pages
 
         public IActionResult OnPostReset()
         {
-            string id = HttpContext.Session.GetString("id");
+            // string id = HttpContext.Session.GetString("id");
+            string id = Request.Cookies["id"];
             this.workShifts = shiftManager.GetWorkShiftsOfCurrentMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -63,7 +64,8 @@ namespace ZooBazaar_SAIA_Web.Pages
 
         public IActionResult OnPostPrevious()
         {
-            string id = HttpContext.Session.GetString("id");
+            // string id = HttpContext.Session.GetString("id");
+            string id = Request.Cookies["id"];
             this.workShifts = shiftManager.PreviousMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -71,7 +73,8 @@ namespace ZooBazaar_SAIA_Web.Pages
         }
         public IActionResult OnPostNext()
         {
-            string id = HttpContext.Session.GetString("id");
+            // string id = HttpContext.Session.GetString("id");
+            string id = Request.Cookies["id"];
             this.workShifts = shiftManager.NextMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -80,15 +83,17 @@ namespace ZooBazaar_SAIA_Web.Pages
 
         public IActionResult OnPostShow()
         {
-            string id = HttpContext.Session.GetString("id");
-           /// this.unavailableShifts = shiftManager.GetUnavailableShiftsEmployee(Convert.ToInt32(id));
+            // string id = HttpContext.Session.GetString("id");
+            string id = Request.Cookies["id"];
+            /// this.unavailableShifts = shiftManager.GetUnavailableShiftsEmployee(Convert.ToInt32(id));
             return Page();
         }
 
 
         public IActionResult OnPostConfirm()
         {
-            string id = HttpContext.Session.GetString("id");
+            // string id = HttpContext.Session.GetString("id");
+            string id = Request.Cookies["id"];
             var date = DateTime.Parse(UnavailableDate.ToString()).ToShortDateString();
            /// this.Unavailable = new UnavailableShift(Convert.ToInt32(id), date);
            ///this.shiftManager.AddUnavailableShift(Unavailable);

@@ -8,12 +8,14 @@ namespace Class_Library.Data_Access
     public class HabitatManager
     {
         private readonly HabitatDb habitatDb;
+        private readonly AnimalManager animalManager;
         public List<Habitat> Habitats { get; set; }
 
         public HabitatManager()
         {
             habitatDb = new HabitatDb();
             Habitats = new List<Habitat>();
+            animalManager = new AnimalManager();
             LoadHabitats();
             LoadAnimals();
         }
@@ -32,7 +34,6 @@ namespace Class_Library.Data_Access
 
         private void LoadAnimals()
         {
-            var animalManager = new AnimalManager();
             animalManager.GetAllAnimals();
             foreach (var habitat in Habitats)
             {
@@ -105,13 +106,109 @@ namespace Class_Library.Data_Access
                     throw new ArgumentException("This animal is already stored in this habitat.");
                 }
 
+                if (!IsHabitatSafe(habitat, (int)animalId))
+                {
+                    throw new ArgumentException("This habitat is too dangerous for this animal.");
+                }
+
+                if (!IsHabitatSuitable(habitat, (int)animalId))
+                {
+                    throw new ArgumentException("This habitat isn't suitable for this animal.");
+                }
+
                 habitat.AnimalIds.Add((int)animalId);
-                // habitatDb.AddAnimal(habitat, animal);
             }
             else
             {
                 throw new ArgumentOutOfRangeException("Habitat is full!");
             }
+        }
+
+        /*
+                 * check if animal is predator
+                 * if true:
+                 *  check habitat inhabitants
+                 *  if empty - animal can be assigned to the habitat
+                 *
+                 *  if there are other predators, check if they are of the same species
+                 *  if true - animal can be assigned to the habitat
+                 *  else animal can't be assigned to this habitat
+                 * else
+                 *  check if there are predators in the habitat
+                 *  animal cannot be assigned to the habitat
+                 *  else animal can be assigned
+                 */
+        private bool IsHabitatSafe(Habitat habitat, int animalId)
+        {
+            var output = false;
+            var animal = animalManager.GetAnimalById(animalId);
+            if (animal == null)
+            {
+                output =  false;
+            }
+            if (habitat.AnimalIds.Count == 0)
+            {
+                output =  true;
+            }
+
+            var predatorsPresent = AreThereAnyPredators(habitat);
+            if (animal.isPredator)
+            {
+                if (predatorsPresent)
+                {
+                    //   if there are other predators, check if they are of the same species
+                    //   if true - animal can be assigned to the habitat
+                    //   else animal can't be assigned to this habitat
+                    var predator = GetPredator(habitat);
+                    output = (animal.species.Equals(predator.species));
+                }
+            }
+            else
+            {
+                output = !predatorsPresent;
+            }
+
+            return output;
+        }
+
+        private bool IsHabitatSuitable(Habitat habitat, int animalId)
+        {
+            // consider replacing with query to db for speed
+            var animal = animalManager.GetAnimalById(animalId);
+            if (habitat.Type == animal.animalType)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool AreThereAnyPredators(Habitat habitat)
+        {
+            foreach (var habitatAnimalId in habitat.AnimalIds)
+            {
+                var animal = animalManager.GetAnimalById(habitatAnimalId);
+                if (animal.isPredator)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private Animal GetPredator(Habitat habitat)
+        {
+            foreach (var habitatAnimalId in habitat.AnimalIds)
+            {
+                var animal = animalManager.GetAnimalById(habitatAnimalId);
+                if (animal.isPredator)
+                {
+                    return animal;
+                }
+            }
+
+            return null;
         }
 
         public void RemoveAnimal(Habitat habitat, int? animalId)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Class_Library.Object_Classes.Enums;
 using MySqlConnector;
 
 namespace Class_Library.Data_Access {
@@ -9,7 +10,7 @@ namespace Class_Library.Data_Access {
 
         public int AddNewAnimal(Animal a) {
             try {
-                var sql = "insert into animals_zoo (Name, Species, Sex, Birthday, IsInZoo, Health, ArrivalDate, DepartureDate) values (@name, @species, @sex, @birthday, @isinzoo, @health, @arrivaldate, @departuredate)";
+                var sql = "insert into animals_zoo (Name, Species, Sex, Birthday, IsInZoo, Health, ArrivalDate, DepartureDate, AnimalType, IsPredator) values (@name, @species, @sex, @birthday, @isinzoo, @health, @arrivaldate, @departuredate, @animalType, @isPredator)";
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@name", a.name);
                 cmd.Parameters.AddWithValue("@species", a.species);
@@ -19,7 +20,8 @@ namespace Class_Library.Data_Access {
                 cmd.Parameters.AddWithValue("@health", a.health);
                 cmd.Parameters.AddWithValue("@arrivaldate", a.arrivalDate);
                 cmd.Parameters.AddWithValue("@departuredate", a.departureDate);
-
+                cmd.Parameters.AddWithValue("@animalType", (int)a.animalType);
+                cmd.Parameters.AddWithValue("isPredator", a.isPredator);
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 var id = cmd.LastInsertedId;
@@ -58,7 +60,9 @@ namespace Class_Library.Data_Access {
                             data.GetBoolean(5),
                             data.GetString(6),
                             data.GetDateTime(7),
-                            data.GetDateTime(8)
+                            data.GetDateTime(8),
+                            (HabitatType)data.GetInt32(10),
+                            data.GetBoolean(11)
                             )
                         );
                 }

@@ -48,7 +48,8 @@ namespace ZooBazaar_SAIA_Web.Pages
                 if (isVerified)
                 {
                     Response.Cookies.Append("user", Login);
-
+                    var userId = db.GetEmployeeIdByUsername(Login);
+                    Response.Cookies.Append("id", userId.ToString());
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,Login)

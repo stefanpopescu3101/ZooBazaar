@@ -67,8 +67,8 @@ namespace ZooBazaar_SAIA_Desktop
                     bindingHabitatAnimals.Add(selectedAvailableAnimal);
                     bindingAvailableAnimals.Remove(selectedAvailableAnimal);
 
-                    selectedHabitatAnimal = (Animal)habitatAnimalsLb.SelectedItem;
-                    selectedAvailableAnimal = (Animal)availableAnimalsLb.SelectedItem;
+                    selectedHabitatAnimal = (Animal) habitatAnimalsLb.SelectedItem;
+                    selectedAvailableAnimal = (Animal) availableAnimalsLb.SelectedItem;
 
                     // TODO write changes to db(animals and habitat)
                 }
@@ -76,6 +76,10 @@ namespace ZooBazaar_SAIA_Desktop
                 {
                     MessageBox.Show("Selected habitat is full.", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     // TODO: show message box for each type of exceptions
+                }
+                catch (ArgumentException exception)
+                {
+                    MessageBox.Show(exception.Message, "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception exception)
                 {
