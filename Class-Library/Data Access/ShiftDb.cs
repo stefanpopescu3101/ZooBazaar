@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes;
 using MySqlConnector;
 
 
@@ -199,6 +200,68 @@ namespace Class_Library
             {
                 this.connection.Close();
 
+            }
+        }
+
+        public bool AddUnavailableShift(UnavailableShift unavailableShift)
+        {
+            try
+            {
+                connection.Open();
+
+                var query = "INSERT INTO unavailability_zoo (employee_id, unavailableDay) VALUES (@ID, @unavailableDay)";
+                var cmd = new MySqlCommand(query, this.connection);
+
+                cmd.Parameters.AddWithValue("@ID", unavailableShift.EmployeeId);
+                cmd.Parameters.AddWithValue("@unavailableDay", unavailableShift.UnavailableDay);
+
+
+
+                cmd.ExecuteNonQuery();
+                
+
+
+                return true;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        public List<UnavailableShift> GetAllUnavailable()
+        {
+            try
+            {
+                var query = "SELECT * FROM unavailability_zoo ";
+                var cmd = new MySqlCommand(query, this.connection);
+
+                this.connection.Open();
+
+                List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    UnavailableShift unavailableShift = new UnavailableShift(
+                        Convert.ToInt32(reader["employee_id"]), reader["unavailableDay"].ToString()
+                        );
+
+
+                    unavailableShifts.Add(unavailableShift);
+
+
+
+                    
+                }
+
+                return unavailableShifts;
+
+
+
+            }
+            finally
+            {
+                this.connection.Close();
             }
         }
     }

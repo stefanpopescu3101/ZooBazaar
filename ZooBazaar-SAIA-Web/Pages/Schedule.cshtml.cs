@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using Class_Library.Managers;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes;
 
 namespace ZooBazaar_SAIA_Web.Pages
 {
@@ -26,8 +27,11 @@ namespace ZooBazaar_SAIA_Web.Pages
         public ShiftManager shiftManager;
 
         public List<WorkShift> workShifts = new List<WorkShift>();
-        ///public List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
-        public List<WorkShift> unavailableShifts = new List<WorkShift>();
+
+        public List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
+
+
+        public UnavailableShift Unavailable { get; set; }
 
         public ScheduleModel()
         {
@@ -36,26 +40,26 @@ namespace ZooBazaar_SAIA_Web.Pages
             shiftManager = new ShiftManager();
         }
 
-        //public void OnGet()
-        //{
-        //    if (HttpContext.Session.Get("id") != null)
-        //    {
-        //        string id = HttpContext.Session.GetString("id");
-        //        if (manager.GetEmployee(Convert.ToInt32(id)) != null)
-        //        {
-        //            this.Emp = manager.GetEmployee(Convert.ToInt32(id));
-        //            Name = Emp.FirstName + " " + Emp.LastName;
+        public void OnGet()
+        {
 
+                int id = med.GetEmployeeIdByUsername(User.Identity.Name);
+                if (manager.GetEmployee(Convert.ToInt32(id)) != null)
+                {
+                    this.Emp = manager.GetEmployee(Convert.ToInt32(id));
+                    Name = Emp.FirstName + " " + Emp.LastName;
 
-        //        }
-        //    }
-        //}
+                    this.workShifts = shiftManager.GetWorkShiftsOfCurrentMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
+                    this.unavailableShifts = shiftManager.GetUnavailableShiftsEmployee(Convert.ToInt32(id));
+                }
+            
+        }
 
 
         public IActionResult OnPostReset()
         {
             // string id = HttpContext.Session.GetString("id");
-            string id = Request.Cookies["id"];
+            int id = med.GetEmployeeIdByUsername(User.Identity.Name);
             this.workShifts = shiftManager.GetWorkShiftsOfCurrentMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -65,7 +69,7 @@ namespace ZooBazaar_SAIA_Web.Pages
         public IActionResult OnPostPrevious()
         {
             // string id = HttpContext.Session.GetString("id");
-            string id = Request.Cookies["id"];
+            int id = med.GetEmployeeIdByUsername(User.Identity.Name);
             this.workShifts = shiftManager.PreviousMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -74,7 +78,7 @@ namespace ZooBazaar_SAIA_Web.Pages
         public IActionResult OnPostNext()
         {
             // string id = HttpContext.Session.GetString("id");
-            string id = Request.Cookies["id"];
+            int id = med.GetEmployeeIdByUsername(User.Identity.Name);
             this.workShifts = shiftManager.NextMonth(Convert.ToInt32(id), DateTime.Now.Month, DateTime.Now.Year);
             this.Emp = manager.GetEmployee(Convert.ToInt32(id));
             Name = Emp.FirstName + " " + Emp.LastName;
@@ -84,8 +88,8 @@ namespace ZooBazaar_SAIA_Web.Pages
         public IActionResult OnPostShow()
         {
             // string id = HttpContext.Session.GetString("id");
-            string id = Request.Cookies["id"];
-            /// this.unavailableShifts = shiftManager.GetUnavailableShiftsEmployee(Convert.ToInt32(id));
+            int id = med.GetEmployeeIdByUsername(User.Identity.Name);
+            this.unavailableShifts = shiftManager.GetUnavailableShiftsEmployee(Convert.ToInt32(id));
             return Page();
         }
 
@@ -93,10 +97,10 @@ namespace ZooBazaar_SAIA_Web.Pages
         public IActionResult OnPostConfirm()
         {
             // string id = HttpContext.Session.GetString("id");
-            string id = Request.Cookies["id"];
+            int id = med.GetEmployeeIdByUsername(User.Identity.Name);
             var date = DateTime.Parse(UnavailableDate.ToString()).ToShortDateString();
-           /// this.Unavailable = new UnavailableShift(Convert.ToInt32(id), date);
-           ///this.shiftManager.AddUnavailableShift(Unavailable);
+            this.Unavailable = new UnavailableShift(Convert.ToInt32(id), date);
+            this.shiftManager.AddUnavailableShift(Unavailable);
             return Page();
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Class_Library.Object_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,17 @@ namespace Class_Library
     public class ShiftManager
     {
         public List<WorkShift> WorkShifts { get; private set; }
+
+        public List<UnavailableShift> UnavailableShifts { get; private set; }
+
         private ShiftDb shiftMediator;
 
         public ShiftManager()
         {
             this.WorkShifts = new List<WorkShift>();
+            this.UnavailableShifts = new List<UnavailableShift>();
             this.shiftMediator = new ShiftDb();
+            this.LoadUnavailable();
         }
 
         public bool Add(WorkShift workShift)
@@ -121,6 +127,18 @@ namespace Class_Library
             return workShifts;
         }
 
+        //public List<WorkShift> GetUnavailableShiftsEmployee(int v)
+        //{
+        //    //List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
+        //    //foreach (UnavailableShift shift in GetUnavailableShifts())
+        //    //{
+        //    //    if (shift.EmployeeId == id)
+        //    //    {
+        //    //        unavailableShifts.Add(shift);
+        //    //    }
+        //    //}
+        //    //return unavailableShifts;
+        //}
 
         public bool CheckShiftsInTheFuture(Employee employee, string lastWorkingDate)
         {
@@ -254,6 +272,55 @@ namespace Class_Library
                 }
             }
             return workShiftsOfCurrentMonth;
+        }
+
+        public List<UnavailableShift> GetUnavailableShifts()
+        {
+            List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
+            foreach (UnavailableShift unavailableShift in this.UnavailableShifts)
+            {
+                unavailableShifts.Add(unavailableShift);
+            }
+
+            return unavailableShifts;
+        }
+
+        public List<UnavailableShift> GetUnavailableShiftsEmployee(int id)
+        {
+
+            List<UnavailableShift> unavailableShifts = new List<UnavailableShift>();
+            foreach (UnavailableShift shift in GetUnavailableShifts())
+            {
+                if (shift.EmployeeId == id)
+                {
+                    unavailableShifts.Add(shift);
+                }
+            }
+            return unavailableShifts;
+        }
+
+        public bool AddUnavailableShift(UnavailableShift shift)
+        {
+            
+            if (shift != null)
+            {
+                this.UnavailableShifts.Add(shift);
+                this.shiftMediator.AddUnavailableShift(shift);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool LoadUnavailable()
+        {
+            this.UnavailableShifts = this.shiftMediator.GetAllUnavailable();
+            if (this.UnavailableShifts != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void Reset()
