@@ -90,7 +90,7 @@ namespace Class_Library
                     reader["Date"].ToString(),
                     (reader["type"]).ToString(),
                     Convert.ToDecimal(reader["wageForShift"]),
-                    Convert.ToInt32(reader["hoursWorked"]));
+                    Convert.ToInt32(reader["hoursWorked"]), Convert.ToInt32(reader["HabitatID"]), reader["HabitatName"].ToString());
 
 
 

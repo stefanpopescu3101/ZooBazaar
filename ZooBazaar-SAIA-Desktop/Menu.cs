@@ -38,7 +38,7 @@ namespace ZooBazaar_SAIA_Desktop
 
         private void btnHabitats_Click(object sender, EventArgs e) {
             //Habitat Management button is clicked
-            Habitat_Management habitat_Management = new Habitat_Management(loggedEmployee);
+            btnAssignEmployeesToWork habitat_Management = new btnAssignEmployeesToWork(loggedEmployee);
             habitat_Management.Show();
             this.Close();
         }

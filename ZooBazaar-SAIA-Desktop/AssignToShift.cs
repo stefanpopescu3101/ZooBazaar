@@ -67,7 +67,7 @@ namespace ZooBazaar_SAIA_Desktop
                 string[] words = emp.Split(' ');
                 int id = Convert.ToInt32(words[1]);
                 Employee employee = scheduler.EmployeeManager.GetEmployee(id);
-                WorkShift workShift = new WorkShift(employee.ID, employee.Name, this.date, this.shiftType, Convert.ToDecimal(employee.HourlyWage), 8);
+                WorkShift workShift = new WorkShift(employee.ID, employee.Name, this.date, this.shiftType, Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                 shiftM.Add(workShift);
 
                 MessageBox.Show("Employee has been assigned successfully!");

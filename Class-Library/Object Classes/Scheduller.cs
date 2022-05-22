@@ -103,13 +103,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.Id, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.Id, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesMorning++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesMorning++;
                                 }
@@ -119,13 +119,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesAfternoon++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesAfternoon++;
                                 }
@@ -135,13 +135,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesEvening++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesEvening++;
                                 }

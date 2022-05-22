@@ -15,10 +15,12 @@ namespace Class_Library
         public decimal WageForShift { get; private set; }
         public int HoursWorked { get; private set; }
         public int ID { get; set; }
+        public string HabitatName { get; private set; }
+        public int HabitatID { get; private set; }
 
         public bool Cancelled { get; private set; }
 
-        public WorkShift(int employeeId, string employee, string date, string type, decimal wage, int hours)
+        public WorkShift(int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
         {
             this.EmployeeId = employeeId;
             this.EmployeeName = employee;
@@ -26,14 +28,18 @@ namespace Class_Library
             this.Type = type;
             this.WageForShift = wage;
             this.HoursWorked = hours;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
             this.Cancelled = false;
         }
 
-        public WorkShift(int employeeId, string type, int hours)
+        public WorkShift(int employeeId, string type, int hours, int habitatId, string habitatName)
         {
             this.EmployeeId = employeeId;
             this.Type = type;
             this.HoursWorked = hours;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
         }
 
         public bool CancelShift()
