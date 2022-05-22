@@ -9,6 +9,8 @@ using Class_Library;
 using Class_Library.Managers;
 using Class_Library.Object_Classes;
 using MySqlConnector;
+using Outlook = Microsoft.Office.Interop.Outlook;
+
 
 namespace ZooBazaar_SAIA_Desktop.Employee_Management
 {
@@ -53,10 +55,20 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
 
         private void btnAddEmp_Click(object sender, EventArgs e)
         {
+           
+
             try
             {
+                
                 if (ok == 0) //if making a new employee (not updating employee)
                 {
+                    //Using the outlook ref to create the email
+                    Outlook._Application _app = new Outlook.Application();
+                    Outlook.MailItem mail = (Outlook.MailItem)_app.CreateItem(Outlook.OlItemType.olMailItem);
+                    mail.To = tbEmail.Text;
+                    mail.Subject = "Login redentials!";
+                    mail.Body = RandomString(10, true);
+
                     btnAddEmp.Text = "Add employee";
                     string firstName = tbFirstName.Text;
                     string lastName = tbLastName.Text;
@@ -119,12 +131,28 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public string RandomString(int size, bool lowerCase)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
         }
     }
 }
