@@ -32,6 +32,12 @@ namespace Class_Library.Data_Access
             Habitats= habitatDb.LoadHabitats();
         }
 
+        public List<Habitat> GetHabitats()
+        {
+            Habitats = habitatDb.LoadHabitats();
+            return Habitats;
+        }
+
         private void LoadAnimals()
         {
             animalManager.GetAllAnimals();

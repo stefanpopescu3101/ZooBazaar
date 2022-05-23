@@ -21,8 +21,8 @@ namespace Class_Library
             {
                 connection.Open();
 
-                var query = "INSERT INTO workshifts_zoo (employeeID, employeeName, type, Date, wageForShift, hoursWorked)" +
-                "VAlUES (@employeeID, @employeeName, @type, @Date, @wageForShift, @hoursWorked)";
+                var query = "INSERT INTO workshifts_zoo (employeeID, employeeName, type, Date, wageForShift, hoursWorked, HabitatID, HabitatName)" +
+                "VAlUES (@employeeID, @employeeName, @type, @Date, @wageForShift, @hoursWorked, @HabitatID, @HabitatName)";
                 var cmd = new MySqlCommand(query, this.connection);
                 
                 cmd.Parameters.AddWithValue("@employeeID", shift.EmployeeId);
@@ -31,6 +31,8 @@ namespace Class_Library
                 cmd.Parameters.AddWithValue("@Date", shift.Date);
                 cmd.Parameters.AddWithValue("@wageForShift", shift.WageForShift);
                 cmd.Parameters.AddWithValue("@hoursWorked", shift.HoursWorked);
+                cmd.Parameters.AddWithValue("@HabitatID", shift.HabitatID);
+                cmd.Parameters.AddWithValue("@HabitatName", shift.HabitatName);
 
 
                 cmd.ExecuteNonQuery();
@@ -133,6 +135,39 @@ namespace Class_Library
 
 
                
+                return true;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        public bool UpdateInfo(WorkShift shift)
+        {
+            try
+            {
+                this.connection.Open();
+
+                var query = "UPDATE workshifts_zoo SET employeeID=@EmployeeID, employeeName=@EmployeeName, type=@Type, Date=@Date, wageForShift=@WageForShift, hoursWorked=@HoursWorked, HabitatID=@HabitatID, HabitatName=@HabitatName  WHERE id = @id";
+                var cmd = new MySqlCommand(query, this.connection);
+
+
+                cmd.Parameters.AddWithValue("@id", shift.ID);
+                cmd.Parameters.AddWithValue("@EmployeeID", shift.EmployeeId);
+                cmd.Parameters.AddWithValue("@EmployeeName", shift.EmployeeName);
+                cmd.Parameters.AddWithValue("@Type", shift.Type);
+                cmd.Parameters.AddWithValue("@Date", shift.Date);
+                cmd.Parameters.AddWithValue("@WageForShift", shift.WageForShift);
+                cmd.Parameters.AddWithValue("@HoursWorked", shift.HoursWorked);
+                cmd.Parameters.AddWithValue("@HabitatID", shift.HabitatID);
+                cmd.Parameters.AddWithValue("@HabitatName", shift.HabitatName);
+                
+                cmd.ExecuteNonQuery();
+
+
+
+
                 return true;
             }
             finally

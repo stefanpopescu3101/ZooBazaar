@@ -42,6 +42,19 @@ namespace Class_Library
             this.HabitatName = habitatName;
         }
 
+        public void UpdateInfo(int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
+        {
+            this.EmployeeId = employeeId;
+            this.EmployeeName = employee;
+            this.Date = date;
+            this.Type = type;
+            this.WageForShift = wage;
+            this.HoursWorked = hours;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
+            this.Cancelled = false;
+        }
+
         public bool CancelShift()
         {
             if (!this.Cancelled)
