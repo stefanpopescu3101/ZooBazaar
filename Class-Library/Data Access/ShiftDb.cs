@@ -86,7 +86,7 @@ namespace Class_Library
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    WorkShift workshift = new WorkShift(
+                    WorkShift workshift = new WorkShift(Convert.ToInt32(reader["id"]),
                     Convert.ToInt32(reader["employeeID"]),
                     reader["employeeName"].ToString(),
                     reader["Date"].ToString(),

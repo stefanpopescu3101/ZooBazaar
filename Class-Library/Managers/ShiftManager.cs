@@ -76,6 +76,16 @@ namespace Class_Library
             shiftMediator.UpdateInfo(shift);
         }
 
+
+        public bool CheckShiftNotModified(WorkShift shift)
+        {
+            if(shift.HabitatID==0 && shift.HabitatName=="NO")
+            {
+                return true;
+            }
+
+            return false;
+        }
         public List<WorkShift> GetActiveShifts()
         {
             List<WorkShift> activeShifts = new List<WorkShift>();

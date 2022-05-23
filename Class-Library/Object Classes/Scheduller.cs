@@ -93,13 +93,17 @@ namespace Class_Library
                     int i = 0;
                     foreach (WorkShift shift in shiftForDay)
                     {
-
-                        if (i < 5)
+                        if(shiftManager.CheckShiftNotModified(shift))
                         {
-                            shiftManager.UpdateInfo(shift, shift.EmployeeId, shift.EmployeeName, shift.Date, shift.Type, shift.WageForShift, shift.HoursWorked, habitat.ID, habitat.Title);
-                            
-                            i++;
+                            if (i <= 5)
+                            {
+                                shiftManager.UpdateInfo(shift, shift.EmployeeId, shift.EmployeeName, shift.Date, shift.Type, shift.WageForShift, shift.HoursWorked, habitat.ID, habitat.Title);
+
+                                i++;
+                            }
                         }
+
+                        
                     }
                 }
 
