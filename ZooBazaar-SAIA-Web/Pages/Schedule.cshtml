@@ -5,12 +5,12 @@
 
 
 
-<div id="page_layout">
-    <div id="table_container">
+<div class="page_layout">
+    <div class="table_container">
         <h3 style="margin-left:20px">Welcome  @Model.Name</h3>
 
-        <div class="row">
-            <table float="left">
+        <div class="pagination">
+            <table class="schedule_table">
 
 
                 <thead>
@@ -18,6 +18,8 @@
                         <th class="col">Work shift ID</th>
                         <th class="col">Period</th>
                         <th class="col">Date</th>
+                        <th class="col">Habitat ID</th>
+                        <th class="col">Habitat Name</th>
                     </tr>
                 </thead>
 
@@ -26,17 +28,20 @@
                     @foreach (var item in Model.workShifts)
                     {
 
-        <tr>
-            <td class="col">@item.ID</td>
-            <td class="col">@item.Type</td>
-            <td class="col">@item.Date </td>
-        </tr>}
+                    <tr>
+                        <td class="col">@item.ID</td>
+                        <td class="col">@item.Type</td>
+                        <td class="col">@item.Date </td>
+                        <td class="col">@item.HabitatID</td>
+                        <td class="col">@item.HabitatName </td>
+                    </tr>
+                     }
                 </tbody>
 
             </table>
 
-        </div>
-        <div class="pagination">
+        @*</div>
+        <div class="pagination">*@
 
             <form method="post" asp-page-handler="Previous">
                 <button class="btn"> Previous Month </button>
@@ -55,8 +60,8 @@
 
 
     </div>
-    <div id="list_container">
-        <div float="left" class="wrapper">
+    <div class="list_container">
+        <div class="wrapper">
             <div class="checkbox_container">
                 <div class="title">Unavailable for work shifts</div>
                 <table class="col-xs-7 table-bordered table-striped table-condensed table-fixed">
@@ -94,7 +99,7 @@
 
                 <form method="post" asp-page-handler="Confirm">
 
-                    <pre> <input type="date" asp-for="UnavailableDate">   <button class="btn btnTest"> Confirm </button> </pre>
+                    <pre> <input type="date" asp-for="UnavailableDate">   <button class="btnTest"> Confirm </button> </pre>
 
                 </form>
 
