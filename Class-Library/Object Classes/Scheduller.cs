@@ -15,6 +15,7 @@ namespace Class_Library
         private ShiftManager shiftManager;
         private EmployeeManager employeeManager;
         private EmployeeDb employeeMediator;
+        private HabitatManager habitatManager;
        
 
         public EmployeeManager EmployeeManager { get { return employeeManager; } }
@@ -23,6 +24,7 @@ namespace Class_Library
             this.shiftManager = new ShiftManager();
             this.employeeManager = new EmployeeManager();
             this.employeeMediator = new EmployeeDb();
+            this.habitatManager = new HabitatManager();
         }
 
         public int CheckNumberOfAssignedEmployees(string date, string type)
@@ -70,6 +72,49 @@ namespace Class_Library
         }
 
 
+        public void ScheduleWeekHabitats(string monday1, string sunday1)
+        {
+            DateTime monday = DateTime.ParseExact(monday1, "d", null);
+            DateTime actualDay = monday;
+            DateTime sunday = DateTime.ParseExact(sunday1, "d", null);
+
+            List<Habitat> allHabitats = new List<Habitat>();
+            List<WorkShift> shiftForDay = new List<WorkShift>();
+
+            allHabitats = habitatManager.GetHabitats();
+
+            
+            while(monday<=sunday)
+            {
+                shiftForDay = shiftManager.GetShiftsForSpecificDateHabitats(monday.ToString("d"));
+
+                foreach (Habitat habitat in allHabitats)
+                {
+                    int i = 0;
+                    foreach (WorkShift shift in shiftForDay)
+                    {
+                        if(shiftManager.CheckShiftNotModified(shift))
+                        {
+                            if (i <= 5)
+                            {
+                                shiftManager.UpdateInfo(shift, shift.EmployeeId, shift.EmployeeName, shift.Date, shift.Type, shift.WageForShift, shift.HoursWorked, habitat.ID, habitat.Title);
+
+                                i++;
+                            }
+                        }
+
+                        
+                    }
+                }
+
+                monday = monday.AddDays(1);
+            }
+
+            
+                
+            
+            
+        }
 
         public void ScheduleWeek(string monday1, string sunday1)
         {
@@ -103,13 +148,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.Id, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.Id, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesMorning++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "MORNING", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesMorning++;
                                 }
@@ -119,13 +164,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesAfternoon++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "AFTERNOON", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesAfternoon++;
                                 }
@@ -135,13 +180,13 @@ namespace Class_Library
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 8);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
                                     sm.Add(shift);
                                     employeesEvening++;
                                 }
                                 else
                                 {
-                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 6);
+                                    WorkShift shift = new WorkShift(employee.ID, employee.Name, monday.ToString("d"), "EVENING", Convert.ToDecimal(employee.HourlyWage), 6, 0, "NO");
                                     sm.Add(shift);
                                     employeesEvening++;
                                 }
@@ -160,7 +205,54 @@ namespace Class_Library
                 monday = monday.AddDays(1);
 
             }
+
+
+
+            //monday = DateTime.ParseExact(monday1, "d", null);
+            //actualDay = monday;
+            //sunday = DateTime.ParseExact(sunday1, "d", null);
+
+            //int habitatsMorning;
+            //int habitatsAfternoon;
+            //int habitatsEvening;
+
+            //while(monday<=sunday)
+            //{
+            //    habitatsMorning = 0;
+            //    habitatsAfternoon = 0;
+            //    habitatsEvening = 0;
+
+            //    foreach(Habitat habitat in habitatManager.GetHabitats())
+            //    {
+            //        foreach(WorkShift workShift in shiftManager.GetAll())
+            //        {
+            //            if (habitatsMorning < 8 && workShift.Type=="MORNING")
+            //            {
+            //                habitatsMorning++;
+            //            }
+
+            //            if(habitatsAfternoon< 8 && workShift.Type == "EVENING")
+            //            {
+            //                habitatsAfternoon++;
+            //            }
+
+            //            if(habitatsEvening< 8 && workShift.Type == "EVENING")
+            //            {
+            //                habitatsEvening++;
+            //            }
+            //        }
+
+                    
+            //    }
+
+            //}
+
+            
+
         }
+
+
+
 
         public void Reset()
         {

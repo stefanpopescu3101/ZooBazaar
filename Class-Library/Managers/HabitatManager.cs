@@ -32,6 +32,22 @@ namespace Class_Library.Data_Access
             Habitats= habitatDb.LoadHabitats();
         }
 
+        public List<Habitat> GetHabitats()
+        {
+            Habitats = habitatDb.LoadHabitats();
+            return Habitats;
+        }
+
+        public List<string> GetHabitatsTitles()
+        {
+            List<string> habitatsTitles = new List<string>();
+            foreach(Habitat habitat in GetHabitats())
+            {
+                habitatsTitles.Add(habitat.Title);
+            }
+            return habitatsTitles;
+        }
+
         private void LoadAnimals()
         {
             animalManager.GetAllAnimals();
@@ -243,6 +259,20 @@ namespace Class_Library.Data_Access
             }
             habitat.ResponsibleEmployeeId = responsibleEmployee.Id;
             habitatDb.UpdateResponsibleEmployee(habitat, responsibleEmployee);
+        }
+
+        public Habitat GetHabitatByTitle(string title)
+        {
+            foreach (Habitat habitat in GetHabitats())
+            {
+                if (habitat.Title == title)
+                {
+                    return habitat;
+                    
+                }
+            }
+
+            return null;
         }
 
         public Habitat GetHabitatById(int id)

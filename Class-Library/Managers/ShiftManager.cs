@@ -70,6 +70,22 @@ namespace Class_Library
             return this.WorkShifts;
         }
 
+        public void UpdateInfo(WorkShift shift, int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
+        {
+            shift.UpdateInfo(employeeId, employee, date, type, wage, hours, habitatId, habitatName);
+            shiftMediator.UpdateInfo(shift);
+        }
+
+
+        public bool CheckShiftNotModified(WorkShift shift)
+        {
+            if(shift.HabitatID==0 && shift.HabitatName=="NO")
+            {
+                return true;
+            }
+
+            return false;
+        }
         public List<WorkShift> GetActiveShifts()
         {
             List<WorkShift> activeShifts = new List<WorkShift>();
@@ -112,6 +128,19 @@ namespace Class_Library
                     }
                 }
             }
+        }
+
+        public List<WorkShift> GetShiftsForSpecificDateHabitats(string date)
+        {
+            List<WorkShift> workShifts = new List<WorkShift>();
+            foreach (WorkShift shift in shiftMediator.GetAllShifts())
+            {
+                if (shift.Date == date)
+                {
+                    workShifts.Add(shift);
+                }
+            }
+            return workShifts;
         }
 
         public List<WorkShift> GetShiftsForSpecificDate(string date)

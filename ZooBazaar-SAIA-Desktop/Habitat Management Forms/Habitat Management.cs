@@ -13,7 +13,7 @@ using Class_Library.Managers;
 
 namespace ZooBazaar_SAIA_Desktop
 {
-    public partial class Habitat_Management : Form
+    public partial class btnAssignEmployeesToWork : Form
     {
         private int selectedIndex = 0;
         private Habitat selectedHabitat;
@@ -26,7 +26,7 @@ namespace ZooBazaar_SAIA_Desktop
         private bool isInitialized;
         private Employee loggedEmployee;
 
-        public Habitat_Management(Employee e)
+        public btnAssignEmployeesToWork(Employee e)
         {
             InitializeComponent();
             if (!isInitialized)

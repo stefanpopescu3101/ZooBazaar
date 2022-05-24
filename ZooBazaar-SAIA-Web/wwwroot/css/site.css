@@ -135,43 +135,71 @@ h1 {
         display: contents;
     }
 
-/*.pagination {
-    margin-top: 40px;*/
-    /*text-align: left;*/
-    /*display: inline-block;
-    width: 92%;*/
-    margin-left: 20px;
+.pagination {
+    margin-top: 10px;
+    text-align: left;
+    display: inline-block;
+    width: 40%;
+    margin-left: 0px;
 }
 
-/*.table {
-    width: 300px;
+.schedule_table {
+    width: 700px;
+    display:table;
     border-collapse: collapse;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin-left: 10px;
+    margin-top:30px;
+    margin-bottom: 10px;
+    
 }
 
-    table th {
+    .schedule_table th {
         background: #333;
         color: snow;
     }
 
-    table td {
+    .schedule_table td {
         background: snow;
-        margin-left: 100px;
+        
+    }
+
+    .schedule_table tbody {
+        overflow-y: auto;
+        height: 300px;
+        
+    }
+    .schedule_table tr {
+        margin-top:0px;
+        display:table-row;
+        vertical-align:top;
+    }
+
+    /*.schedule_table tbody td {
+        
+        padding-left: 60px !important;
+    }
+
+    .schedule_table thead{
+        width:500px;
     }*/
 
-table{
-    margin-right:30px;
-}
 
-.page_layout {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    
-    grid-template-columns: auto 600px;
-    grid-template-rows: auto;
-}
+
+    .page_layout {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        /*grid-template-columns: auto 600px;
+    grid-template-rows: auto;*/ */
+    }
+
+    .table_container, .list_container{
+        display:inline-block;
+    }
+
+    .list_container{
+        margin-left:35%;
+    }
 
 .inline{
     display:inline-block;
@@ -186,20 +214,32 @@ table{
     box-sizing: border-box;
 }
 
+
+
 .btn {
     border-radius: 2px;
     cursor: pointer;
-    justify-content: space-between;
-    text-decoration: none;
-    width: 40% !important;
+    /*justify-content: space-between;*/
+    /*text-decoration: none;*/
+    width: 700px;
+    height:30px;
     background: #333333;
     color: white !important;
     margin-bottom: 6px;
+    margin-left:10px;
 }
 
-    .btn :hover {
-        background-color: rgb(33, 104, 170);
-    }
+.btnTest {
+    border-radius: 2px;
+    cursor: pointer;
+    /*justify-content: space-between;*/
+    /*text-decoration: none;*/
+    width: 100px;
+    background: #333333;
+    color: white !important;
+    margin-bottom: 6px;
+    margin-left: 10px;
+}    
 
 #btnSave {
     background-color: #333333;
@@ -217,7 +257,8 @@ table{
     background: #fff;
     border-radius: 3px;
     padding: 30px;
-    margin: 50px auto 70px;
+    margin-right: 40px;
+    /*margin: 50px auto 70px;*/
 }
 
     .wrapper .title {
@@ -228,7 +269,7 @@ table{
     }
 
 .table-fixed {
-   /* margin-right:40px;
+    /*margin-right:40px;
     margin-top: 6rem;
     float: left;*/
 
@@ -273,10 +314,7 @@ table{
 
 
 
-form {
-    width: 50%;
-    margin: 8%;
-}
+
 .message-form {
     margin: 30px;
     width: 60%;

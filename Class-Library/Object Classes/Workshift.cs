@@ -8,17 +8,34 @@ namespace Class_Library
 {
     public class WorkShift
     {
+        public int ID { get; set; }
         public int EmployeeId { get; private set; }
         public string EmployeeName { get; private set; }
         public string Date { get; private set; }
         public string Type { get; private set; }
         public decimal WageForShift { get; private set; }
         public int HoursWorked { get; private set; }
-        public int ID { get; set; }
+        
+        public string HabitatName { get; private set; }
+        public int HabitatID { get; private set; }
 
         public bool Cancelled { get; private set; }
 
-        public WorkShift(int employeeId, string employee, string date, string type, decimal wage, int hours)
+        public WorkShift(int id, int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
+        {
+            this.ID = id;
+            this.EmployeeId = employeeId;
+            this.EmployeeName = employee;
+            this.Date = date;
+            this.Type = type;
+            this.WageForShift = wage;
+            this.HoursWorked = hours;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
+            this.Cancelled = false;
+        }
+
+        public WorkShift(int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
         {
             this.EmployeeId = employeeId;
             this.EmployeeName = employee;
@@ -26,14 +43,21 @@ namespace Class_Library
             this.Type = type;
             this.WageForShift = wage;
             this.HoursWorked = hours;
-            this.Cancelled = false;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
         }
 
-        public WorkShift(int employeeId, string type, int hours)
+        public void UpdateInfo(int employeeId, string employee, string date, string type, decimal wage, int hours, int habitatId, string habitatName)
         {
             this.EmployeeId = employeeId;
+            this.EmployeeName = employee;
+            this.Date = date;
             this.Type = type;
+            this.WageForShift = wage;
             this.HoursWorked = hours;
+            this.HabitatID = habitatId;
+            this.HabitatName = habitatName;
+            this.Cancelled = false;
         }
 
         public bool CancelShift()
@@ -46,10 +70,10 @@ namespace Class_Library
             else { return false; }
         }
 
-        public override string ToString()
-        {
-            return "ID: " + this.ID + ", Employee ID:" + this.EmployeeId + " - " + this.EmployeeName;
-        }
+        //public override string ToString()
+        //{
+        //    return "ID: " + this.ID + ", Employee ID:" + this.EmployeeId + " - " + this.EmployeeName;
+        //}
     }
 
 }

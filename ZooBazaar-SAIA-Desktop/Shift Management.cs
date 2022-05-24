@@ -28,6 +28,7 @@ namespace ZooBazaar_SAIA_Desktop
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
+            RefreshCalender();
         }
 
         private void btnShowCalendar_Click(object sender, EventArgs e)
@@ -158,21 +159,25 @@ namespace ZooBazaar_SAIA_Desktop
 
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
 
             lastMonday = lastMonday.AddDays(7);
             nextSunday = nextSunday.AddDays(7);
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
 
             lastMonday = lastMonday.AddDays(7);
             nextSunday = nextSunday.AddDays(7);
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
 
             lastMonday = lastMonday.AddDays(7);
             nextSunday = nextSunday.AddDays(7);
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
 
             MessageBox.Show("Employees have been assigned successfully for one month!");
         }

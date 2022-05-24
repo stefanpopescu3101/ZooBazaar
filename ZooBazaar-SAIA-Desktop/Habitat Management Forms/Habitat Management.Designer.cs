@@ -1,6 +1,6 @@
 ﻿
 namespace ZooBazaar_SAIA_Desktop {
-    partial class Habitat_Management {
+    partial class btnAssignEmployeesToWork {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -36,6 +36,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.lbHabitats = new System.Windows.Forms.ListBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.animalManagementBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,11 +171,22 @@ namespace ZooBazaar_SAIA_Desktop {
             this.animalManagementBtn.UseVisualStyleBackColor = true;
             this.animalManagementBtn.Click += new System.EventHandler(this.animalManageBtn_Click);
             // 
-            // Habitat_Management
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(10, 437);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(591, 37);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Assign Employees to Work";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnAssignEmployeesToWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 461);
+            this.ClientSize = new System.Drawing.Size(876, 481);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.animalManagementBtn);
@@ -185,7 +197,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbHabitats);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Habitat_Management";
+            this.Name = "btnAssignEmployeesToWork";
             this.Text = "Habitat Management";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -207,5 +219,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.ListBox lbHabitats;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button animalManagementBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
