@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using Class_Library;
+using Class_Library.Managers;
 using System.Windows.Forms;
+using Class_Library.Data_Access;
 
 namespace ZooBazaar_SAIA_Desktop
 {
@@ -13,6 +15,9 @@ namespace ZooBazaar_SAIA_Desktop
     {
         ShiftManager shiftM;
         Scheduler scheduler;
+        
+        HabitatManager habitatManager;
+        List<string> habitatsTitles;
         string shiftType;
         string date;
         string monday;
@@ -21,6 +26,9 @@ namespace ZooBazaar_SAIA_Desktop
         public AssignToShift(Scheduler scheduler, ShiftManager shiftM, string shiftType, string date, string monday, string sunday)
         {
             InitializeComponent();
+            habitatManager = new HabitatManager();
+            habitatsTitles = new List<string>();
+            
             this.shiftM = shiftM;
             this.shiftType = shiftType;
             this.date = date;
@@ -57,23 +65,37 @@ namespace ZooBazaar_SAIA_Desktop
             {
                 this.lbPeopleInShift.Items.Add("ID: " + employee.Id + " - " + employee.FirstName + " " + employee.LastName);
             }
+
+            
+
+            //Habitat initialization
+
+            habitatsTitles = habitatManager.GetHabitatsTitles();
+            cmbHabitat.DataSource = habitatsTitles;
         }
 
         private void btnAddToShift_Click(object sender, EventArgs e)
         {
-            if (lbAvailablePeople.SelectedIndex > -1)
+            if (lbAvailablePeople.SelectedIndex > -1 && cmbHabitat.Text!="")
             {
                 string emp = lbAvailablePeople.SelectedItem.ToString();
                 string[] words = emp.Split(' ');
                 int id = Convert.ToInt32(words[1]);
                 Employee employee = scheduler.EmployeeManager.GetEmployee(id);
-                WorkShift workShift = new WorkShift(employee.ID, employee.Name, this.date, this.shiftType, Convert.ToDecimal(employee.HourlyWage), 8, 0, "NO");
+                Habitat habitat = habitatManager.GetHabitatByTitle(cmbHabitat.Text);
+
+                
+                
+                WorkShift workShift = new WorkShift(employee.ID, employee.Name, this.date, this.shiftType, Convert.ToDecimal(employee.HourlyWage), 8, habitat.ID, habitat.Title);
                 shiftM.Add(workShift);
 
-                MessageBox.Show("Employee has been assigned successfully!");
+                
             }
             else { MessageBox.Show("Please select an employee first."); }
+
+            MessageBox.Show("Employee has been assigned successfully!");
             DisplayEmployees();
+
         }
 
         private void btnRemoveFromTheShift_Click(object sender, EventArgs e)

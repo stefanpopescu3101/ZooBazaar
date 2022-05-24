@@ -28,6 +28,7 @@ namespace ZooBazaar_SAIA_Desktop
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
+            RefreshCalender();
         }
 
         private void btnShowCalendar_Click(object sender, EventArgs e)
