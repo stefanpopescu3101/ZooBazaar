@@ -31,10 +31,7 @@ namespace ZooBazaar_SAIA_Desktop
             RefreshCalender();
         }
 
-        private void btnShowCalendar_Click(object sender, EventArgs e)
-        {
-            RefreshCalender();
-        }
+        
 
         private void RefreshCalender()
         {
