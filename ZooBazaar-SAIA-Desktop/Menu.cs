@@ -63,5 +63,11 @@ namespace ZooBazaar_SAIA_Desktop
             login.Show();
             this.Close();
         }
+
+        private void btnStatistics_Click(object sender, EventArgs e) {
+            Statistics statistics = new Statistics(loggedEmployee);
+            statistics.Show();
+            this.Close();
+        }
     }
 }
