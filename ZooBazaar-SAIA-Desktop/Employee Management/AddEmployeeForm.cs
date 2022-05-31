@@ -27,6 +27,8 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
+            lbPassword.Visible = false;
+            tbPassword.Visible = false;
         }
 
         public AddEmployeeForm(Employee employee)
@@ -62,13 +64,8 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                 
                 if (ok == 0) //if making a new employee (not updating employee)
                 {
-                    //Using the outlook ref to create the email
-                    Outlook._Application _app = new Outlook.Application();
-                    Outlook.MailItem mail = (Outlook.MailItem)_app.CreateItem(Outlook.OlItemType.olMailItem);
-                    mail.To = tbEmail.Text;
-                    mail.Subject = "Login redentials!";
-                    mail.Body = RandomString(10, true);
 
+                    
                     btnAddEmp.Text = "Add employee";
                     string firstName = tbFirstName.Text;
                     string lastName = tbLastName.Text;
@@ -83,8 +80,20 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                     string bsn = tbBsn.Text;
                     int hourlyWage = Convert.ToInt32(tbHourlyWage.Text);
                     string username = tbUsername.Text;
-                    string password = Hasher.ComputeSha256Hash(tbPassword.Text);
+                    
 
+                    //Using the outlook ref to create the email
+                    Outlook._Application _app = new Outlook.Application();
+                    Outlook.MailItem mail = (Outlook.MailItem)_app.CreateItem(Outlook.OlItemType.olMailItem);
+                    mail.To = tbEmail.Text;
+                    mail.Subject = "Login redentials!";
+                    string randomPassword = RandomString(10, true);
+                    mail.Body = "Username: " + username + " " + "Password: " + randomPassword ;
+                    mail.Importance = Outlook.OlImportance.olImportanceNormal;
+                    ((Outlook._MailItem)mail).Send();
+
+                    string password = Hasher.ComputeSha256Hash(randomPassword);
+ 
                     Employee newEmployee = new Employee(firstName, lastName, bsn, email, startDate, endDate, dob, contractType, hourlyWage, address, status, 0, role, username, password);
                     
                     int newId = employeeManager.AddEmployee(newEmployee);
@@ -93,6 +102,9 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                 }
                 else
                 {
+                    tbPassword.Visible = true;
+                    lbPassword.Visible = true;
+
                     btnAddEmp.Text = "Update employee";
                     employee1.firstName = tbFirstName.Text;
                     employee1.lastName = tbLastName.Text;

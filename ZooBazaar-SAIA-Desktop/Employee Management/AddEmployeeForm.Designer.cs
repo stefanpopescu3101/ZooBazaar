@@ -34,8 +34,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -43,8 +41,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label13 = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.tbUsername = new System.Windows.Forms.TextBox();
-            this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
@@ -59,6 +55,10 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label3 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tbBsn = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.lbPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -110,26 +110,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.label6.Size = new System.Drawing.Size(59, 28);
             this.label6.TabIndex = 5;
             this.label6.Text = "Email";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(632, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 28);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Password";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(632, 33);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 28);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Username";
             // 
             // label9
             // 
@@ -195,20 +175,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(170, 27);
             this.tbEmail.TabIndex = 14;
-            // 
-            // tbUsername
-            // 
-            this.tbUsername.Location = new System.Drawing.Point(632, 76);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(170, 27);
-            this.tbUsername.TabIndex = 15;
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(632, 153);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(154, 27);
-            this.tbPassword.TabIndex = 16;
             // 
             // tbLastName
             // 
@@ -333,12 +299,48 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.tbBsn.Size = new System.Drawing.Size(170, 27);
             this.tbBsn.TabIndex = 31;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(632, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 28);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Username";
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Location = new System.Drawing.Point(632, 76);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(170, 27);
+            this.tbUsername.TabIndex = 15;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(632, 153);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(170, 27);
+            this.tbPassword.TabIndex = 32;
+            // 
+            // lbPassword
+            // 
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbPassword.Location = new System.Drawing.Point(632, 122);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(93, 28);
+            this.lbPassword.TabIndex = 33;
+            this.lbPassword.Text = "Password";
+            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(814, 501);
+            this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbBsn);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tbAddress);
@@ -353,7 +355,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.dtpBirthdate);
             this.Controls.Add(this.tbLastName);
-            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbFirstName);
@@ -363,7 +364,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -383,8 +383,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -392,8 +390,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.TextBox tbUsername;
-        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.DateTimePicker dtpBirthdate;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
@@ -408,5 +404,9 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbBsn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Label lbPassword;
     }
 }
