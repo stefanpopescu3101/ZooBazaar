@@ -24,6 +24,7 @@ namespace ZooBazaar_SAIA_Desktop {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.label1 = new System.Windows.Forms.Label();
             this.btnAnimals = new System.Windows.Forms.Button();
             this.btnHabitats = new System.Windows.Forms.Button();
@@ -31,6 +32,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.userNameLbl = new System.Windows.Forms.Label();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +90,7 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(352, 503);
+            this.btnLogout.Location = new System.Drawing.Point(352, 623);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(94, 29);
             this.btnLogout.TabIndex = 5;
@@ -105,11 +107,23 @@ namespace ZooBazaar_SAIA_Desktop {
             this.userNameLbl.TabIndex = 6;
             this.userNameLbl.Text = "label2";
             // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStatistics.BackgroundImage")));
+            this.btnStatistics.Location = new System.Drawing.Point(35, 486);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(733, 100);
+            this.btnStatistics.TabIndex = 7;
+            this.btnStatistics.Text = "Statistics";
+            this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 560);
+            this.ClientSize = new System.Drawing.Size(800, 679);
+            this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.userNameLbl);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnSchedule);
@@ -133,5 +147,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label userNameLbl;
+        private System.Windows.Forms.Button btnStatistics;
     }
 }
