@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Class_Library;
+using ZooBazaar_SAIA_Desktop.Tickets_Management_Forms;
 
 namespace ZooBazaar_SAIA_Desktop 
 {
@@ -67,6 +68,13 @@ namespace ZooBazaar_SAIA_Desktop
         private void btnStatistics_Click(object sender, EventArgs e) {
             Statistics statistics = new Statistics(loggedEmployee);
             statistics.Show();
+            this.Close();
+        }
+
+        private void btnTickets_Click(object sender, EventArgs e)
+        {
+            Ticket_Shop ticketShop = new Ticket_Shop(loggedEmployee);
+            ticketShop.Show();
             this.Close();
         }
     }
