@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using Class_Library;
 using Class_Library.Data_Access;
 using Class_Library.Managers;
@@ -38,6 +39,42 @@ namespace ZooBazaar_SAIA_Desktop.Tickets_Management_Forms
             lblCurrentPrices.Text = $"Adult(regular) : {AddFormatSign(adultTicketRegular)} \nAdult(special) : {AddFormatSign(adultTicketSpecial)}" +
                                     $"\nChildren(regular) : {AddFormatSign(childrenTicketRegular)} \nChildren(special) : {AddFormatSign(childrenTicketSpecial)}" +
                                     $"\nDiscount(regular): {AddFormatSign(discountRegular)} \nDiscount(special): {AddFormatSign(discountSpecial)}";
+        }
+
+        private bool isValidData()
+        {
+
+            if (Int32.TryParse(tbAdults.Text, out int adultQty))
+            {
+                if (adultQty < 0)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            if (Int32.TryParse(tbChildren.Text, out int childrenQty))
+            {
+                if (childrenQty < 0)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+
+            if (dpDate.Value < DateTime.Today)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static string AddFormatSign(double discount)
@@ -79,6 +116,11 @@ namespace ZooBazaar_SAIA_Desktop.Tickets_Management_Forms
             // validate data
             var ticketType = checkbSpecial.Checked ? TicketType.Special : TicketType.Regular;
             var discount = ticketManager.GetDiscount(ticketType);
+            if (!isValidData())
+            {
+                MessageBox.Show("Entered data is invalid!");
+                return;
+            }
             var date = dpDate.Value.Date;
             var adultQty = int.Parse(tbAdults.Text);
             var childrenQty = int.Parse(tbChildren.Text);

@@ -37,11 +37,11 @@ namespace ZooBazaar_SAIA_Desktop.Tickets_Management_Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateData())
+            if (!IsValidData())
             {
                 MessageBox.Show("Data invalid!");
                 this.DialogResult = DialogResult.Cancel;
-                this.Close();
+                return;
             }
 
             var adultRegularTicker = Decimal.Parse(tbAdultRegular.Text);
@@ -68,7 +68,7 @@ namespace ZooBazaar_SAIA_Desktop.Tickets_Management_Forms
             this.Close();
         }
 
-        private bool ValidateData()
+        private bool IsValidData()
         {
             if (Decimal.TryParse(tbAdultRegular.Text, out decimal adultTicketRegular))
             {
