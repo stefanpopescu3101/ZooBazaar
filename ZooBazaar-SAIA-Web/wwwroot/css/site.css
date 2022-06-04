@@ -21,7 +21,7 @@
         'footer';
     grid-template-rows: 10vw 50px auto 50px;
     background-color: #6BCEFF;
-}
+    }
 
 
 
@@ -53,7 +53,22 @@ nav {
     font-size: 20px;
     padding: 10px;
     background-color: #2799E6;
+    color: #0000EE;
 }
+
+
+.navbutton:visited {
+    background-color: #2799E6;
+}
+
+.navbutton:active {
+    color: red;
+}
+
+.navbutton:hover {
+    background-color: #00ced1;
+}
+
 
 .content {
     display:flex;
@@ -376,14 +391,24 @@ h1 {
 
 .log-out-form {
     margin: 0;
-    display: inline;
     border: none;
 }
 
-.log-out-form button {
-    background: none;
-    border: none
+.log-out-button {
+    display: inline;
+    border: none;
+    background-color: #2799E6;
+    color: #0000EE;
+    cursor: pointer;
+    text-decoration: underline;
+    height: 50px;
+    width: 100px;
+    padding-bottom: 15px;
 }
+
+.log-out-button:active {
+    color: red;
+} 
 
 .text-danger {
     color: red;
