@@ -21,7 +21,7 @@
         'footer';
     grid-template-rows: 10vw 50px auto 50px;
     background-color: #6BCEFF;
-}
+    }
 
 
 
@@ -53,7 +53,22 @@ nav {
     font-size: 20px;
     padding: 10px;
     background-color: #2799E6;
+    color: #0000EE;
 }
+
+
+.navbutton:visited {
+    background-color: #2799E6;
+}
+
+.navbutton:active {
+    color: red;
+}
+
+.navbutton:hover {
+    background-color: #00ced1;
+}
+
 
 .content {
     display:flex;
@@ -337,14 +352,13 @@ h1 {
 
 .login-form .button-container {
     text-align: center;
-    width: 60%;
     display: flex;
     color: white;
-    padding: 14px 20px;
+    padding: 7px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 60%;
+    width: 100%;
 }
 
 .login-form input {
@@ -357,10 +371,9 @@ h1 {
 }
 
 .button-container .btn-primary {
-    width: 80%;
     border: none;
     cursor: pointer;
-    padding: 14px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
     font-size: 22px;
     background-color: #1767B3;
@@ -368,6 +381,8 @@ h1 {
     margin-right: auto;
     width: 120px;
     justify-content: space-between;
+    text-align: center;
+    height: auto;
 }
 
 .form-button:hover {
@@ -376,14 +391,24 @@ h1 {
 
 .log-out-form {
     margin: 0;
-    display: inline;
     border: none;
 }
 
-.log-out-form button {
-    background: none;
-    border: none
+.log-out-button {
+    display: inline;
+    border: none;
+    background-color: #2799E6;
+    color: #0000EE;
+    cursor: pointer;
+    text-decoration: underline;
+    height: 50px;
+    width: 100px;
+    padding-bottom: 15px;
 }
+
+.log-out-button:active {
+    color: red;
+} 
 
 .text-danger {
     color: red;

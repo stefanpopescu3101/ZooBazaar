@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="OxyPlot.WindowsForms" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Class-Library\Class-Library.csproj" />
   </ItemGroup>
 
