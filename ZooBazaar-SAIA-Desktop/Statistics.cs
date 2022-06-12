@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Class_Library.Managers;
 using Class_Library;
 using Class_Library.Data_Access;
+using Class_Library.Object_Classes;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Axes;
@@ -17,9 +18,11 @@ namespace ZooBazaar_SAIA_Desktop {
         private Employee loggedEmployee;
 
         //Lists for storing data
-        List<Employee> employees;
-        List<Animal> animals;
-        List<Habitat> habitats;
+        private List<Employee> employees;
+        private List<Animal> animals;
+        private List<Habitat> habitats;
+        private List<WorkShift> workshifts;
+        private List<Ticket> tickets;
 
         public Statistics(Employee e) {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace ZooBazaar_SAIA_Desktop {
         }
 
         private void CreateModels() {
-            //Get all the needed data (employees, animals, and habitats)
+            //Get all the needed data (employees, animals, habitats, total wages, and ticket sales)
             EmployeeManager employeeManager = new EmployeeManager();
             employees = employeeManager.GetAllEmployees();
             AnimalManager animalManager = new AnimalManager();
@@ -38,6 +41,11 @@ namespace ZooBazaar_SAIA_Desktop {
             animals = animalManager.Animals;
             HabitatManager habitatManager = new HabitatManager();
             habitats = habitatManager.GetHabitats();
+            ShiftManager shiftManager = new ShiftManager();
+            workshifts = shiftManager.GetAll();
+            TicketManager ticketManager = new TicketManager();
+            tickets = ticketManager.GetAllTickets();
+
             //Create the following OxyPlot models, which provide data for the graphs
             CreateContractModel();
             CreateWagesModel();
@@ -48,6 +56,8 @@ namespace ZooBazaar_SAIA_Desktop {
             CreateAnimalAgeModel();
 
             CreateHabitatModel();
+
+            CreateFinancesModel();
         }
 
         private void CreateContractModel() {
@@ -207,7 +217,8 @@ namespace ZooBazaar_SAIA_Desktop {
             }
             //Graph of habitats, with the number of animals for each
             var habitatModel = new PlotModel { Title = "Number of animals in each habitat" };
-            CategoryAxis catAxis = new CategoryAxis { Position = AxisPosition.Left };
+            CategoryAxis catAxis = new CategoryAxis { Title = "Habitats", Position = AxisPosition.Left };
+            habitatModel.Axes.Add(new LinearAxis() { Title = "Nr. of animals", Position = AxisPosition.Bottom });
             foreach (string h in habitatList) {
                 catAxis.Labels.Add(h);
             }
@@ -219,6 +230,51 @@ namespace ZooBazaar_SAIA_Desktop {
 
             habitatModel.Series.Add(habitatSeries);
             pvwHabitats.Model = habitatModel;
+        }
+
+        private void CreateFinancesModel() {
+            //Summarise data about total employee wages
+            decimal totalWages = 0;
+            foreach (WorkShift w in workshifts) {
+                //Multiply the wage per hour with the nr of hours, then add it to the total
+                decimal sumOfShift = w.WageForShift * w.HoursWorked;
+                totalWages += sumOfShift;
+            }
+            //Sumarise ticket sales
+            decimal totalTickets = 0;
+            foreach (Ticket t in tickets) {
+                totalTickets += t.Price;
+            }
+
+            //Create the graph and fill it
+            var financesModel = new PlotModel { Title = "Expenses vs. Income of the current month" };
+            CategoryAxis catAxis = new CategoryAxis { Position = AxisPosition.Left };
+            financesModel.Axes.Add(new LinearAxis() { Title = "Amount in Euro (€)", Position = AxisPosition.Bottom });
+            catAxis.Labels.Add("Total employee wages paid");
+            catAxis.Labels.Add("Total earnings from ticket sales");
+            financesModel.Axes.Add(catAxis);
+            var financesSeries = new BarSeries();
+            financesSeries.Items.Add(new BarItem((double)totalWages));
+            financesSeries.Items.Add(new BarItem((double)totalTickets));
+            financesModel.Series.Add(financesSeries);
+            pvwFinances.Model = financesModel;
+
+            //Show profit/loss
+            decimal profits = totalTickets - totalWages;
+            lblprofitloss.Text = profits.ToString();
+            lbleur.Font = new Font(lbleur.Font.FontFamily, 25);
+            lblprofitloss.Font = new Font(lblprofitloss.Font.FontFamily, 25);
+            if (profits < 0) { //It's a loss, turn everything red
+                lbllossorprofit.Text = "Lost";
+                lbleur.ForeColor = Color.Red;
+                lblprofitloss.ForeColor = Color.Red;
+                lbllossorprofit.ForeColor = Color.Red;
+            } else { //It's profitable, turn everything green
+                lbllossorprofit.Text = "Earned";
+                lbleur.ForeColor = Color.Red;
+                lblprofitloss.ForeColor = Color.Red;
+                lbllossorprofit.ForeColor = Color.Red;
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e) {
