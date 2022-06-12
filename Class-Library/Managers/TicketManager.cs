@@ -104,5 +104,11 @@ namespace Class_Library.Managers
         {
             ticket.Id = ticketDb.SaveTicket(ticket);
         }
+
+
+        public List<Ticket> GetAllTickets() {
+            return ticketDb.GetAllTickets();
+            //this is used for statistics
+        }
     }
 }

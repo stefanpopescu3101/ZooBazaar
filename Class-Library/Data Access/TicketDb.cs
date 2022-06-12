@@ -184,5 +184,34 @@ namespace Class_Library.Data_Access
             }
         }
 
+        public List<Ticket> GetAllTickets() {
+            //Used for statistics, so some of the data from the database is not used
+            try {
+                var sql = "select * from tickets_zoo";
+                var cmd = new MySqlCommand(sql, connection);
+                connection.Open();
+                var data = cmd.ExecuteReader();
+                List<Ticket> tickets = new List<Ticket>();
+                while (data.Read()) {
+                    tickets.Add(
+                        new Ticket(
+                            data.GetInt32(0),
+                            data.GetInt32(1),
+                            data.GetInt32(2),
+                            data.GetDouble(5),
+                            DateTime.Now,
+                            null,
+                            TicketType.Regular
+                            )
+                        );
+                }
+
+                return tickets;
+            }
+            finally {
+                connection.Close();
+            }
+        }
+
     }
 }

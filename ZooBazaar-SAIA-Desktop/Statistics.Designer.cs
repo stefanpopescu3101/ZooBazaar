@@ -36,10 +36,17 @@ namespace ZooBazaar_SAIA_Desktop {
             this.pvwHealth = new OxyPlot.WindowsForms.PlotView();
             this.tabHabitats = new System.Windows.Forms.TabPage();
             this.pvwHabitats = new OxyPlot.WindowsForms.PlotView();
+            this.tabEconomy = new System.Windows.Forms.TabPage();
+            this.pvwFinances = new OxyPlot.WindowsForms.PlotView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblprofitloss = new System.Windows.Forms.Label();
+            this.lbleur = new System.Windows.Forms.Label();
+            this.lbllossorprofit = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabEmployees.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tabHabitats.SuspendLayout();
+            this.tabEconomy.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
@@ -57,6 +64,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.tabControl1.Controls.Add(this.tabEmployees);
             this.tabControl1.Controls.Add(this.tabAnimals);
             this.tabControl1.Controls.Add(this.tabHabitats);
+            this.tabControl1.Controls.Add(this.tabEconomy);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -183,6 +191,70 @@ namespace ZooBazaar_SAIA_Desktop {
             this.pvwHabitats.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pvwHabitats.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // tabEconomy
+            // 
+            this.tabEconomy.Controls.Add(this.lbllossorprofit);
+            this.tabEconomy.Controls.Add(this.lbleur);
+            this.tabEconomy.Controls.Add(this.lblprofitloss);
+            this.tabEconomy.Controls.Add(this.label1);
+            this.tabEconomy.Controls.Add(this.pvwFinances);
+            this.tabEconomy.Location = new System.Drawing.Point(4, 29);
+            this.tabEconomy.Name = "tabEconomy";
+            this.tabEconomy.Size = new System.Drawing.Size(973, 646);
+            this.tabEconomy.TabIndex = 3;
+            this.tabEconomy.Text = "Finances";
+            this.tabEconomy.UseVisualStyleBackColor = true;
+            // 
+            // pvwFinances
+            // 
+            this.pvwFinances.Location = new System.Drawing.Point(47, 55);
+            this.pvwFinances.Name = "pvwFinances";
+            this.pvwFinances.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.pvwFinances.Size = new System.Drawing.Size(878, 285);
+            this.pvwFinances.TabIndex = 0;
+            this.pvwFinances.Text = "plotView1";
+            this.pvwFinances.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.pvwFinances.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pvwFinances.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 407);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(236, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Profits/losses of the current month";
+            // 
+            // lblprofitloss
+            // 
+            this.lblprofitloss.AutoSize = true;
+            this.lblprofitloss.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblprofitloss.Location = new System.Drawing.Point(423, 458);
+            this.lblprofitloss.Name = "lblprofitloss";
+            this.lblprofitloss.Size = new System.Drawing.Size(126, 57);
+            this.lblprofitloss.TabIndex = 2;
+            this.lblprofitloss.Text = "00,00";
+            // 
+            // lbleur
+            // 
+            this.lbleur.AutoSize = true;
+            this.lbleur.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbleur.Location = new System.Drawing.Point(369, 458);
+            this.lbleur.Name = "lbleur";
+            this.lbleur.Size = new System.Drawing.Size(48, 57);
+            this.lbleur.TabIndex = 3;
+            this.lbleur.Text = "€";
+            // 
+            // lbllossorprofit
+            // 
+            this.lbllossorprofit.AutoSize = true;
+            this.lbllossorprofit.Location = new System.Drawing.Point(461, 541);
+            this.lbllossorprofit.Name = "lbllossorprofit";
+            this.lbllossorprofit.Size = new System.Drawing.Size(50, 20);
+            this.lbllossorprofit.TabIndex = 4;
+            this.lbllossorprofit.Text = "label3";
+            // 
             // Statistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -196,6 +268,8 @@ namespace ZooBazaar_SAIA_Desktop {
             this.tabEmployees.ResumeLayout(false);
             this.tabAnimals.ResumeLayout(false);
             this.tabHabitats.ResumeLayout(false);
+            this.tabEconomy.ResumeLayout(false);
+            this.tabEconomy.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +288,11 @@ namespace ZooBazaar_SAIA_Desktop {
         private OxyPlot.WindowsForms.PlotView pvwAge;
         private OxyPlot.WindowsForms.PlotView pvwPredator;
         private OxyPlot.WindowsForms.PlotView pvwHabitats;
+        private System.Windows.Forms.TabPage tabEconomy;
+        private OxyPlot.WindowsForms.PlotView pvwFinances;
+        private System.Windows.Forms.Label lbllossorprofit;
+        private System.Windows.Forms.Label lbleur;
+        private System.Windows.Forms.Label lblprofitloss;
+        private System.Windows.Forms.Label label1;
     }
 }
