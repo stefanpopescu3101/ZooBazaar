@@ -153,7 +153,7 @@ namespace Class_Library.Data_Access
         {
             try
             {
-                var sql = "INSERT INTO `tickets_zoo` (adult_qty, children_qty, discount, price, seller, type) VALUES (@adult_qty, @children_qty, @discount, @price, @seller_id, @type);";
+                var sql = "INSERT INTO `tickets_zoo` (adult_qty, children_qty, discount, price, seller, type, date) VALUES (@adult_qty, @children_qty, @discount, @price, @seller_id, @type, @date);";
                 var cmd = new MySqlCommand(sql, this.connection);
                 cmd.Parameters.AddWithValue("@adult_qty", ticket.AdultQty);
                 cmd.Parameters.AddWithValue("@children_qty", ticket.AdultQty);
@@ -161,6 +161,7 @@ namespace Class_Library.Data_Access
                 cmd.Parameters.AddWithValue("@discount", discount);
                 cmd.Parameters.AddWithValue("@price", ticket.Price);
                 cmd.Parameters.AddWithValue("@seller_id", ticket.Seller.ID);
+                cmd.Parameters.AddWithValue("@date", ticket.Date.Date);
 
                 if (ticket.Type == TicketType.Special)
                 {
