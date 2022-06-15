@@ -12,6 +12,7 @@ using Class_Library.Object_Classes;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Axes;
+using OxyPlot.Legends;
 
 namespace ZooBazaar_SAIA_Desktop {
     public partial class Statistics : Form {
@@ -233,47 +234,104 @@ namespace ZooBazaar_SAIA_Desktop {
         }
 
         private void CreateFinancesModel() {
-            //Summarise data about total employee wages
-            decimal totalWages = 0;
-            foreach (WorkShift w in workshifts) {
-                //Multiply the wage per hour with the nr of hours, then add it to the total
-                decimal sumOfShift = w.WageForShift * w.HoursWorked;
-                totalWages += sumOfShift;
+            //Get current and previous month (in number and text)
+            int currentMonthNr = DateTime.Today.Month;
+            int previousMonthNr;
+            if (currentMonthNr == 1) {
+                previousMonthNr = 12;
+            } else {
+                previousMonthNr = currentMonthNr - 1;
             }
+            DateTime currentDT = new DateTime(2000, currentMonthNr, 1);
+            DateTime previousDT = new DateTime(2000, previousMonthNr, 1);
+            string currentMonth = currentDT.ToString("MMMM");
+            string previousMonth = previousDT.ToString("MMMM");
+            
+            //Summarise data about total employee wages
+            decimal totalWagesCurrentMonth = 0;
+            decimal totalWagesPreviousMonth = 0;
+            foreach (WorkShift w in workshifts) {
+                if (Convert.ToDateTime(w.Date).Month == currentMonthNr) { //This shift happens in the current month
+                    //Multiply the wage per hour with the nr of hours, then add it to the total
+                    decimal sumOfShift = w.WageForShift * w.HoursWorked;
+                    totalWagesCurrentMonth += sumOfShift;
+                } else if (Convert.ToDateTime(w.Date).Month == previousMonthNr) { //Shift was in the previous month
+                    decimal sumOfShift = w.WageForShift * w.HoursWorked;
+                    totalWagesPreviousMonth += sumOfShift;
+                } 
+            }
+
             //Sumarise ticket sales
-            decimal totalTickets = 0;
+            decimal totalTicketsCurrentMonth = 0;
+            decimal totalTicketsPreviousMonth = 0;
             foreach (Ticket t in tickets) {
-                totalTickets += t.Price;
+                if (t.Date.Month == currentMonthNr) { //This shift happens in the current month
+                    totalTicketsCurrentMonth += t.Price;
+                } else if (t.Date.Month == previousMonthNr) { //Shift was in the previous month
+                    totalTicketsPreviousMonth += t.Price;
+                }                
             }
 
             //Create the graph and fill it
             var financesModel = new PlotModel { Title = "Expenses vs. Income of the current month" };
+            Legend legend = new Legend {
+                LegendPlacement = LegendPlacement.Outside,
+                LegendPosition = LegendPosition.BottomCenter,
+                LegendOrientation = LegendOrientation.Horizontal,
+                LegendBorderThickness = 0
+            };
+            financesModel.Legends.Add(legend);
             CategoryAxis catAxis = new CategoryAxis { Position = AxisPosition.Left };
             financesModel.Axes.Add(new LinearAxis() { Title = "Amount in Euro (€)", Position = AxisPosition.Bottom });
             catAxis.Labels.Add("Total employee wages paid");
             catAxis.Labels.Add("Total earnings from ticket sales");
             financesModel.Axes.Add(catAxis);
-            var financesSeries = new BarSeries();
-            financesSeries.Items.Add(new BarItem((double)totalWages));
-            financesSeries.Items.Add(new BarItem((double)totalTickets));
-            financesModel.Series.Add(financesSeries);
+            //Series of data from the current month
+            var financesSeriesCurrentMonth = new BarSeries { Title = currentMonth + " (Current Month)", FillColor=OxyColors.Blue };
+            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalWagesCurrentMonth));
+            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalTicketsCurrentMonth));
+            financesModel.Series.Add(financesSeriesCurrentMonth);
+            //Series of data from the current month
+            var financesSeriesPreviousMonth = new BarSeries { Title = previousMonth + " (Previous Month)", FillColor = OxyColors.DarkMagenta };
+            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalWagesPreviousMonth));
+            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalTicketsPreviousMonth));
+            financesModel.Series.Add(financesSeriesPreviousMonth);
             pvwFinances.Model = financesModel;
 
-            //Show profit/loss
-            decimal profits = totalTickets - totalWages;
-            lblprofitloss.Text = profits.ToString();
-            lbleur.Font = new Font(lbleur.Font.FontFamily, 25);
-            lblprofitloss.Font = new Font(lblprofitloss.Font.FontFamily, 25);
-            if (profits < 0) { //It's a loss, turn everything red
-                lbllossorprofit.Text = "Lost";
-                lbleur.ForeColor = Color.Red;
-                lblprofitloss.ForeColor = Color.Red;
-                lbllossorprofit.ForeColor = Color.Red;
+            //Show profit/loss of previous month
+            lblPMonth.Text = "Profits/losses of " + previousMonth + " (previous month)";
+            decimal profitsPrevious = totalTicketsPreviousMonth - totalWagesPreviousMonth;
+            lblprofitlossPrevious.Text = profitsPrevious.ToString();
+            lbleurP.Font = new Font(lbleurP.Font.FontFamily, 25);
+            lblprofitlossPrevious.Font = new Font(lblprofitlossPrevious.Font.FontFamily, 25);
+            if (profitsPrevious < 0) { //It's a loss, turn everything red
+                lbllossorprofitPrevious.Text = "Lost";
+                lbleurP.ForeColor = Color.Red;
+                lblprofitlossPrevious.ForeColor = Color.Red;
+                lbllossorprofitPrevious.ForeColor = Color.Red;
             } else { //It's profitable, turn everything green
-                lbllossorprofit.Text = "Earned";
-                lbleur.ForeColor = Color.Red;
-                lblprofitloss.ForeColor = Color.Red;
-                lbllossorprofit.ForeColor = Color.Red;
+                lbllossorprofitPrevious.Text = "Earned";
+                lbleurP.ForeColor = Color.Green;
+                lblprofitlossPrevious.ForeColor = Color.Green;
+                lbllossorprofitPrevious.ForeColor = Color.Green;
+            }
+
+            //Show profit/loss of current month
+            lblCMonth.Text = "Profits/losses of " + currentMonth + " (current month)";
+            decimal profitsCurrent = totalTicketsCurrentMonth - totalWagesCurrentMonth;
+            lblprofitlossCurrent.Text = profitsCurrent.ToString();
+            lbleurC.Font = new Font(lbleurC.Font.FontFamily, 25);
+            lblprofitlossCurrent.Font = new Font(lblprofitlossCurrent.Font.FontFamily, 25);
+            if (profitsCurrent < 0) { //It's a loss, turn everything red
+                lbllossorprofitCurrent.Text = "Lost";
+                lbleurC.ForeColor = Color.Red;
+                lblprofitlossCurrent.ForeColor = Color.Red;
+                lbllossorprofitCurrent.ForeColor = Color.Red;
+            } else { //It's profitable, turn everything green
+                lbllossorprofitCurrent.Text = "Earned";
+                lbleurC.ForeColor = Color.Green;
+                lblprofitlossCurrent.ForeColor = Color.Green;
+                lbllossorprofitCurrent.ForeColor = Color.Green;
             }
         }
 
