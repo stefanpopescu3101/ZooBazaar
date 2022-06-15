@@ -200,7 +200,7 @@ namespace Class_Library.Data_Access
                             data.GetInt32(1),
                             data.GetInt32(2),
                             data.GetDouble(5),
-                            DateTime.Now,
+                            data.GetDateTime(7),
                             null,
                             TicketType.Regular
                             )
