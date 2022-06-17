@@ -194,6 +194,12 @@ namespace Class_Library.Data_Access
                 var data = cmd.ExecuteReader();
                 List<Ticket> tickets = new List<Ticket>();
                 while (data.Read()) {
+                    TicketType ticketType;
+                    if (data.GetInt32(4) == 1) {
+                        ticketType = TicketType.Special;
+                    } else {
+                        ticketType = TicketType.Regular;
+                    }
                     tickets.Add(
                         new Ticket(
                             data.GetInt32(0),
@@ -202,7 +208,7 @@ namespace Class_Library.Data_Access
                             data.GetDouble(5),
                             data.GetDateTime(7),
                             null,
-                            TicketType.Regular
+                            ticketType
                             )
                         );
                 }

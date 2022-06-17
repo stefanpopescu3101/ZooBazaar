@@ -47,11 +47,18 @@ namespace ZooBazaar_SAIA_Desktop {
             this.lblCMonth = new System.Windows.Forms.Label();
             this.pvwFinances = new OxyPlot.WindowsForms.PlotView();
             this.tabTickets = new System.Windows.Forms.TabPage();
+            this.lblTicketsPrevious = new System.Windows.Forms.Label();
+            this.lblTicketsPreviousText = new System.Windows.Forms.Label();
+            this.lblTicketsCurrent = new System.Windows.Forms.Label();
+            this.lblTicketsCurrentText = new System.Windows.Forms.Label();
+            this.pvwTicketType = new OxyPlot.WindowsForms.PlotView();
+            this.pvwTicketAge = new OxyPlot.WindowsForms.PlotView();
             this.tabControl1.SuspendLayout();
             this.tabEmployees.SuspendLayout();
             this.tabAnimals.SuspendLayout();
             this.tabHabitats.SuspendLayout();
             this.tabEconomy.SuspendLayout();
+            this.tabTickets.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
@@ -305,12 +312,80 @@ namespace ZooBazaar_SAIA_Desktop {
             // 
             // tabTickets
             // 
+            this.tabTickets.Controls.Add(this.lblTicketsPrevious);
+            this.tabTickets.Controls.Add(this.lblTicketsPreviousText);
+            this.tabTickets.Controls.Add(this.lblTicketsCurrent);
+            this.tabTickets.Controls.Add(this.lblTicketsCurrentText);
+            this.tabTickets.Controls.Add(this.pvwTicketType);
+            this.tabTickets.Controls.Add(this.pvwTicketAge);
             this.tabTickets.Location = new System.Drawing.Point(4, 29);
             this.tabTickets.Name = "tabTickets";
             this.tabTickets.Size = new System.Drawing.Size(973, 646);
             this.tabTickets.TabIndex = 4;
             this.tabTickets.Text = "Ticket Sales";
             this.tabTickets.UseVisualStyleBackColor = true;
+            // 
+            // lblTicketsPrevious
+            // 
+            this.lblTicketsPrevious.AutoSize = true;
+            this.lblTicketsPrevious.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTicketsPrevious.Location = new System.Drawing.Point(206, 519);
+            this.lblTicketsPrevious.Name = "lblTicketsPrevious";
+            this.lblTicketsPrevious.Size = new System.Drawing.Size(126, 57);
+            this.lblTicketsPrevious.TabIndex = 12;
+            this.lblTicketsPrevious.Text = "00,00";
+            // 
+            // lblTicketsPreviousText
+            // 
+            this.lblTicketsPreviousText.AutoSize = true;
+            this.lblTicketsPreviousText.Location = new System.Drawing.Point(119, 468);
+            this.lblTicketsPreviousText.Name = "lblTicketsPreviousText";
+            this.lblTicketsPreviousText.Size = new System.Drawing.Size(160, 20);
+            this.lblTicketsPreviousText.TabIndex = 11;
+            this.lblTicketsPreviousText.Text = "Tickets sold last month";
+            // 
+            // lblTicketsCurrent
+            // 
+            this.lblTicketsCurrent.AutoSize = true;
+            this.lblTicketsCurrent.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTicketsCurrent.Location = new System.Drawing.Point(667, 519);
+            this.lblTicketsCurrent.Name = "lblTicketsCurrent";
+            this.lblTicketsCurrent.Size = new System.Drawing.Size(126, 57);
+            this.lblTicketsCurrent.TabIndex = 9;
+            this.lblTicketsCurrent.Text = "00,00";
+            // 
+            // lblTicketsCurrentText
+            // 
+            this.lblTicketsCurrentText.AutoSize = true;
+            this.lblTicketsCurrentText.Location = new System.Drawing.Point(545, 468);
+            this.lblTicketsCurrentText.Name = "lblTicketsCurrentText";
+            this.lblTicketsCurrentText.Size = new System.Drawing.Size(183, 20);
+            this.lblTicketsCurrentText.TabIndex = 8;
+            this.lblTicketsCurrentText.Text = "Tickets sold current month";
+            // 
+            // pvwTicketType
+            // 
+            this.pvwTicketType.Location = new System.Drawing.Point(510, 40);
+            this.pvwTicketType.Name = "pvwTicketType";
+            this.pvwTicketType.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.pvwTicketType.Size = new System.Drawing.Size(423, 350);
+            this.pvwTicketType.TabIndex = 1;
+            this.pvwTicketType.Text = "plotView1";
+            this.pvwTicketType.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.pvwTicketType.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pvwTicketType.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // pvwTicketAge
+            // 
+            this.pvwTicketAge.Location = new System.Drawing.Point(42, 40);
+            this.pvwTicketAge.Name = "pvwTicketAge";
+            this.pvwTicketAge.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.pvwTicketAge.Size = new System.Drawing.Size(423, 350);
+            this.pvwTicketAge.TabIndex = 0;
+            this.pvwTicketAge.Text = "plotView1";
+            this.pvwTicketAge.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.pvwTicketAge.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pvwTicketAge.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // Statistics
             // 
@@ -327,6 +402,8 @@ namespace ZooBazaar_SAIA_Desktop {
             this.tabHabitats.ResumeLayout(false);
             this.tabEconomy.ResumeLayout(false);
             this.tabEconomy.PerformLayout();
+            this.tabTickets.ResumeLayout(false);
+            this.tabTickets.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -356,5 +433,11 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Label lblprofitlossPrevious;
         private System.Windows.Forms.Label lblPMonth;
         private System.Windows.Forms.TabPage tabTickets;
+        private System.Windows.Forms.Label lblTicketsPrevious;
+        private System.Windows.Forms.Label lblTicketsPreviousText;
+        private System.Windows.Forms.Label lblTicketsCurrent;
+        private System.Windows.Forms.Label lblTicketsCurrentText;
+        private OxyPlot.WindowsForms.PlotView pvwTicketType;
+        private OxyPlot.WindowsForms.PlotView pvwTicketAge;
     }
 }
