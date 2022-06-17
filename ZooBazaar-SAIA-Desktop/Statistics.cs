@@ -283,19 +283,19 @@ namespace ZooBazaar_SAIA_Desktop {
             financesModel.Legends.Add(legend);
             CategoryAxis catAxis = new CategoryAxis { Position = AxisPosition.Left };
             financesModel.Axes.Add(new LinearAxis() { Title = "Amount in Euro (€)", Position = AxisPosition.Bottom });
-            catAxis.Labels.Add("Total employee wages paid");
-            catAxis.Labels.Add("Total earnings from ticket sales");
+            catAxis.Labels.Add(previousMonth + " (Previous Month)");
+            catAxis.Labels.Add(currentMonth + " (Current Month)");
             financesModel.Axes.Add(catAxis);
-            //Series of data from the current month
-            var financesSeriesCurrentMonth = new BarSeries { Title = currentMonth + " (Current Month)", FillColor=OxyColors.Blue };
-            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalWagesCurrentMonth));
-            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalTicketsCurrentMonth));
-            financesModel.Series.Add(financesSeriesCurrentMonth);
-            //Series of data from the current month
-            var financesSeriesPreviousMonth = new BarSeries { Title = previousMonth + " (Previous Month)", FillColor = OxyColors.DarkMagenta };
-            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalWagesPreviousMonth));
-            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalTicketsPreviousMonth));
-            financesModel.Series.Add(financesSeriesPreviousMonth);
+            //Series of data about wages paid
+            var financesSeriesWages = new BarSeries { Title = "Total employee wages paid", FillColor=OxyColors.Red };
+            financesSeriesWages.Items.Add(new BarItem((double)totalWagesPreviousMonth));
+            financesSeriesWages.Items.Add(new BarItem((double)totalWagesCurrentMonth));
+            financesModel.Series.Add(financesSeriesWages);
+            //Series of data about tickets sold
+            var financesSeriesTickets = new BarSeries { Title = "Total earnings from ticket sales", FillColor = OxyColors.Green };
+            financesSeriesTickets.Items.Add(new BarItem((double)totalTicketsPreviousMonth));
+            financesSeriesTickets.Items.Add(new BarItem((double)totalTicketsCurrentMonth));
+            financesModel.Series.Add(financesSeriesTickets);
             pvwFinances.Model = financesModel;
 
             //Show profit/loss of previous month

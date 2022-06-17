@@ -46,6 +46,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.lblprofitlossCurrent = new System.Windows.Forms.Label();
             this.lblCMonth = new System.Windows.Forms.Label();
             this.pvwFinances = new OxyPlot.WindowsForms.PlotView();
+            this.tabTickets = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabEmployees.SuspendLayout();
             this.tabAnimals.SuspendLayout();
@@ -69,6 +70,7 @@ namespace ZooBazaar_SAIA_Desktop {
             this.tabControl1.Controls.Add(this.tabAnimals);
             this.tabControl1.Controls.Add(this.tabHabitats);
             this.tabControl1.Controls.Add(this.tabEconomy);
+            this.tabControl1.Controls.Add(this.tabTickets);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -301,6 +303,15 @@ namespace ZooBazaar_SAIA_Desktop {
             this.pvwFinances.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pvwFinances.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // tabTickets
+            // 
+            this.tabTickets.Location = new System.Drawing.Point(4, 29);
+            this.tabTickets.Name = "tabTickets";
+            this.tabTickets.Size = new System.Drawing.Size(973, 646);
+            this.tabTickets.TabIndex = 4;
+            this.tabTickets.Text = "Ticket Sales";
+            this.tabTickets.UseVisualStyleBackColor = true;
+            // 
             // Statistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -344,5 +355,6 @@ namespace ZooBazaar_SAIA_Desktop {
         private System.Windows.Forms.Label lbleurP;
         private System.Windows.Forms.Label lblprofitlossPrevious;
         private System.Windows.Forms.Label lblPMonth;
+        private System.Windows.Forms.TabPage tabTickets;
     }
 }
