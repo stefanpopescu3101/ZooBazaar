@@ -9,6 +9,7 @@ using Class_Library.Managers;
 using Class_Library;
 using Class_Library.Data_Access;
 using Class_Library.Object_Classes;
+using Class_Library.Object_Classes.Enums;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Axes;
@@ -59,6 +60,10 @@ namespace ZooBazaar_SAIA_Desktop {
             CreateHabitatModel();
 
             CreateFinancesModel();
+
+            CreateTicketAgeModel();
+            CreateTicketTypeModel();
+            CreateTicketNumbers();
         }
 
         private void CreateContractModel() {
@@ -283,19 +288,19 @@ namespace ZooBazaar_SAIA_Desktop {
             financesModel.Legends.Add(legend);
             CategoryAxis catAxis = new CategoryAxis { Position = AxisPosition.Left };
             financesModel.Axes.Add(new LinearAxis() { Title = "Amount in Euro (€)", Position = AxisPosition.Bottom });
-            catAxis.Labels.Add("Total employee wages paid");
-            catAxis.Labels.Add("Total earnings from ticket sales");
+            catAxis.Labels.Add(previousMonth + " (Previous Month)");
+            catAxis.Labels.Add(currentMonth + " (Current Month)");
             financesModel.Axes.Add(catAxis);
-            //Series of data from the current month
-            var financesSeriesCurrentMonth = new BarSeries { Title = currentMonth + " (Current Month)", FillColor=OxyColors.Blue };
-            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalWagesCurrentMonth));
-            financesSeriesCurrentMonth.Items.Add(new BarItem((double)totalTicketsCurrentMonth));
-            financesModel.Series.Add(financesSeriesCurrentMonth);
-            //Series of data from the current month
-            var financesSeriesPreviousMonth = new BarSeries { Title = previousMonth + " (Previous Month)", FillColor = OxyColors.DarkMagenta };
-            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalWagesPreviousMonth));
-            financesSeriesPreviousMonth.Items.Add(new BarItem((double)totalTicketsPreviousMonth));
-            financesModel.Series.Add(financesSeriesPreviousMonth);
+            //Series of data about wages paid
+            var financesSeriesWages = new BarSeries { Title = "Total employee wages paid", FillColor=OxyColors.Red };
+            financesSeriesWages.Items.Add(new BarItem((double)totalWagesPreviousMonth));
+            financesSeriesWages.Items.Add(new BarItem((double)totalWagesCurrentMonth));
+            financesModel.Series.Add(financesSeriesWages);
+            //Series of data about tickets sold
+            var financesSeriesTickets = new BarSeries { Title = "Total earnings from ticket sales", FillColor = OxyColors.Green };
+            financesSeriesTickets.Items.Add(new BarItem((double)totalTicketsPreviousMonth));
+            financesSeriesTickets.Items.Add(new BarItem((double)totalTicketsCurrentMonth));
+            financesModel.Series.Add(financesSeriesTickets);
             pvwFinances.Model = financesModel;
 
             //Show profit/loss of previous month
@@ -333,6 +338,79 @@ namespace ZooBazaar_SAIA_Desktop {
                 lblprofitlossCurrent.ForeColor = Color.Green;
                 lbllossorprofitCurrent.ForeColor = Color.Green;
             }
+        }
+
+        private void CreateTicketAgeModel() {
+            //Count adult and child tickets
+            int nrOfChildTickets = 0;
+            int nrOfAdultTickets = 0;
+            foreach (Ticket t in tickets) {
+                nrOfChildTickets += t.ChildrenQty;
+                nrOfAdultTickets += t.AdultQty;
+            }
+
+            //Pie chart of adult/child distribution
+            PlotModel ticketAgeModel = new PlotModel { Title = "Adult and child tickets" };
+            var ticketAgeSeries = new PieSeries { StrokeThickness = 2.0, InsideLabelPosition = 0.8, AngleSpan = 360, StartAngle = 270 };
+            ticketAgeSeries.Slices.Add(new PieSlice("Child tickets", nrOfChildTickets*1.14) { IsExploded = true });
+            ticketAgeSeries.Slices.Add(new PieSlice("Adult tickets", nrOfAdultTickets) { IsExploded = true });
+
+            ticketAgeModel.Series.Add(ticketAgeSeries);
+            pvwTicketAge.Model = ticketAgeModel;
+        }
+
+        private void CreateTicketTypeModel() {
+            //Count normal and special tickets
+            int nrOfNormalTickets = 0;
+            int nrOfSpecialTickets = 0;
+            foreach (Ticket t in tickets) {
+                if (t.Type == TicketType.Special) {
+                    nrOfSpecialTickets += 1;
+                } else {
+                    nrOfNormalTickets += 1;
+                }                
+            }
+
+            //Pie chart of normal/special ticket distribution
+            PlotModel ticketTypeModel = new PlotModel { Title = "Regular and special tickets" };
+            var ticketTypeSeries = new PieSeries { StrokeThickness = 2.0, InsideLabelPosition = 0.8, AngleSpan = 360, StartAngle = 270 };
+            ticketTypeSeries.Slices.Add(new PieSlice("Regular tickets", nrOfNormalTickets) { IsExploded = true });
+            ticketTypeSeries.Slices.Add(new PieSlice("Special tickets", nrOfSpecialTickets) { IsExploded = true });
+
+            ticketTypeModel.Series.Add(ticketTypeSeries);
+            pvwTicketType.Model = ticketTypeModel;
+        }
+
+        private void CreateTicketNumbers() {
+            //Show additional data about ticket sales
+            lblTicketsPrevious.Font = new Font(lblTicketsPrevious.Font.FontFamily, 25);
+            lblTicketsCurrent.Font = new Font(lblTicketsPrevious.Font.FontFamily, 25);
+            int currentMonthNr = DateTime.Today.Month;
+            int previousMonthNr;
+            if (currentMonthNr == 1) {
+                previousMonthNr = 12;
+            } else {
+                previousMonthNr = currentMonthNr - 1;
+            }
+            DateTime currentDT = new DateTime(2000, currentMonthNr, 1);
+            DateTime previousDT = new DateTime(2000, previousMonthNr, 1);
+            string currentMonth = currentDT.ToString("MMMM");
+            string previousMonth = previousDT.ToString("MMMM");
+
+            int salesPrevious = 0;
+            int salesCurrent = 0;
+            foreach (Ticket t in tickets) {
+                if (t.Date.Month == previousMonthNr) {
+                    salesPrevious++;
+                } else if (t.Date.Month == currentMonthNr) {
+                    salesCurrent++;
+                }
+            }
+
+            lblTicketsPreviousText.Text = "Nr. of tickets sold in " + previousMonth + " (previous month)";
+            lblTicketsCurrentText.Text = "Nr. of tickets sold in " + currentMonth + " (current month)";
+            lblTicketsPrevious.Text = salesPrevious.ToString();
+            lblTicketsCurrent.Text = salesCurrent.ToString();
         }
 
         private void btnBack_Click(object sender, EventArgs e) {
