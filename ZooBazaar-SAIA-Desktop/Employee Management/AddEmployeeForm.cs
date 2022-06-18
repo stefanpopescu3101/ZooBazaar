@@ -9,7 +9,7 @@ using Class_Library;
 using Class_Library.Managers;
 using Class_Library.Object_Classes;
 using MySqlConnector;
-using Outlook = Microsoft.Office.Interop.Outlook;
+using System.Net.Mail;
 
 
 namespace ZooBazaar_SAIA_Desktop.Employee_Management
@@ -19,7 +19,11 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         private int ok;
         private EmployeeManager employeeManager;
         private Employee employee1;
-        
+        string text = "An employee with the same BSN already exists, would you like to compare them?";
+        string title = "Employee exists";
+        MessageBoxButtons MessageBoxButtons = new MessageBoxButtons();
+
+
         public AddEmployeeForm()
         {
             ok = 0;
@@ -27,8 +31,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
-            lbPassword.Visible = false;
-            tbPassword.Visible = false;
         }
 
         public AddEmployeeForm(Employee employee)
@@ -47,7 +49,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             cbRole.DisplayMember = employee.Role;
             tbBsn.Text = employee.bsn;
             tbHourlyWage.Text = employee.HourlyWage.ToString();
-            dtpStartDate.Value= Convert.ToDateTime(employee.StartDate);
+            dtpStartDate.Value = Convert.ToDateTime(employee.StartDate);
             dtpEndDate.Value = Convert.ToDateTime(employee.EndDate);
             tbUsername.Text = employee.username;
             tbPassword.Text = string.Empty;
@@ -57,15 +59,15 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
 
         private void btnAddEmp_Click(object sender, EventArgs e)
         {
-           
+
 
             try
             {
-                
+
                 if (ok == 0) //if making a new employee (not updating employee)
                 {
 
-                    
+
                     btnAddEmp.Text = "Add employee";
                     string firstName = tbFirstName.Text;
                     string lastName = tbLastName.Text;
@@ -80,25 +82,54 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                     string bsn = tbBsn.Text;
                     int hourlyWage = Convert.ToInt32(tbHourlyWage.Text);
                     string username = tbUsername.Text;
-                    
+                    string password = tbPassword.Text;
 
                     //Using the outlook ref to create the email
-                    Outlook._Application _app = new Outlook.Application();
-                    Outlook.MailItem mail = (Outlook.MailItem)_app.CreateItem(Outlook.OlItemType.olMailItem);
-                    mail.To = tbEmail.Text;
-                    mail.Subject = "Login redentials!";
-                    string randomPassword = RandomString(10, true);
-                    mail.Body = "Username: " + username + " " + "Password: " + randomPassword ;
-                    mail.Importance = Outlook.OlImportance.olImportanceNormal;
-                    ((Outlook._MailItem)mail).Send();
+                    //Outlook._Application _app = new Outlook.Application();
+                    //Outlook.MailItem mail = (Outlook.MailItem)_app.CreateItem(Outlook.OlItemType.olMailItem);
+                    //mail.To = tbEmail.Text;
+                    //mail.Subject = "Login redentials!";
+                    //string randomPassword = RandomString(10, true);
+                    //mail.Body = "Username: " + username + " " + "Password: " + randomPassword ;
+                    //mail.Importance = Outlook.OlImportance.olImportanceNormal;
+                    //((Outlook._MailItem)mail).Send();
+                    //MailMessage mail = new MailMessage();
+                    //SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
-                    string password = Hasher.ComputeSha256Hash(randomPassword);
- 
+                    //mail.From = new MailAddress("your_email_address@gmail.com");
+                    //mail.To.Add(tbEmail.Text);
+                    //mail.Subject = "Login redentials!";
+                    //mail.Body = "Username: " + username + " " + "Password: " + randomPassword;
+
+                    //SmtpServer.Port = 587;
+                    //SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+                    //SmtpServer.EnableSsl = true;
+
+                    password = Hasher.ComputeSha256Hash(password);
+
                     Employee newEmployee = new Employee(firstName, lastName, bsn, email, startDate, endDate, dob, contractType, hourlyWage, address, status, 0, role, username, password);
-                    
-                    int newId = employeeManager.AddEmployee(newEmployee);
-                    MessageBox.Show("Employee was added");
-                    this.Close();
+
+                    foreach (Employee employee in employeeManager.GetAllEmployees())
+                    {
+                        if (employee.Bsn == newEmployee.Bsn)
+                        {
+                            DialogResult result = MessageBox.Show(text, title, MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Close();
+                            }
+                        }
+                        else
+                        {
+                            int newId = employeeManager.AddEmployee(newEmployee);
+                            MessageBox.Show("Employee was added");
+                            Close();
+                        }
+                    }
                 }
                 else
                 {
@@ -123,13 +154,13 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
 
 
                     employee1.shiftsPerWeek = 0;
-           
+
 
                     employeeManager.UpdateEmployee(employee1);
 
                     MessageBox.Show("Employee was updated");
                     this.Close();
-                    
+
                 }
             }
             catch (MySqlException mse)
