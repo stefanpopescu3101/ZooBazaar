@@ -212,7 +212,7 @@ namespace Class_Library
 
                 while (reader.Read())
                 {
-                    test.Add(reader["employeeId"].ToString());
+                    test.Add(reader["employee_Id"].ToString());
                 }
 
                 if (test.Count == 0)

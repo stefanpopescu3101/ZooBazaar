@@ -124,6 +124,8 @@ namespace Class_Library
             int employeesAfternoon;
             int employeesEvening;
 
+            int numberOfEmployeesRequired = habitatManager.GetHabitats().Count * 2;
+
 
 
             DateTime monday = DateTime.ParseExact(monday1, "d", null);
@@ -144,7 +146,7 @@ namespace Class_Library
                     {
                         if (shiftManager.CheckAvailability(employee.Id, monday.ToString("d")) == true)
                         {
-                            if (employeesMorning < 8)
+                            if (employeesMorning < numberOfEmployeesRequired)
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
@@ -160,7 +162,7 @@ namespace Class_Library
                                 }
                             }
 
-                            if (employeesAfternoon < 8)
+                            if (employeesAfternoon < numberOfEmployeesRequired)
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
@@ -176,7 +178,7 @@ namespace Class_Library
                                 }
                             }
 
-                            if (employeesEvening < 8)
+                            if (employeesEvening < numberOfEmployeesRequired)
                             {
                                 if (employee.ContractType == "Full Time")
                                 {
@@ -301,6 +303,21 @@ namespace Class_Library
                 }
             }
             return true;
+        }
+
+        public List<WorkShift> GetShiftsForDayPeriod(string date, string dayPeriod)
+        {
+            List<WorkShift> shiftsForDayPeriod = new List<WorkShift>();
+
+            foreach(WorkShift shift in AllShifts)
+            {
+                if(shift.Type==dayPeriod && shift.Date==date)
+                {
+                    shiftsForDayPeriod.Add(shift);
+                }
+            }
+
+            return shiftsForDayPeriod;
         }
         public List<Employee> GetAvailableEmployees(string date, string monday, string sunday)
         {

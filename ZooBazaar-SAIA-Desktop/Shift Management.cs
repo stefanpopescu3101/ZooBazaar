@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Class_Library;
 using System.Windows.Forms;
+using Class_Library.Data_Access;
 
 namespace ZooBazaar_SAIA_Desktop
 {
@@ -16,14 +17,18 @@ namespace ZooBazaar_SAIA_Desktop
 
         private int indexMonth = DateTime.Now.Month;
         private int indexYear = DateTime.Now.Year;
+        private int numberOfHabitats;
         ShiftManager shiftManager;
         Scheduler scheduler;
+        HabitatManager habitatManager;
         private Employee loggedEmployee;
         Label label;
         public Form1(Employee e)
         {
             scheduler = new Scheduler();
             shiftManager = new ShiftManager();
+            habitatManager = new HabitatManager();
+            numberOfHabitats = habitatManager.GetHabitats().Count * 2;
             loggedEmployee = e;
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
@@ -49,12 +54,61 @@ namespace ZooBazaar_SAIA_Desktop
                     button.Tag = new DateTime(indexYear, indexMonth, j);
                     button2.Tag = new DateTime(indexYear, indexMonth, j);
                     button3.Tag = new DateTime(indexYear, indexMonth, j);
+
+                    DateTime date = (DateTime)button.Tag;
+
+                    //FIRST BUTTON
+                    if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "MORNING").Count == numberOfHabitats)
+                    {
+                        button.BackColor = Color.Green;
+                    }
+                    else if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "MORNING").Count == 0)
+                    {
+                        button.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        button.BackColor = Color.Yellow;
+                    }
+
+                    //SECOND BUTTON
+                    if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "AFTERNOON").Count == numberOfHabitats)
+                    {
+                        button2.BackColor = Color.Green;
+                    }
+                    else if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "AFTERNOON").Count == 0)
+                    {
+                        button2.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        button2.BackColor = Color.Yellow;
+                    }
+
+                    //THIRD BUTTON
+                    if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "EVENING").Count == numberOfHabitats)
+                    {
+                        button3.BackColor = Color.Green;
+                    }
+                    else if (scheduler.GetShiftsForDayPeriod(date.ToString("d"), "EVENING").Count == 0)
+                    {
+                        button3.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        button3.BackColor = Color.Yellow;
+                    }
+
                     p.Controls.Add(label = new Label { Text = (j++).ToString(), Dock = DockStyle.Top });
+
+                    
+
+                    
                     p.Controls.Add(button);
                     p.Controls.Add(button2);
                     p.Controls.Add(button3);
                     weekPanel.Controls.Add(p);
-                    button.Click += Button_Click;
+                    button.Click += Button_Click;       
                     button2.Click += Button2_Click;
                     button3.Click += Button3_Click;
                     button.Text = "MORNING";
@@ -143,6 +197,11 @@ namespace ZooBazaar_SAIA_Desktop
 
         private void btnAutoSchedule_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("The schedulling is ongoing! Please don't stop the application from running until the process is over!");
+
+            ProgressBar a = new ProgressBar();
+            a.Show();
+
             Scheduler scheduler = new Scheduler();
 
             DateTime date = new DateTime();
@@ -151,15 +210,10 @@ namespace ZooBazaar_SAIA_Desktop
             DateTime lastDayofMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
             int offset = firstDayOfMonth.DayOfWeek - DayOfWeek.Monday;
-            DateTime lastMonday = firstDayOfMonth.AddDays(-offset);
+            DateTime lastMonday = firstDayOfMonth;
             DateTime nextSunday = lastMonday.AddDays(6);
 
 
-            scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
-            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
-
-            lastMonday = lastMonday.AddDays(7);
-            nextSunday = nextSunday.AddDays(7);
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
             scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
@@ -175,6 +229,19 @@ namespace ZooBazaar_SAIA_Desktop
 
             scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
             scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
+
+            lastMonday = lastMonday.AddDays(7);
+            nextSunday = nextSunday.AddDays(7);
+
+            scheduler.ScheduleWeek(lastMonday.ToString("d"), nextSunday.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), nextSunday.ToString("d"));
+
+            lastMonday = lastMonday.AddDays(7);
+
+            scheduler.ScheduleWeek(lastMonday.ToString("d"), lastDayofMonth.ToString("d"));
+            scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), lastDayofMonth.ToString("d"));
+
+            a.Hide();
 
             MessageBox.Show("Employees have been assigned successfully for one month!");
         }
@@ -212,6 +279,8 @@ namespace ZooBazaar_SAIA_Desktop
             Scheduler scheduler = new Scheduler();
             scheduler.Reset();
 
+            RefreshCalender();
+
             MessageBox.Show("All the schedule entries have been deleted!");
         }
 
@@ -229,6 +298,11 @@ namespace ZooBazaar_SAIA_Desktop
             Menu menu = new Menu(loggedEmployee);
             menu.Show();
             this.Close();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
