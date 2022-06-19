@@ -9,7 +9,7 @@ using Class_Library;
 using Class_Library.Managers;
 using Class_Library.Object_Classes;
 using MySqlConnector;
-using System.Net.Mail;
+//using System.Net.Mail;
 
 
 namespace ZooBazaar_SAIA_Desktop.Employee_Management
@@ -22,6 +22,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
         string text = "An employee with the same BSN already exists, would you like to compare them?";
         string title = "Employee exists";
         MessageBoxButtons MessageBoxButtons = new MessageBoxButtons();
+        public List<Employee> employees;
 
 
         public AddEmployeeForm()
@@ -31,6 +32,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             InitializeComponent();
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
+            employees = employeeManager.GetAllEmployees();
         }
 
         public AddEmployeeForm(Employee employee)
@@ -52,7 +54,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             dtpStartDate.Value = Convert.ToDateTime(employee.StartDate);
             dtpEndDate.Value = Convert.ToDateTime(employee.EndDate);
             tbUsername.Text = employee.username;
-            tbPassword.Text = string.Empty;
+            tbPassword.Text = employee.password;
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
         }
@@ -109,27 +111,32 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
 
                     Employee newEmployee = new Employee(firstName, lastName, bsn, email, startDate, endDate, dob, contractType, hourlyWage, address, status, 0, role, username, password);
 
-                    foreach (Employee employee in employeeManager.GetAllEmployees())
+                    bool okk = false;
+                  
+                    foreach (Employee employee in employees)
                     {
                         if (employee.Bsn == newEmployee.Bsn)
                         {
+                            okk = true;
                             DialogResult result = MessageBox.Show(text, title, MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                
-                            }
-                            else
-                            {
-                                Close();
+                                CompareEmployeesForm compareEmployeesForm = new CompareEmployeesForm(employee, newEmployee);
+                                compareEmployeesForm.Show();
+                                break;
                             }
                         }
-                        else
-                        {
-                            int newId = employeeManager.AddEmployee(newEmployee);
-                            MessageBox.Show("Employee was added");
-                            Close();
-                        }
+
                     }
+
+                    if (okk == false)
+                    {
+                        int newId = employeeManager.AddEmployee(newEmployee);
+                        MessageBox.Show("Employee was added");
+                        this.Close();
+                    }
+                    
+
                 }
                 else
                 {
@@ -167,10 +174,6 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
             {
                 MessageBox.Show(mse.Message);
             }
-            catch (FormatException)
-            {
-                MessageBox.Show("A textbox is in the wrong format, please check and try again");
-            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -197,5 +200,7 @@ namespace ZooBazaar_SAIA_Desktop.Employee_Management
                 return builder.ToString().ToLower();
             return builder.ToString();
         }
+
+        
     }
 }
