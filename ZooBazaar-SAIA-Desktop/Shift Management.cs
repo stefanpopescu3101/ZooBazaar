@@ -31,6 +31,7 @@ namespace ZooBazaar_SAIA_Desktop
             numberOfHabitats = habitatManager.GetHabitats().Count * 2;
             loggedEmployee = e;
             InitializeComponent();
+            
             FormStyleUpdater styleUpdater = new FormStyleUpdater(this);
             styleUpdater.UpdateStyle();
             RefreshCalender();
@@ -199,8 +200,8 @@ namespace ZooBazaar_SAIA_Desktop
         {
             MessageBox.Show("The schedulling is ongoing! Please don't stop the application from running until the process is over!");
 
-            ProgressBar a = new ProgressBar();
-            a.Show();
+            
+            
 
             Scheduler scheduler = new Scheduler();
 
@@ -241,7 +242,7 @@ namespace ZooBazaar_SAIA_Desktop
             scheduler.ScheduleWeek(lastMonday.ToString("d"), lastDayofMonth.ToString("d"));
             scheduler.ScheduleWeekHabitats(lastMonday.ToString("d"), lastDayofMonth.ToString("d"));
 
-            a.Hide();
+            
 
             MessageBox.Show("Employees have been assigned successfully for one month!");
         }
